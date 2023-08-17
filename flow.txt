@@ -1,0 +1,9 @@
+* Flow and access user of the system
+
+    1. Siswa
+        - Credentials: Nomor Induk Siswa, Tanggal lahir -> untuk kebutuhan login.
+        - Access: Jadwal kelas, data guru mata pelajaran, nilai/raport, profil masing-masing siswa.
+
+    2. Guru
+        - Credentials: NIP, password -> untuk kebutuhan login.
+        - 
