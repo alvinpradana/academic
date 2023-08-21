@@ -24,9 +24,8 @@
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Data Karyawan</h6>
-                <a class="collapse-item" href="buttons.html">Pengajar</a>
-                <a class="collapse-item" href="cards.html">Honorer</a>
-                <a class="collapse-item" href="cards.html">Tenaga Lainnya</a>
+                <a class="collapse-item" href="/teachers">Pengajar</a>
+                <a class="collapse-item" href="/employees">Tenaga Lainnya</a>
             </div>
         </div>
     </li>
@@ -38,10 +37,10 @@
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Data Akademik</h6>
-                <a class="collapse-item" href="utilities-color.html">Siswa</a>
-                <a class="collapse-item" href="utilities-border.html">Mata Pelajaran</a>
-                <a class="collapse-item" href="utilities-animation.html">Kehadiran</a>
-                <a class="collapse-item" href="utilities-other.html">Kelas</a>
+                <a class="collapse-item" href="/students">Pelajar</a>
+                <a class="collapse-item" href="/lessons">Mata Pelajaran</a>
+                <a class="collapse-item" href="/organizations">Organisasi Siswa</a>
+                <a class="collapse-item" href="/class">Kelas</a>
             </div>
         </div>
     </li>
