@@ -22,8 +22,8 @@
     </div>
     <div class="card-body">
         <div class="table-responsive">
-            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                <thead>
+            @component('components.table')
+                @slot('head')
                     <tr>
                         <th>Name</th>
                         <th>Semester</th>
@@ -32,8 +32,8 @@
                         <th>Status</th>
                         <th>Action</th>
                     </tr>
-                </thead>
-                <tbody>
+                @endslot
+                @slot('body')
                     <tr>
                         <td>Ilmu Fisika</td>
                         <td>Genap</td>
@@ -50,32 +50,8 @@
                         <td>Active</td>
                         <td>$145,600</td>
                     </tr>
-                    <tr>
-                        <td>Ilmu Agama</td>
-                        <td>Ganjil</td>
-                        <td>7</td>
-                        <td>Wajib</td>
-                        <td>Active</td>
-                        <td>$145,600</td>
-                    </tr>
-                    <tr>
-                        <td>Seni Kebudayaan</td>
-                        <td>Genap</td>
-                        <td>9</td>
-                        <td>Pilihan</td>
-                        <td>Active</td>
-                        <td>$145,600</td>
-                    </tr>
-                    <tr>
-                        <td>Ilmu Komputer</td>
-                        <td>Genap</td>
-                        <td>8</td>
-                        <td>Pilihan</td>
-                        <td>Active</td>
-                        <td>$145,600</td>
-                    </tr>
-                </tbody>
-            </table>
+                @endslot
+            @endcomponent
         </div>
     </div>
 </div>

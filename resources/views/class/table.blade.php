@@ -22,16 +22,16 @@
     </div>
     <div class="card-body">
         <div class="table-responsive">
-            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                <thead>
+            @component('components.table')
+                @slot('head')
                     <tr>
                         <th>Kelas</th>
                         <th>Ruang</th>
                         <th>Jumlah Siswa</th>
                         <th>Action</th>
                     </tr>
-                </thead>
-                <tbody>
+                @endslot
+                @slot('body')
                     <tr>
                         <td>7</td>
                         <td>A</td>
@@ -44,8 +44,8 @@
                         <td>20 Orang</td>
                         <td>$145,600</td>
                     </tr>
-                </tbody>
-            </table>
+                @endslot
+            @endcomponent
         </div>
     </div>
 </div>
