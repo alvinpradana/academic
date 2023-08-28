@@ -7,51 +7,61 @@
     </a>
     <hr class="sidebar-divider my-0">
     <li class="nav-item active">
-        <a class="nav-link" href="/">
+        <a class="nav-link" href="{{ route('dashboard.index') }}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span>
         </a>
     </li>
     <hr class="sidebar-divider">
     <div class="sidebar-heading">
-        Academics
+        Pelajar
     </div>
     <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#studentsTab" aria-expanded="true" aria-controls="studentsTab">
             <i class="fas fa-fw fa-cog"></i>
-            <span>Data Karyawan</span>
+            <span>Data Pelajar</span>
         </a>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+        <div id="studentsTab" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Data Karyawan</h6>
-                <a class="collapse-item" href="/teachers">Pengajar</a>
-                <a class="collapse-item" href="/employees">Tenaga Lainnya</a>
+                <h6 class="collapse-header">Data Pelajar</h6>
+                <a class="collapse-item" href="{{ route('students.index') }}">Data Siswa</a>
+                <a class="collapse-item" href="{{ route('students.index') }}">Data Nilai</a>
+                <a class="collapse-item" href="{{ route('students.index') }}">Data Presensi</a>
             </div>
         </div>
     </li>
     <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#classTab" aria-expanded="true" aria-controls="classTab">
             <i class="fas fa-fw fa-wrench"></i>
-            <span>Data Akademik</span>
+            <span>Data Kelas</span>
         </a>
-        <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+        <div id="classTab" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Data Akademik</h6>
-                <a class="collapse-item" href="/students">Pelajar</a>
-                <a class="collapse-item" href="/lessons">Mata Pelajaran</a>
-                <a class="collapse-item" href="/organizations">Organisasi Siswa</a>
-                <a class="collapse-item" href="/class">Kelas</a>
+                <h6 class="collapse-header">Data Kelas</h6>
+                <a class="collapse-item" href="/all-data-class">Semua Kelas</a>
+                <a class="collapse-item" href="{{ route('class.index') }}">Data Kelas</a>
+                <a class="collapse-item" href="{{ route('grades.index') }}">Grade Kelas</a>
             </div>
         </div>
     </li>
     <hr class="sidebar-divider">
     <div class="sidebar-heading">
-        Addons
+        Pengajar
     </div>
     <li class="nav-item">
-        <a class="nav-link" href="tables.html">
+        <a class="nav-link" href="{{ route('teachers.index') }}">
             <i class="fas fa-fw fa-table"></i>
-            <span>Keuangan</span>
+            <span>Data Pengajar</span>
+        </a>
+    </li>
+    <hr class="sidebar-divider">
+    <div class="sidebar-heading">
+        Karyawan
+    </div>
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('employees.index') }}">
+            <i class="fas fa-fw fa-table"></i>
+            <span>Data Karyawan</span>
         </a>
     </li>
     <hr class="sidebar-divider d-none d-md-block">
