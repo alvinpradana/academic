@@ -19,6 +19,9 @@ Route::resource('organizations', OrganizationsController::class);
 Route::resource('class', ClassController::class);
 Route::resource('grades', GradesController::class);
 
+Route::get('/all-class', [ClassController::class, 'allClass'])->name('class.all-class');
+
 Route::get('/login', function () {
     return view('login');
 });
+
