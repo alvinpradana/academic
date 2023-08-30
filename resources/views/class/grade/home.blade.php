@@ -1,4 +1,4 @@
-@extends('layouts.app', ['title' => 'Class Grade'])
+@extends('layouts.app', ['title' => 'Grade Class'])
 
 @section('content')
     <div>
@@ -9,5 +9,5 @@
             </a>
         </div>
     </div>
-    @include('grades.table')
+    @include('class.grade.table')
 @endsection

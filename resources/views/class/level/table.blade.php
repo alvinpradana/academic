@@ -1,6 +1,6 @@
 <div class="d-flex justify-content-between align-items-center mb-4">
-    <p class="my-auto">Tabel berikut merupakan data grade kelas pada SMK Crows Zero tahun ajaran 2023/2024.</p>
-    <button class="btn btn-primary" data-toggle="modal" data-target="#modal">Tambah</button>
+    <p class="my-auto">Tabel berikut merupakan data kelas pada SMK Crows Zero tahun ajaran 2023/2024.</p>
+    <a href="{{ route('class-level.create') }}" class="btn btn-primary">Tambah</a>
 </div>
 @component('components.modal')
     @slot('body')
@@ -18,27 +18,27 @@
 @endcomponent
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Data Grade Kelas</h6>
+        <h6 class="m-0 font-weight-bold text-primary">Data Kelas</h6>
     </div>
     <div class="card-body">
         <div class="table-responsive">
             @component('components.table')
                 @slot('head')
                     <tr>
-                        <th>Grade</th>
+                        <th>Kelas</th>
                         <th>Keterangan</th>
                         <th>Action</th>
                     </tr>
                 @endslot
                 @slot('body')
                     <tr>
-                        <td>A</td>
-                        <td>Grade Nilai > 85</td>
+                        <td>7</td>
+                        <td>Kelas 1 SMA</td>
                         <td>$145,600</td>
                     </tr>
                     <tr>
-                        <td>B</td>
-                        <td>Grade Nilai < 85</td>
+                        <td>8</td>
+                        <td>Kelas 2 SMA</td>
                         <td>$145,600</td>
                     </tr>
                 @endslot

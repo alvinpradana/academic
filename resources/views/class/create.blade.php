@@ -17,7 +17,7 @@
                             <input type="number" class="form-control" id="levelClass" aria-describedby="emailHelp">
                         </div>
                         <div class="mb-3">
-                            <label for="notes" class="form-label">Keterangan</label>
+                            <label for="notes" class="form-label">Grade Kelas</label>
                             <input type="text" class="form-control" id="notes">
                         </div>
                         <button type="submit" class="btn btn-primary">Simpan</button>

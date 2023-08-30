@@ -1,4 +1,4 @@
-@extends('layouts.app', ['title' => 'Class'])
+@extends('layouts.app', ['title' => 'All Class'])
 
 @section('content')
     <div>
@@ -9,5 +9,5 @@
             </a>
         </div>
     </div>
-    @include('class.table.table')
+    @include('class.table')
 @endsection
