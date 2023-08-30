@@ -7,6 +7,7 @@ use App\Http\Controllers\LessonsController;
 use App\Http\Controllers\EmployeesController;
 use App\Http\Controllers\OrganizationsController;
 use App\Http\Controllers\ClassController;
+use App\Http\Controllers\ClassLevelController;
 use App\Http\Controllers\GradesController;
 use Illuminate\Support\Facades\Route;
 
@@ -17,9 +18,8 @@ Route::resource('employees', EmployeesController::class);
 Route::resource('lessons', LessonsController::class);
 Route::resource('organizations', OrganizationsController::class);
 Route::resource('class', ClassController::class);
+Route::resource('class-level', ClassLevelController::class);
 Route::resource('grades', GradesController::class);
-
-Route::get('/all-class', [ClassController::class, 'allClass'])->name('class.all-class');
 
 Route::get('/login', function () {
     return view('login');

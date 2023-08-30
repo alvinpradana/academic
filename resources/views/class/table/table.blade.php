@@ -1,6 +1,6 @@
 <div class="d-flex justify-content-between align-items-center mb-4">
     <p class="my-auto">Tabel berikut merupakan data kelas pada SMK Crows Zero tahun ajaran 2023/2024.</p>
-    <button class="btn btn-primary" data-toggle="modal" data-target="#modal">Tambah</button>
+    <a href="{{ route('class.create') }}" class="btn btn-primary">Tambah</a>
 </div>
 @component('components.modal')
     @slot('body')
