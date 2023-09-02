@@ -13,12 +13,22 @@
                 <div class="card-body">
                     <form>
                         <div class="mb-3">
-                            <label for="levelClass" class="form-label">Tingkat Kelas</label>
-                            <input type="number" class="form-control" id="levelClass" aria-describedby="emailHelp">
+                            <label for="levelClass" class="form-label">Grade Kelas</label>
+                            <select id="levelClass" class="form-select form-control" aria-label="Default select example">
+                                <option value="0" selected disabled>Select level</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                            </select>
                         </div>
                         <div class="mb-3">
-                            <label for="notes" class="form-label">Grade Kelas</label>
-                            <input type="text" class="form-control" id="notes">
+                            <label for="gradeClass" class="form-label">Grade Kelas</label>
+                            <select id="gradeClass" class="form-select form-control" aria-label="Default select example">
+                                <option value="0" selected disabled>Select grade</option>
+                                <option value="A">A</option>
+                                <option value="B">B</option>
+                                <option value="C">C</option>
+                            </select>
                         </div>
                         <button type="submit" class="btn btn-primary">Simpan</button>
                     </form>
