@@ -9,4 +9,8 @@ class StudentsController extends Controller
     public function index () {
         return view('students.home');
     }
+
+    public function create() {
+        return view('students.create');
+    }
 }
