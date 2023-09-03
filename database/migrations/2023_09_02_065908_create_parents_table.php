@@ -18,6 +18,8 @@ return new class extends Migration
             $table->string('mother_name');
             $table->string('father_id_number');
             $table->string('mother_id_number');
+            $table->string('father_phone_number');
+            $table->string('mother_phone_number');
             $table->string('father_work');
             $table->string('mother_work');
             $table->timestamps();
