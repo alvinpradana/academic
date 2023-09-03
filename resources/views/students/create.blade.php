@@ -28,8 +28,7 @@
                                     <div class="col-md-6 col-lg-6 col-sm-12">
                                         <div class="mb-3">
                                             <label for="phone-number" class="form-label">No. Telepon</label>
-                                            <input type="text" class="form-control" id="phone-number"
-                                                name="phone-number">
+                                            <input type="text" class="form-control" id="phone-number" name="phone-number">
                                         </div>
                                     </div>
                                 </div>
@@ -41,34 +40,29 @@
                             <div class="col-md-6 col-sm-12">
                                 <div class="mb-3">
                                     <label for="last-report-value" class="form-label">Nilai Rapor Terakhir</label>
-                                    <input type="text" class="form-control" id="last-report-value"
-                                        name="last-report-value">
+                                    <input type="text" class="form-control" id="last-report-value" name="last-report-value">
                                 </div>
                                 <div class="mb-3">
                                     <label for="address-street" class="form-label">Alamat</label>
-                                    <input type="text" class="form-control" id="address-street"
-                                        name="address-street">
+                                    <input type="text" class="form-control" id="address-street" name="address-street">
                                 </div>
                                 <div class="row">
                                     <div class="col-sm-12 col-md-5 col-lg-5">
                                         <div class="mb-3">
                                             <label for="address-sub-district" class="form-label">Kec.</label>
-                                            <input type="text" class="form-control" id="address-sub-district"
-                                                name="address-sub-district">
+                                            <input type="text" class="form-control" id="address-sub-district" name="address-sub-district">
                                         </div>
                                     </div>
                                     <div class="col-sm-12 col-md-5 col-lg-5">
                                         <div class="mb-3">
                                             <label for="address-district" class="form-label">Kab.</label>
-                                            <input type="text" class="form-control" id="address-district"
-                                                name="address-district">
+                                            <input type="text" class="form-control" id="address-district" name="address-district">
                                         </div>
                                     </div>
                                     <div class="col-sm-12 col-md-2 col-lg-2">
                                         <div class="mb-3">
                                             <label for="address-zip-code" class="form-label">ZIP</label>
-                                            <input type="text" class="form-control" id="address-zip-code"
-                                                name="address-zip-code">
+                                            <input type="text" class="form-control" id="address-zip-code" name="address-zip-code">
                                         </div>
                                     </div>
                                 </div>
@@ -89,15 +83,13 @@
                                     <div class="col-sm-12 col-md-6 col-lg-6">
                                         <div class="mb-3">
                                             <label for="father-id-number" class="form-label">NIK Ayah</label>
-                                            <input type="text" class="form-control" id="father-id-number"
-                                                name="father-id-number">
+                                            <input type="text" class="form-control" id="father-id-number" name="father-id-number">
                                         </div>
                                     </div>
                                     <div class="col-sm-12 col-md-6 col-lg-6">
                                         <div class="mb-3">
                                             <label for="mother-id-number" class="form-label">NIK Ibu</label>
-                                            <input type="text" class="form-control" id="mother-id-number"
-                                                name="mother-id-number">
+                                            <input type="text" class="form-control" id="mother-id-number" name="mother-id-number">
                                         </div>
                                     </div>
                                 </div>
@@ -127,8 +119,8 @@
                                     </select>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="father-work" class="form-label">Pekerjaan Ibu</label>
-                                    <select id="father-work" class="form-select form-control" name="father-work">
+                                    <label for="mother-work" class="form-label">Pekerjaan Ibu</label>
+                                    <select id="mother-work" class="form-select form-control" name="mother-work">
                                         <option value="0" selected disabled>Select work</option>
                                         <option value="1">Ibu Rumah Tangga</option>
                                         <option value="2">Wiraswasta</option>

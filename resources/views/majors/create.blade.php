@@ -17,8 +17,8 @@
                             <input type="text" class="form-control" id="major-title" name="major-title">
                         </div>
                         <div class="mb-3">
-                            <label for="notes" class="form-label">Keterangan</label>
-                            <textarea type="text" class="form-control" id="notes" name="notes" rows="3"></textarea>
+                            <label for="major-notes" class="form-label">Keterangan</label>
+                            <textarea type="text" class="form-control" id="major-notes" name="major-notes" rows="3"></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary">Simpan</button>
                     </form>

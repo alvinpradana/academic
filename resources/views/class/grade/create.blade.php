@@ -13,12 +13,12 @@
                 <div class="card-body">
                     <form>
                         <div class="mb-3">
-                            <label for="levelClass" class="form-label">Grade Kelas</label>
-                            <input type="text" class="form-control" id="levelClass" aria-describedby="emailHelp">
+                            <label for="grade-title" class="form-label">Grade Kelas</label>
+                            <input type="text" class="form-control" id="grade-title" name="grade-title">
                         </div>
                         <div class="mb-3">
-                            <label for="notes" class="form-label">Keterangan</label>
-                            <textarea type="text" class="form-control" id="notes" rows="3"></textarea>
+                            <label for="grade-notes" class="form-label">Keterangan</label>
+                            <textarea id="grade-notes" type="text" class="form-control" name="grade-notes" rows="3"></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary">Simpan</button>
                     </form>
