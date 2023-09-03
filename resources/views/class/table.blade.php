@@ -26,7 +26,8 @@
                 @slot('head')
                     <tr>
                         <th>Kelas</th>
-                        <th>Ruang</th>
+                        <th>Jurusan</th>
+                        <th>Grade</th>
                         <th>Jumlah Siswa</th>
                         <th>Action</th>
                     </tr>
@@ -34,12 +35,14 @@
                 @slot('body')
                     <tr>
                         <td>7</td>
+                        <td>IPA</td>
                         <td>A</td>
                         <td>20 Orang</td>
                         <td>$145,600</td>
                     </tr>
                     <tr>
                         <td>8</td>
+                        <td>IPS</td>
                         <td>A</td>
                         <td>20 Orang</td>
                         <td>$145,600</td>

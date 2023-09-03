@@ -13,12 +13,21 @@
                 <div class="card-body">
                     <form>
                         <div class="mb-3">
-                            <label for="levelClass" class="form-label">Grade Kelas</label>
+                            <label for="levelClass" class="form-label">Level Kelas</label>
                             <select id="levelClass" class="form-select form-control" aria-label="Default select example">
                                 <option value="0" selected disabled>Select level</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
+                                <option value="1">X</option>
+                                <option value="2">XI</option>
+                                <option value="3">XII</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="levelClass" class="form-label">Jurusan</label>
+                            <select id="levelClass" class="form-select form-control" aria-label="Default select example">
+                                <option value="0" selected disabled>Select level</option>
+                                <option value="1">IPA</option>
+                                <option value="2">IPS</option>
+                                <option value="3">MAT</option>
                             </select>
                         </div>
                         <div class="mb-3">
