@@ -19,25 +19,49 @@
                                     <input type="text" class="form-control" id="full-name" name="full-name">
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-6 col-lg-6 col-sm-12">
+                                    <div class="col-sm-12 col-md-10 col-lg-10">
                                         <div class="mb-3">
-                                            <label for="id-number" class="form-label">NIK</label>
-                                            <input type="text" class="form-control" id="id-number" name="id-number">
+                                            <label for="birth-date-place" class="form-label">Tempat, Tanggal Lahir</label>
+                                            <input type="text" class="form-control" id="birth-date-place" name="birth-date-place">
                                         </div>
                                     </div>
-                                    <div class="col-md-6 col-lg-6 col-sm-12">
+                                    <div class="col-sm-12 col-md-2 col-lg-2">
+                                        <div class="mb-3">
+                                            <label for="age" class="form-label">Usia</label>
+                                            <input type="text" class="form-control" id="age" name="age">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="id-number" class="form-label">NIK</label>
+                                    <input type="text" class="form-control" id="id-number" name="id-number">
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-6 col-lg-6">
                                         <div class="mb-3">
                                             <label for="phone-number" class="form-label">No. Telepon</label>
                                             <input type="text" class="form-control" id="phone-number" name="phone-number">
                                         </div>
                                     </div>
+                                    <div class="col-sm-12 col-md-6 col-lg-6">
+                                        <div class="mb-3">
+                                            <label for="religion" class="form-label">Agama</label>
+                                            <select id="religion" class="form-select form-control" name="religion">
+                                                <option value="0" selected disabled>Select religion</option>
+                                                <option value="A">ISLAM</option>
+                                                <option value="B">KRISTEN</option>
+                                                <option value="C">HINDU</option>
+                                                <option value="D">Lainnya</option>
+                                            </select>
+                                        </div>
+                                    </div>
                                 </div>
+                            </div>
+                            <div class="col-md-6 col-sm-12">
                                 <div class="mb-3">
                                     <label for="from-school" class="form-label">Asal Sekolah</label>
                                     <input type="text" class="form-control" id="from-school" name="from-school">
                                 </div>
-                            </div>
-                            <div class="col-md-6 col-sm-12">
                                 <div class="mb-3">
                                     <label for="last-report-value" class="form-label">Nilai Rapor Terakhir</label>
                                     <input type="text" class="form-control" id="last-report-value" name="last-report-value">
@@ -67,6 +91,9 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                        <div class="card-header py-3 border-0">
+                            <h6 class="m-0 font-weight-bold text-primary">Form Data Orang Tua</h6>
                         </div>
                         <hr class="sidebar-divider">
                         <div class="row">
