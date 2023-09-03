@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('employees', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
-            $table->foreignId('position_id')->constrained('user_position_id')->onDelete('cascade');
-            $table->enum('status')->default('active');
+            $table->foreignId('user_position_id')->constrained('user_positions')->onDelete('cascade');
+            $table->enum('status', ['active', 'inactive'])->default('active');
             $table->timestamps();
         });
     }
