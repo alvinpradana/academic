@@ -49,10 +49,11 @@
                                                 <label for="religion" class="form-label">Agama</label>
                                                 <select id="religion" class="form-select form-control" name="religion">
                                                     <option value="0" selected disabled>Select religion</option>
-                                                    <option value="A">ISLAM</option>
-                                                    <option value="B">KRISTEN</option>
-                                                    <option value="C">BUDHA</option>
-                                                    <option value="D">HINDU</option>
+                                                    <option value="A">Islam</option>
+                                                    <option value="B">Kristen</option>
+                                                    <option value="C">Budha</option>
+                                                    <option value="D">Hindu</option>
+                                                    <option value="E">Lainnya</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -61,9 +62,9 @@
                                                 <label for="marital-status" class="form-label">Status Pernikahan</label>
                                                 <select id="marital-status" class="form-select form-control" name="marital-status">
                                                     <option value="0" selected disabled>Select status</option>
-                                                    <option value="A">LAJANG</option>
-                                                    <option value="B">MENIKAH</option>
-                                                    <option value="C">CERAI</option>
+                                                    <option value="A">Belum Menikah</option>
+                                                    <option value="B">Menikah</option>
+                                                    <option value="C">Cerai</option>
                                                 </select>
                                             </div>
                                         </div>

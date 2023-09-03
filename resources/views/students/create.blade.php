@@ -49,10 +49,11 @@
                                                 <label for="religion" class="form-label">Agama</label>
                                                 <select id="religion" class="form-select form-control" name="religion">
                                                     <option value="0" selected disabled>Select religion</option>
-                                                    <option value="A">ISLAM</option>
-                                                    <option value="B">KRISTEN</option>
-                                                    <option value="C">HINDU</option>
-                                                    <option value="D">Lainnya</option>
+                                                    <option value="A">Islam</option>
+                                                    <option value="B">Kristen</option>
+                                                    <option value="C">Budha</option>
+                                                    <option value="D">Hindu</option>
+                                                    <option value="E">Lainnya</option>
                                                 </select>
                                             </div>
                                         </div>
