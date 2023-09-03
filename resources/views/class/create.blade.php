@@ -13,8 +13,8 @@
                 <div class="card-body">
                     <form>
                         <div class="mb-3">
-                            <label for="levelClass" class="form-label">Level Kelas</label>
-                            <select id="levelClass" class="form-select form-control" aria-label="Default select example">
+                            <label for="class-level" class="form-label">Level Kelas</label>
+                            <select id="class-level" class="form-select form-control" name="class-level">
                                 <option value="0" selected disabled>Select level</option>
                                 <option value="1">X</option>
                                 <option value="2">XI</option>
@@ -22,8 +22,8 @@
                             </select>
                         </div>
                         <div class="mb-3">
-                            <label for="levelClass" class="form-label">Jurusan</label>
-                            <select id="levelClass" class="form-select form-control" aria-label="Default select example">
+                            <label for="class-major" class="form-label">Jurusan</label>
+                            <select id="class-major" class="form-select form-control" name="class-major">
                                 <option value="0" selected disabled>Select level</option>
                                 <option value="1">IPA</option>
                                 <option value="2">IPS</option>
@@ -31,8 +31,8 @@
                             </select>
                         </div>
                         <div class="mb-3">
-                            <label for="gradeClass" class="form-label">Grade Kelas</label>
-                            <select id="gradeClass" class="form-select form-control" aria-label="Default select example">
+                            <label for="class-grade" class="form-label">Grade Kelas</label>
+                            <select id="class-grade" class="form-select form-control" name="class-grade">
                                 <option value="0" selected disabled>Select grade</option>
                                 <option value="A">A</option>
                                 <option value="B">B</option>
