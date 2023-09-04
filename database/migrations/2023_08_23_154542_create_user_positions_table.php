@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('user_positions', function (Blueprint $table) {
             $table->id();
             $table->string('title');
+            $table->string('notes');
             $table->timestamps();
         });
     }

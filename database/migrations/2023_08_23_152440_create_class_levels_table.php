@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('class_levels', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->foreignId('class_grade_id')->constrained('class_grades')->onDelete('cascade');
+            $table->string('notes');
             $table->timestamps();
         });
     }
