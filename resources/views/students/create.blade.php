@@ -9,7 +9,7 @@
             <div class="col-md-12 col-sm-12">
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">Form Tambah Data Pelajar</h6>
+                        <h6 class="m-0 font-weight-bold text-primary">Form Data Pelajar</h6>
                     </div>
                     <div class="card-body">
                         <form>
@@ -155,6 +155,30 @@
                                             <option value="2">Wiraswasta</option>
                                             <option value="2">Lainnya</option>
                                         </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-header py-3 border-0">
+                                <h6 class="m-0 font-weight-bold text-primary">Form Data Beasiswa</h6>
+                            </div>
+                            <hr class="sidebar-divider">
+                            <div class="row">
+                                <div class="col-sm-12 col-md-4 col-lg-4">
+                                    <div class="mb-3">
+                                        <label for="scholarship" class="form-label">Nama Beasiswa</label>
+                                        <select id="scholarship" class="form-select form-control" name="scholarship">
+                                            <option value="0" selected disabled>Select scholarship</option>
+                                            <option value="A">KIP</option>
+                                            <option value="B">Bea</option>
+                                            <option value="C">Siswa</option>
+                                            <option value="D">Lainnya</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 col-md-8 col-lg-8">
+                                    <div class="mb-3">
+                                        <label for="scholarship-notes" class="form-label">Keterangan</label>
+                                        <input type="text" class="form-control" id="scholarship-notes" name="scholarship-notes">
                                     </div>
                                 </div>
                             </div>
