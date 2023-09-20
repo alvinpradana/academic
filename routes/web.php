@@ -10,11 +10,13 @@ use App\Http\Controllers\ClassController;
 use App\Http\Controllers\ClassLevelController;
 use App\Http\Controllers\GradesController;
 use App\Http\Controllers\MajorController;
+use App\Http\Controllers\ScholarshipsController;
 use Illuminate\Support\Facades\Route;
 
 Route::resource('dashboard', HomeController::class);
 Route::resource('teachers', TeachersController::class);
 Route::resource('students', StudentsController::class);
+Route::resource('scholarships', ScholarshipsController::class);
 Route::resource('employees', EmployeesController::class);
 Route::resource('lessons', LessonsController::class);
 Route::resource('organizations', OrganizationsController::class);
