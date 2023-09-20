@@ -46,6 +46,19 @@
             </div>
         </div>
     </li>
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#scholarshipTab" aria-expanded="true" aria-controls="scholarshipTab">
+            <i class="fas fa-fw fa-wrench"></i>
+            <span>Data Beasiswa</span>
+        </a>
+        <div id="scholarshipTab" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Data Beasiswa</h6>
+                <a class="collapse-item" href="{{ route('scholarships.index') }}">Semua Beasiswa</a>
+                <a class="collapse-item" href="{{ route('scholarships.index') }}">Data Beasiswa</a>
+            </div>
+        </div>
+    </li>
     <hr class="sidebar-divider">
     <div class="sidebar-heading">
         Pengajar
