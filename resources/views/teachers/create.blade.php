@@ -74,7 +74,7 @@
                                     <div class="row">
                                         <div class="col-md-6 col-lg-6 col-sm-12">
                                             <div class="mb-3">
-                                                <label for="id-number" class="form-label">NIK</label>
+                                                <label for="id-number" class="form-label">NIP</label>
                                                 <input type="text" class="form-control" id="id-number" name="id-number">
                                             </div>
                                         </div>
