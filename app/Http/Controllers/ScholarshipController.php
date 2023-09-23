@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class ScholarshipsController extends Controller
+class ScholarshipController extends Controller
 {
     public function index() {
         return view('scholarships.home');

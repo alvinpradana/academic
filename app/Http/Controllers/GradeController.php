@@ -4,13 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class TeachersController extends Controller
+class GradeController extends Controller
 {
     public function index () {
-        return view('teachers.home');
+        return view('class.grade.home');
     }
 
     public function create() {
-        return view('teachers.create');
+        return view('class.grade.create');
     }
 }
