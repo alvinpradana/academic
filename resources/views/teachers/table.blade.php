@@ -26,10 +26,10 @@
             @component('components.table')
                 @slot('head')
                     <tr>
-                        <th>Name</th>
-                        <th>Position</th>
-                        <th>Kelas</th>
-                        <th>Age</th>
+                        <th>Nama</th>
+                        <th>Jabatan</th>
+                        <th>Wali Kelas</th>
+                        <th>Usia</th>
                         <th>Status</th>
                         <th>Action</th>
                     </tr>

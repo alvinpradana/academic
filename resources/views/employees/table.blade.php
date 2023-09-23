@@ -25,8 +25,8 @@
             @component('components.table')
                 @slot('head')
                     <tr>
-                        <th>Name</th>
-                        <th>Posisi</th>
+                        <th>Nama</th>
+                        <th>Jabatan</th>
                         <th>Gender</th>
                         <th>Usia</th>
                         <th>Status</th>
@@ -37,7 +37,7 @@
                     <tr>
                         <td>Mas John</td>
                         <td>Office Boy</td>
-                        <td>L</td>
+                        <td>Laki-laki</td>
                         <td>30</td>
                         <td>Active</td>
                         <td>$145,600</td>
@@ -45,7 +45,7 @@
                     <tr>
                         <td>Brodin</td>
                         <td>Security</td>
-                        <td>L</td>
+                        <td>Laki-laki</td>
                         <td>35</td>
                         <td>Active</td>
                         <td>$145,600</td>
