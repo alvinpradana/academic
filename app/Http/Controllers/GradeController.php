@@ -26,7 +26,7 @@ class GradeController extends Controller
     }
 
     public function edit($id) {
-        $grade = Grade::find($id)->first();
+        $grade = Grade::find($id);
         return view('class.grade.edit', ['grade' => $grade]);
     }
 

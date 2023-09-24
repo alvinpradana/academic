@@ -25,7 +25,7 @@ class MajorController extends Controller
     }
 
     public function edit($id) {
-        $major = Major::find($id)->first();
+        $major = Major::find($id);
         return view('majors.edit', ['major' => $major]);
     }
 

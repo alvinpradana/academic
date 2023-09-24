@@ -25,7 +25,7 @@ class ClassLevelController extends Controller
     }
 
     public function edit($id) {
-        $level = LevelClass::find($id)->first();
+        $level = LevelClass::find($id);
         return view('class.level.edit', ['level' => $level]);
     }
 
