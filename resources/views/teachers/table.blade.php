@@ -30,27 +30,35 @@
                         <th>Jabatan</th>
                         <th>Wali Kelas</th>
                         <th>Usia</th>
-                        <th>Status</th>
+                        <th>Telepon</th>
                         <th>Action</th>
                     </tr>
                 @endslot
                 @slot('body')
-                    <tr>
-                        <td>Prof. Yanto</td>
-                        <td>Rektor Bruhh</td>
-                        <td>9A</td>
-                        <td>46</td>
-                        <td>Active</td>
-                        <td>$145,600</td>
-                    </tr>
-                    <tr>
-                        <td>Mas Sudarmawan</td>
-                        <td>Wakil Rektor</td>
-                        <td>9B</td>
-                        <td>50</td>
-                        <td>Active</td>
-                        <td>$145,600</td>
-                    </tr>
+                    @foreach ($users as $user)
+                        <tr>
+                            <td>{{ $user->user_complements->name }}</td>
+                            <td>{{ $user->user_complements->user_positions->title }}</td>
+                            <td>IPA</td>
+                            <td>{{ $user->user_complements->age }} Tahun</td>
+                            <td>{{ $user->user_complements->phone_number }}</td>
+                            <td>
+                                <a href="#" class="btn btn-primary btn-sm btn-circle">
+                                    <i class="fas fa-eye"></i>
+                                </a>
+                                <a href="{{ route('teachers.edit', $user->id) }}" class="btn btn-success btn-sm btn-circle">
+                                    <i class="fas fa-pen"></i>
+                                </a>
+                                <form action="{{ route('teachers.destroy', $user->id) }}" method="post" class="d-inline">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger btn-sm btn-circle">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    @endforeach
                 @endslot
             @endcomponent
         </div>
