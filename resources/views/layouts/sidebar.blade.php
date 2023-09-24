@@ -79,6 +79,16 @@
             <span>Data Karyawan</span>
         </a>
     </li>
+    <hr class="sidebar-divider">
+    <div class="sidebar-heading">
+        Jabatan
+    </div>
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('positions.index') }}">
+            <i class="fas fa-fw fa-table"></i>
+            <span>Data Jabatan</span>
+        </a>
+    </li>
     <hr class="sidebar-divider d-none d-md-block">
     <div class="text-center d-none d-md-inline">
         <button class="rounded-circle border-0" id="sidebarToggle"></button>
