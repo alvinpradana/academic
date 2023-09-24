@@ -13,4 +13,8 @@ class ClassController extends Controller
     public function create() {
         return view('class.create');
     }
+
+    public function store(Request $request) {
+        dd('submitted');
+    }
 }

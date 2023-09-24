@@ -20,7 +20,9 @@ Route::resource('scholarships', ScholarshipController::class);
 Route::resource('employees', EmployeeController::class);
 Route::resource('lessons', LessonController::class);
 Route::resource('organizations', OrganizationController::class);
+
 Route::resource('class', ClassController::class);
+
 Route::resource('class-level', ClassLevelController::class);
 Route::resource('grades', GradeController::class);
 Route::resource('majors', MajorController::class);
