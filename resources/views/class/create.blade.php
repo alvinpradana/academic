@@ -12,7 +12,8 @@
                         <h6 class="m-0 font-weight-bold text-primary">Form Tambah Data Kelas</h6>
                     </div>
                     <div class="card-body">
-                        <form action="post">
+                        <form action="" method="post">
+                            @csrf
                             <div class="mb-3">
                                 <label for="class-level" class="form-label">Level Kelas</label>
                                 <select id="class-level" class="form-select form-control" name="class-level">
