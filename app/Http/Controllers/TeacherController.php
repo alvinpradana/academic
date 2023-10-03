@@ -83,4 +83,9 @@ class TeacherController extends Controller
         ]);
         return redirect()->route('teachers.index');
     }
+
+    public function destroy($id) {
+        User::find($id)->delete();
+        return back();
+    }
 }
