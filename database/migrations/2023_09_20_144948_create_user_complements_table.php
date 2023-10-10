@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('user_complements', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
-            $table->foreignId('user_position_id')->constrained('user_positions')->onDelete('cascade');
             $table->string('name')->nullable();
             $table->string('nip_number')->nullable();
             $table->enum('gender', ['A', 'B', 'C'])->default('C');

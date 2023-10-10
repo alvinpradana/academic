@@ -44,6 +44,10 @@ class User extends Authenticatable
     ];
 
     public function user_complements() {
-        return $this->hasOne(UserComplement::class, 'user_id');
+        return $this->hasOne(UserComplement::class);
+    }
+
+    public function user_positions() {
+        return $this->hasOne(UserPosition::class);
     }
 }

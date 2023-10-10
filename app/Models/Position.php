@@ -9,11 +9,10 @@ class Position extends Model
 {
     use HasFactory;
 
-    protected $table = 'user_positions';
+    protected $table = 'positions';
     protected $guarded = 'id';
 
-    public function user_complements() {
-        // return $this->hasMany(UserComplement::class, 'user_position_id');
-        return $this->belongsTo(UserComplement::class, 'user_complements', 'user_position_id');
+    public function user_positions() {
+        return $this->hasMany(UserPosition::class);
     }
 }

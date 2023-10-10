@@ -15,9 +15,4 @@ class UserComplement extends Model
     public function user() {
         return $this->belongsTo(User::class, 'user_complements', 'user_id');
     }
-
-    public function user_positions() {
-        // return $this->belongsTo(Position::class, 'id');
-        return $this->hasOne(Position::class, 'id');
-    }
 }

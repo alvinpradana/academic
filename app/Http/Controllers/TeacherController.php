@@ -5,21 +5,26 @@ namespace App\Http\Controllers;
 use App\Models\Position;
 use App\Models\User;
 use App\Models\UserComplement;
+use App\Models\UserPosition;
 use Illuminate\Http\Request;
 
 class TeacherController extends Controller
 {
     public function index () {
-        $users = User::with(['user_complements', 'user_complements.user_positions'])->orderBy('id', 'desc')->get();
+        $positions = UserPosition::with(['positions'])->get();
+
+        $users = User::with([
+            'user_complements', 
+            'user_positions',
+        ])->orderBy('id', 'desc')->get();
+
         return view('teachers.home', ['users' => $users]);
-        // foreach ($users as $user) {
-        //     dd($user->user_complements);
-        // }
+        
         // dd($users);
     }
 
     public function create() {
-        $positions = Position::orderBy('id', 'desc')->get();
+        $positions = Position::orderBy('id', 'asc')->get();
 
         return view('teachers.create', ['positions' => $positions]);
     }
@@ -33,7 +38,6 @@ class TeacherController extends Controller
 
         UserComplement::insert([
             'user_id' => $user_id,
-            'user_position_id' => $request->position,
             'name' => $request->name,
             'nip_number' => $request->nip,
             'gender' => $request->gender,
@@ -46,6 +50,11 @@ class TeacherController extends Controller
             'subdistrict' => $request->subdistrict,
             'regency' => $request->regency,
             'zip_code' => $request->zip_code
+        ]);
+
+        UserPosition::insert([
+            'user_id' => $user_id,
+            'position_id' => $request->position
         ]);
         return redirect()->route('teachers.index');
     }
