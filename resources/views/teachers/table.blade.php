@@ -38,7 +38,7 @@
                     @foreach ($users as $user)
                         <tr>
                             <td>{{ $user->user_complements->name }}</td>
-                            <td>{{ $user->user_positions->positions->title }}</td>
+                            <td>{{ $user->positions->title }}</td>
                             <td>IPA</td>
                             <td>{{ $user->user_complements->age }} Tahun</td>
                             <td>{{ $user->user_complements->phone_number }}</td>

@@ -12,7 +12,7 @@ class Position extends Model
     protected $table = 'positions';
     protected $guarded = 'id';
 
-    public function user_positions() {
-        return $this->hasMany(UserPosition::class);
+    public function users() {
+        return $this->hasMany(User::class, 'id');
     }
 }

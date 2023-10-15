@@ -1,4 +1,4 @@
-@extends('layouts.app', ['title' => 'Create Class'])
+@extends('layouts.app', ['title' => 'Create New Class'])
 
 @section('content')
     <div>
@@ -12,33 +12,42 @@
                         <h6 class="m-0 font-weight-bold text-primary">Form Tambah Data Kelas</h6>
                     </div>
                     <div class="card-body">
-                        <form action="" method="post">
+                        <form action="{{ route('class.store') }}" method="post">
                             @csrf
                             <div class="mb-3">
                                 <label for="class-level" class="form-label">Level Kelas</label>
-                                <select id="class-level" class="form-select form-control" name="class-level">
+                                <select id="class-level" class="form-select form-control" name="level">
                                     <option value="0" selected disabled>Select level</option>
-                                    <option value="1">X</option>
-                                    <option value="2">XI</option>
-                                    <option value="3">XII</option>
+                                    @foreach ($levels as $level)
+                                        <option value="{{ $level->id }}">{{ $level->level }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                             <div class="mb-3">
                                 <label for="class-major" class="form-label">Jurusan</label>
-                                <select id="class-major" class="form-select form-control" name="class-major">
-                                    <option value="0" selected disabled>Select level</option>
-                                    <option value="1">IPA</option>
-                                    <option value="2">IPS</option>
-                                    <option value="3">MAT</option>
+                                <select id="class-major" class="form-select form-control" name="major">
+                                    <option value="0" selected disabled>Select major</option>
+                                    @foreach ($majors as $major)
+                                        <option value="{{ $major->id }}">{{ $major->title }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                             <div class="mb-3">
                                 <label for="class-grade" class="form-label">Grade Kelas</label>
-                                <select id="class-grade" class="form-select form-control" name="class-grade">
+                                <select id="class-grade" class="form-select form-control" name="grade">
                                     <option value="0" selected disabled>Select grade</option>
-                                    <option value="A">A</option>
-                                    <option value="B">B</option>
-                                    <option value="C">C</option>
+                                    @foreach ($grades as $grade)
+                                        <option value="{{ $grade->id }}">{{ $grade->title }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="teacher-class" class="form-label">Teacher's Class</label>
+                                <select id="teacher-class" class="form-select form-control" name="teacher">
+                                    <option value="0" selected disabled>Select teacher</option>
+                                    @foreach ($grades as $grade)
+                                        <option value="{{ $grade->id }}">{{ $grade->title }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                             <button type="submit" class="btn btn-primary">Simpan</button>

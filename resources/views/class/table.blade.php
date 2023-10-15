@@ -33,20 +33,15 @@
                     </tr>
                 @endslot
                 @slot('body')
-                    <tr>
-                        <td>7</td>
-                        <td>IPA</td>
-                        <td>A</td>
-                        <td>20 Orang</td>
-                        <td>$145,600</td>
-                    </tr>
-                    <tr>
-                        <td>8</td>
-                        <td>IPS</td>
-                        <td>A</td>
-                        <td>20 Orang</td>
-                        <td>$145,600</td>
-                    </tr>
+                    @foreach ($classes as $class)
+                        <tr>
+                            <td>{{ $class->class_level_id }}</td>
+                            <td>{{ $class->class_major_id }}</td>
+                            <td>{{ $class->class_grade_id }}</td>
+                            <td>{{ $class->class_teacher_id }}</td>
+                            <td>$145,600</td>
+                        </tr>
+                    @endforeach
                 @endslot
             @endcomponent
         </div>

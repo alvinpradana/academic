@@ -11,16 +11,12 @@ use Illuminate\Http\Request;
 class TeacherController extends Controller
 {
     public function index () {
-        $positions = UserPosition::with(['positions'])->get();
-
         $users = User::with([
-            'user_complements', 
-            'user_positions',
+            'user_complements',
+            'positions'
         ])->orderBy('id', 'desc')->get();
 
         return view('teachers.home', ['users' => $users]);
-        
-        // dd($users);
     }
 
     public function create() {
@@ -29,13 +25,14 @@ class TeacherController extends Controller
         return view('teachers.create', ['positions' => $positions]);
     }
 
-    public function store(Request $request) {        
+    public function store(Request $request) {
         User::insert([
+            'position_id' => $request->position,
             'email' => $request->email,
-            'password' => $request->nip
+            'password' => $request->nip,
         ]);
-        $user_id = User::orderBy('id', 'desc')->pluck('id')->first();
 
+        $user_id = User::orderBy('id', 'desc')->pluck('id')->first();
         UserComplement::insert([
             'user_id' => $user_id,
             'name' => $request->name,
@@ -52,10 +49,6 @@ class TeacherController extends Controller
             'zip_code' => $request->zip_code
         ]);
 
-        UserPosition::insert([
-            'user_id' => $user_id,
-            'position_id' => $request->position
-        ]);
         return redirect()->route('teachers.index');
     }
 
@@ -70,13 +63,13 @@ class TeacherController extends Controller
 
     public function update(Request $request, $id) {
         User::where('id', $id)->update([
+            'position_id' => $request->position,
             'email' => $request->email,
             'password' => $request->nip
         ]);
 
         UserComplement::where('user_id', $id)->update([
             'user_id' => $id,
-            'user_position_id' => $request->position,
             'name' => $request->name,
             'nip_number' => $request->nip,
             'gender' => $request->gender,

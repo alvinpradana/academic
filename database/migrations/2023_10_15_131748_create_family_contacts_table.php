@@ -11,16 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('user_complements', function (Blueprint $table) {
+        Schema::create('family_contacts', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->string('name')->nullable();
-            $table->string('nip_number')->nullable();
-            $table->enum('gender', ['A', 'B', 'C'])->default('C');
-            $table->string('birth_date_place')->nullable();
-            $table->double('age')->nullable();
-            $table->enum('religion', ['A', 'B', 'C', 'D', 'E'])->default('E');
-            $table->text('image')->nullable();
+            $table->enum('status', ['A', 'B', 'C', 'D'])->default('D');
             $table->unsignedBigInteger('phone_number')->nullable();
             $table->string('address')->nullable();
             $table->string('subdistrict')->nullable();
@@ -35,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('user_complements');
+        Schema::dropIfExists('family_contacts');
     }
 };

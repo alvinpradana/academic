@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Position;
+use App\Models\User;
+use App\Models\UserPosition;
 use Illuminate\Http\Request;
 
 class PositionController extends Controller
@@ -39,6 +41,7 @@ class PositionController extends Controller
 
     public function destroy($id) {
         Position::find($id)->delete();
+
         return redirect()->back();
     }
 }
