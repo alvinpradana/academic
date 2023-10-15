@@ -14,9 +14,14 @@ class TeacherController extends Controller
         $users = User::with([
             'user_complements',
             'positions'
-        ])->orderBy('id', 'desc')->get();
+        ])->where('position_id', 1)->orderBy('id', 'desc')->get();
 
-        return view('teachers.home', ['users' => $users]);
+        $count = User::where('position_id', '=', 1)->sum('id');
+
+        return view('teachers.home', [
+            'users' => $users,
+            'count' => $count
+        ]);
     }
 
     public function create() {

@@ -11,7 +11,12 @@ class PositionController extends Controller
 {
     public function index() {
         $positions = Position::orderBy('id', 'desc')->get();
-        return view('positions.home', ['positions' => $positions]);
+        $count = Position::sum('id');
+
+        return view('positions.home', [
+            'positions' => $positions,
+            'count' => $count
+        ]);
     }
 
     public function create() {

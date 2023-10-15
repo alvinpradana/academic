@@ -35,7 +35,7 @@
                             <tr>
                                 <td colspan="3" class="text-center">No data available.</td>
                             </tr>
-                        @else
+                    @else
                         @foreach ($positions as $position)    
                             <tr>
                                 <td>{{ $position->title }}</td>
@@ -47,13 +47,15 @@
                                     <a href="{{ route('positions.edit', $position->id) }}" class="btn btn-success btn-sm btn-circle">
                                         <i class="fas fa-pen"></i>
                                     </a>
-                                    <form action="{{ route('positions.destroy', $position->id) }}" method="post" class="d-inline">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-danger btn-sm btn-circle">
-                                            <i class="fas fa-trash"></i>
-                                        </button>
-                                    </form>
+                                    @if ($position->id > 2)
+                                        <form action="{{ route('positions.destroy', $position->id) }}" method="post" class="d-inline">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger btn-sm btn-circle">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </form>
+                                    @endif
                                 </td>
                             </tr>
                         @endforeach
