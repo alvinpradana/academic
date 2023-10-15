@@ -18,7 +18,7 @@
                                 <div class="col-md-6 col-sm-12">
                                     <div class="mb-3">
                                         <label for="full-name" class="form-label">Nama Lengkap</label>
-                                        <input type="text" class="form-control" id="full-name" name="name">
+                                        <input type="text" class="form-control" id="full-name" name="name" autofocus>
                                     </div>
                                     <div class="row">
                                         <div class="col-sm-12 col-md-10 col-lg-10">

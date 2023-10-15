@@ -16,7 +16,7 @@
                             @csrf
                             <div class="mb-3">
                                 <label for="title" class="form-label">Nama Jabatan/Posisi</label>
-                                <input type="text" class="form-control" id="title" name="title">
+                                <input type="text" class="form-control" id="title" name="title" autofocus>
                             </div>
                             <div class="mb-3">
                                 <label for="notes" class="form-label">Keterangan</label>
