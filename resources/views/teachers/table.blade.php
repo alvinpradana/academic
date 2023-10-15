@@ -35,30 +35,36 @@
                     </tr>
                 @endslot
                 @slot('body')
-                    @foreach ($users as $user)
+                    @if ($count == 0)
                         <tr>
-                            <td>{{ $user->user_complements->name }}</td>
-                            <td>{{ $user->positions->title }}</td>
-                            <td>IPA</td>
-                            <td>{{ $user->user_complements->age }} Tahun</td>
-                            <td>{{ $user->user_complements->phone_number }}</td>
-                            <td>
-                                <a href="#" class="btn btn-primary btn-sm btn-circle">
-                                    <i class="fas fa-eye"></i>
-                                </a>
-                                <a href="{{ route('teachers.edit', $user->id) }}" class="btn btn-success btn-sm btn-circle">
-                                    <i class="fas fa-pen"></i>
-                                </a>
-                                <form action="{{ route('teachers.destroy', $user->id) }}" method="post" class="d-inline">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-danger btn-sm btn-circle">
-                                        <i class="fas fa-trash"></i>
-                                    </button>
-                                </form>
-                            </td>
+                            <td colspan="6" class="text-center">No data available.</td>
                         </tr>
-                    @endforeach
+                    @else
+                        @foreach ($users as $user)
+                            <tr>
+                                <td>{{ $user->user_complements->name }}</td>
+                                <td>{{ $user->positions->title }}</td>
+                                <td>IPA</td>
+                                <td>{{ $user->user_complements->age }} Tahun</td>
+                                <td>{{ $user->user_complements->phone_number }}</td>
+                                <td>
+                                    <a href="#" class="btn btn-primary btn-sm btn-circle">
+                                        <i class="fas fa-eye"></i>
+                                    </a>
+                                    <a href="{{ route('teachers.edit', $user->id) }}" class="btn btn-success btn-sm btn-circle">
+                                        <i class="fas fa-pen"></i>
+                                    </a>
+                                    <form action="{{ route('teachers.destroy', $user->id) }}" method="post" class="d-inline">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger btn-sm btn-circle">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                        @endforeach
+                    @endif
                 @endslot
             @endcomponent
         </div>

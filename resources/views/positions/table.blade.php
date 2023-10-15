@@ -31,27 +31,33 @@
                     </tr>
                 @endslot
                 @slot('body')
-                    @foreach ($positions as $position)    
-                        <tr>
-                            <td>{{ $position->title }}</td>
-                            <td>{{ $position->notes }}</td>
-                            <td>
-                                <a href="#" class="btn btn-primary btn-sm btn-circle">
-                                    <i class="fas fa-eye"></i>
-                                </a>
-                                <a href="{{ route('positions.edit', $position->id) }}" class="btn btn-success btn-sm btn-circle">
-                                    <i class="fas fa-pen"></i>
-                                </a>
-                                <form action="{{ route('positions.destroy', $position->id) }}" method="post" class="d-inline">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-danger btn-sm btn-circle">
-                                        <i class="fas fa-trash"></i>
-                                    </button>
-                                </form>
-                            </td>
-                        </tr>
-                    @endforeach
+                    @if ($count == 0)
+                            <tr>
+                                <td colspan="3" class="text-center">No data available.</td>
+                            </tr>
+                        @else
+                        @foreach ($positions as $position)    
+                            <tr>
+                                <td>{{ $position->title }}</td>
+                                <td>{{ $position->notes }}</td>
+                                <td>
+                                    <a href="#" class="btn btn-primary btn-sm btn-circle">
+                                        <i class="fas fa-eye"></i>
+                                    </a>
+                                    <a href="{{ route('positions.edit', $position->id) }}" class="btn btn-success btn-sm btn-circle">
+                                        <i class="fas fa-pen"></i>
+                                    </a>
+                                    <form action="{{ route('positions.destroy', $position->id) }}" method="post" class="d-inline">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger btn-sm btn-circle">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                        @endforeach
+                    @endif
                 @endslot
             @endcomponent
         </div>
