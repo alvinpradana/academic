@@ -11,4 +11,8 @@ class LevelClass extends Model
 
     protected $table = 'class_levels';
     protected $guarded = 'id';
+
+    public function classes() {
+        return $this->hasMany(Classes::class, 'id');
+    }
 }

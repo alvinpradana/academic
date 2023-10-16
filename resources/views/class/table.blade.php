@@ -28,20 +28,26 @@
                         <th>Kelas</th>
                         <th>Jurusan</th>
                         <th>Grade</th>
-                        <th>Jumlah Siswa</th>
+                        <th>Wali Kelas</th>
                         <th>Action</th>
                     </tr>
                 @endslot
                 @slot('body')
-                    @foreach ($classes as $class)
+                    @if ($count == 0)
                         <tr>
-                            <td>{{ $class->class_level_id }}</td>
-                            <td>{{ $class->class_major_id }}</td>
-                            <td>{{ $class->class_grade_id }}</td>
-                            <td>{{ $class->class_teacher_id }}</td>
-                            <td>$145,600</td>
+                            <td colspan="5" class="text-center">No data available.</td>
                         </tr>
-                    @endforeach
+                    @else
+                        @foreach ($classes as $class)
+                            <tr>
+                                <td>{{ $class->class_levels->level }}</td>
+                                <td>{{ $class->majors->title }}</td>
+                                <td>{{ $class->grades->title }}</td>
+                                <td>{{ $class->users->user_complements->name }}</td>
+                                <td>$145,600</td>
+                            </tr>
+                        @endforeach
+                    @endif
                 @endslot
             @endcomponent
         </div>

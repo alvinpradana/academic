@@ -11,4 +11,8 @@ class Major extends Model
 
     protected $table = 'majors';
     protected $guarded = 'id';
+
+    public function classes() {
+        return $this->hasMany(Classes::class, 'id');
+    }
 }

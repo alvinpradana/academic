@@ -45,10 +45,14 @@
                                 <label for="teacher-class" class="form-label">Teacher's Class</label>
                                 <select id="teacher-class" class="form-select form-control" name="teacher">
                                     <option value="0" selected disabled>Select teacher</option>
-                                    @foreach ($grades as $grade)
-                                        <option value="{{ $grade->id }}">{{ $grade->title }}</option>
+                                    @foreach ($teachers as $teacher)
+                                        <option value="{{ $teacher->id }}">{{ $teacher->user_complements->name }}</option>
                                     @endforeach
                                 </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="notes" class="form-label">Keterangan</label>
+                                <textarea type="text" class="form-control" id="notes" name="notes" rows="3"></textarea>
                             </div>
                             <button type="submit" class="btn btn-primary">Simpan</button>
                         </form>
