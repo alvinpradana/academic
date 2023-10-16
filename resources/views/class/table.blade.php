@@ -44,7 +44,21 @@
                                 <td>{{ $class->majors->title }}</td>
                                 <td>{{ $class->grades->title }}</td>
                                 <td>{{ $class->users->user_complements->name }}</td>
-                                <td>$145,600</td>
+                                <td>
+                                    <a href="#" class="btn btn-primary btn-sm btn-circle">
+                                        <i class="fas fa-eye"></i>
+                                    </a>
+                                    <a href="{{ route('class.edit', $class->id) }}" class="btn btn-success btn-sm btn-circle">
+                                        <i class="fas fa-pen"></i>
+                                    </a>
+                                    <form action="{{ route('class.destroy', $class->id) }}" method="post" class="d-inline">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger btn-sm btn-circle">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </form>
+                                </td>
                             </tr>
                         @endforeach
                     @endif

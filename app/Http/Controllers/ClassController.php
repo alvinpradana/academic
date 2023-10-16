@@ -54,7 +54,38 @@ class ClassController extends Controller
         return redirect()->route('class.index');
     }
 
-    public function edit() {
-        
+    public function edit($id) {
+        $class = Classes::findOrFail($id);
+        $levels = LevelClass::orderBy('level', 'asc')->get();
+        $majors = Major::orderBy('id', 'desc')->get();
+        $grades = Grade::orderBy('title', 'asc')->get();
+        $teachers = User::with([
+            'user_complements'
+        ])->where('position_id', 1)->orderBy('id', 'desc')->get();
+
+        return view('class.edit', [
+            'class' => $class,
+            'levels' => $levels,
+            'grades' => $grades,
+            'majors' => $majors,
+            'teachers' => $teachers
+        ]);
+    }
+
+    public function update(Request $request, $id) {
+        Classes::where('id', $id)->update([
+            'teacher_id' => $request->teacher,
+            'class_level_id' => $request->level,
+            'class_major_id' => $request->major,
+            'class_grade_id' => $request->grade,
+            'notes' => $request->notes
+        ]);
+
+        return redirect()->route('class.index');
+    }
+
+    public function destroy($id) {
+        Classes::findOrFail($id)->delete();
+        return redirect()->back();
     }
 }
