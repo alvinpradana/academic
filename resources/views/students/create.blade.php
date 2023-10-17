@@ -12,18 +12,19 @@
                         <h6 class="m-0 font-weight-bold text-primary">Form Data Pelajar</h6>
                     </div>
                     <div class="card-body">
-                        <form>
+                        <form action="{{ route('students.store') }}" method="post">
+                            @csrf
                             <div class="row">
                                 <div class="col-md-6 col-sm-12">
                                     <div class="mb-3">
-                                        <label for="full-name" class="form-label">Nama Lengkap</label>
-                                        <input type="text" class="form-control" id="full-name" name="full-name">
+                                        <label for="name" class="form-label">Nama Lengkap</label>
+                                        <input type="text" class="form-control" id="name" name="name" autofocus>
                                     </div>
                                     <div class="row">
                                         <div class="col-sm-12 col-md-10 col-lg-10">
                                             <div class="mb-3">
-                                                <label for="birth-date-place" class="form-label">Tempat, Tanggal Lahir</label>
-                                                <input type="text" class="form-control" id="birth-date-place" name="birth-date-place">
+                                                <label for="birth" class="form-label">Tempat, Tanggal Lahir</label>
+                                                <input type="text" class="form-control" id="birth" name="birth">
                                             </div>
                                         </div>
                                         <div class="col-sm-12 col-md-2 col-lg-2">
@@ -33,15 +34,30 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="mb-3">
-                                        <label for="id-number" class="form-label">NIK</label>
-                                        <input type="text" class="form-control" id="id-number" name="id-number">
+                                    <div class="row">
+                                        <div class="col-sm-12 col-md-6 col-lg-6">
+                                            <div class="mb-3">
+                                                <label for="gender" class="form-label">Jenis Kelamin</label>
+                                                <select id="gender" class="form-select form-control" name="gender">
+                                                    <option value="0" selected disabled>Select gender</option>
+                                                    <option value="A">Laki-laki</option>
+                                                    <option value="B">Perempuan</option>
+                                                    <option value="C">Lainnya</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-12 col-md-6 col-lg-6">
+                                            <div class="mb-3">
+                                                <label for="email" class="form-label">Email</label>
+                                                <input type="email" class="form-control" id="email" name="email">
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-sm-12 col-md-6 col-lg-6">
                                             <div class="mb-3">
-                                                <label for="phone-number" class="form-label">No. Telepon</label>
-                                                <input type="text" class="form-control" id="phone-number" name="phone-number">
+                                                <label for="phone" class="form-label">No. Telepon</label>
+                                                <input type="text" class="form-control" id="phone" name="phone">
                                             </div>
                                         </div>
                                         <div class="col-sm-12 col-md-6 col-lg-6">
@@ -61,34 +77,44 @@
                                 </div>
                                 <div class="col-md-6 col-sm-12">
                                     <div class="mb-3">
-                                        <label for="from-school" class="form-label">Asal Sekolah</label>
-                                        <input type="text" class="form-control" id="from-school" name="from-school">
+                                        <label for="nik" class="form-label">NIK</label>
+                                        <input type="text" class="form-control" id="nik" name="nik">
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12 col-md-8 col-lg-8">
+                                            <div class="mb-3">
+                                                <label for="alumnae" class="form-label">Asal Sekolah</label>
+                                                <input type="text" class="form-control" id="alumnae" name="alumnae">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-12 col-md-4 col-lg-4">
+                                            <div class="mb-3">
+                                                <label for="report" class="form-label">Nilai Rapor Terakhir</label>
+                                                <input type="text" class="form-control" id="report" name="report">
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="last-report-value" class="form-label">Nilai Rapor Terakhir</label>
-                                        <input type="text" class="form-control" id="last-report-value" name="last-report-value">
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="address-street" class="form-label">Alamat</label>
-                                        <input type="text" class="form-control" id="address-street" name="address-street">
+                                        <label for="street" class="form-label">Alamat</label>
+                                        <input type="text" class="form-control" id="street" name="street">
                                     </div>
                                     <div class="row">
                                         <div class="col-sm-12 col-md-5 col-lg-5">
                                             <div class="mb-3">
-                                                <label for="address-sub-district" class="form-label">Kec.</label>
-                                                <input type="text" class="form-control" id="address-sub-district" name="address-sub-district">
+                                                <label for="subdistrict" class="form-label">Kec.</label>
+                                                <input type="text" class="form-control" id="subdistrict" name="subdistrict">
                                             </div>
                                         </div>
                                         <div class="col-sm-12 col-md-5 col-lg-5">
                                             <div class="mb-3">
-                                                <label for="address-district" class="form-label">Kab.</label>
-                                                <input type="text" class="form-control" id="address-district" name="address-district">
+                                                <label for="district" class="form-label">Kab.</label>
+                                                <input type="text" class="form-control" id="district" name="district">
                                             </div>
                                         </div>
                                         <div class="col-sm-12 col-md-2 col-lg-2">
                                             <div class="mb-3">
-                                                <label for="address-zip-code" class="form-label">ZIP</label>
-                                                <input type="text" class="form-control" id="address-zip-code" name="address-zip-code">
+                                                <label for="zip" class="form-label">ZIP</label>
+                                                <input type="text" class="form-control" id="zip" name="zip">
                                             </div>
                                         </div>
                                     </div>
