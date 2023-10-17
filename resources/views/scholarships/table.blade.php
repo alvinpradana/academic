@@ -31,16 +31,33 @@
                     </tr>
                 @endslot
                 @slot('body')
-                    <tr>
-                        <td>KADOL</td>
-                        <td>Percuanan</td>
-                        <td>$145,600</td>
-                    </tr>
-                    <tr>
-                        <td>AMCC</td>
-                        <td>Komputer</td>
-                        <td>$145,600</td>
-                    </tr>
+                    @if ($count == 0)
+                        <tr>
+                            <td colspan="3" class="text-center">No data available.</td>
+                        </tr>
+                    @else
+                        @foreach ($scholarships as $scholarship)
+                            <tr>
+                                <td>{{ $scholarship->title }}</td>
+                                <td>{{ $scholarship->notes }}</td>
+                                <td>
+                                    <a href="#" class="btn btn-primary btn-sm btn-circle">
+                                        <i class="fas fa-eye"></i>
+                                    </a>
+                                    <a href="{{ route('scholarships.edit', $scholarship->id) }}" class="btn btn-success btn-sm btn-circle">
+                                        <i class="fas fa-pen"></i>
+                                    </a>
+                                    <form action="{{ route('scholarships.destroy', $scholarship->id) }}" method="post" class="d-inline">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger btn-sm btn-circle">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                        @endforeach
+                    @endif
                 @endslot
             @endcomponent
         </div>
