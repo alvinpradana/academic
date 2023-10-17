@@ -17,7 +17,7 @@
                             @method('PUT')
                             <div class="mb-3">
                                 <label for="level-class" class="form-label">Tingkat Kelas</label>
-                                <input type="number" class="form-control" id="level-class" name="level" value="{{ $level->level }}">
+                                <input type="number" class="form-control" id="level-class" name="level" value="{{ $level->level }}" autofocus>
                             </div>
                             <div class="mb-3">
                                 <label for="notes" class="form-label">Keterangan</label>
