@@ -9,7 +9,12 @@ class ClassLevelController extends Controller
 {
     public function index() {
         $levels = LevelClass::orderBy('level', 'asc')->get();
-        return view('class.level.home', ['levels' => $levels]);
+        $count = LevelClass::sum('id');
+
+        return view('class.level.home', [
+            'levels' => $levels,
+            'count' => $count
+        ]);
     }
 
     public function create() {

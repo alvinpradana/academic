@@ -31,27 +31,33 @@
                     </tr>
                 @endslot
                 @slot('body')
-                    @foreach ($majors as $major)
+                    @if ($count == 0)
                         <tr>
-                            <td>{{ $major->title }}</td>
-                            <td>{{ $major->notes }}</td>
-                            <td>
-                                <a href="#" class="btn btn-primary btn-sm btn-circle">
-                                    <i class="fas fa-eye"></i>
-                                </a>
-                                <a href="{{ route('majors.edit', $major->id) }}" class="btn btn-success btn-sm btn-circle">
-                                    <i class="fas fa-pen"></i>
-                                </a>
-                                <form action="{{ route('majors.destroy', $major->id) }}" method="post" class="d-inline">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-danger btn-sm btn-circle">
-                                        <i class="fas fa-trash"></i>
-                                    </button>
-                                </form>
-                            </td>
+                            <td colspan="3" class="text-center">No data available.</td>
                         </tr>
-                    @endforeach
+                    @else
+                        @foreach ($majors as $major)
+                            <tr>
+                                <td>{{ $major->title }}</td>
+                                <td>{{ $major->notes }}</td>
+                                <td>
+                                    <a href="#" class="btn btn-primary btn-sm btn-circle">
+                                        <i class="fas fa-eye"></i>
+                                    </a>
+                                    <a href="{{ route('majors.edit', $major->id) }}" class="btn btn-success btn-sm btn-circle">
+                                        <i class="fas fa-pen"></i>
+                                    </a>
+                                    <form action="{{ route('majors.destroy', $major->id) }}" method="post" class="d-inline">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger btn-sm btn-circle">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                        @endforeach
+                    @endif
                 @endslot
             @endcomponent
         </div>

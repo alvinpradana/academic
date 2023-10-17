@@ -9,7 +9,12 @@ class MajorController extends Controller
 {
     public function index() {
         $majors = Major::orderBy('id', 'desc')->get();
-        return view('majors.home', ['majors' => $majors]);
+        $count = Major::sum('id');
+        
+        return view('majors.home', [
+            'majors' => $majors,
+            'count' => $count
+        ]);
     }
     
     public function create() {

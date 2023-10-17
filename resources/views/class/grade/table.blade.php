@@ -31,27 +31,33 @@
                     </tr>
                 @endslot
                 @slot('body')
-                    @foreach ($grades as $grade)
+                    @if ($count == 0)
                         <tr>
-                            <td>{{ $grade->title }}</td>
-                            <td>{{ $grade->notes }}</td>
-                            <td>
-                                <a href="#" class="btn btn-primary btn-sm btn-circle">
-                                    <i class="fas fa-eye"></i>
-                                </a>
-                                <a href="{{ route('grades.edit', $grade->id) }}" class="btn btn-success btn-sm btn-circle">
-                                    <i class="fas fa-pen"></i>
-                                </a>
-                                <form action="{{ route('grades.destroy', $grade->id) }}" method="post" class="d-inline">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-danger btn-sm btn-circle">
-                                        <i class="fas fa-trash"></i>
-                                    </button>
-                                </form>
-                            </td>
+                            <td colspan="3" class="text-center">No data available.</td>
                         </tr>
-                    @endforeach
+                    @else
+                        @foreach ($grades as $grade)
+                            <tr>
+                                <td>{{ $grade->title }}</td>
+                                <td>{{ $grade->notes }}</td>
+                                <td>
+                                    <a href="#" class="btn btn-primary btn-sm btn-circle">
+                                        <i class="fas fa-eye"></i>
+                                    </a>
+                                    <a href="{{ route('grades.edit', $grade->id) }}" class="btn btn-success btn-sm btn-circle">
+                                        <i class="fas fa-pen"></i>
+                                    </a>
+                                    <form action="{{ route('grades.destroy', $grade->id) }}" method="post" class="d-inline">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger btn-sm btn-circle">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                        @endforeach
+                    @endif
                 @endslot
             @endcomponent
         </div>

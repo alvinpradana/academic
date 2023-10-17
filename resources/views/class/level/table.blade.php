@@ -31,27 +31,33 @@
                     </tr>
                 @endslot
                 @slot('body')
-                    @foreach ($levels as $level)
+                    @if ($count == 0)
                         <tr>
-                            <td>{{ $level->level }}</td>
-                            <td>{{ $level->notes }}</td>
-                            <td>
-                                <a href="#" class="btn btn-primary btn-sm btn-circle">
-                                    <i class="fas fa-eye"></i>
-                                </a>
-                                <a href="{{ route('class-level.edit', $level->id) }}" class="btn btn-success btn-sm btn-circle">
-                                    <i class="fas fa-pen"></i>
-                                </a>
-                                <form action="{{ route('class-level.destroy', $level->id) }}" method="post" class="d-inline">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-danger btn-sm btn-circle">
-                                        <i class="fas fa-trash"></i>
-                                    </button>
-                                </form>
-                            </td>
+                            <td colspan="3" class="text-center">No data available.</td>
                         </tr>
-                    @endforeach
+                    @else
+                        @foreach ($levels as $level)
+                            <tr>
+                                <td>{{ $level->level }}</td>
+                                <td>{{ $level->notes }}</td>
+                                <td>
+                                    <a href="#" class="btn btn-primary btn-sm btn-circle">
+                                        <i class="fas fa-eye"></i>
+                                    </a>
+                                    <a href="{{ route('class-level.edit', $level->id) }}" class="btn btn-success btn-sm btn-circle">
+                                        <i class="fas fa-pen"></i>
+                                    </a>
+                                    <form action="{{ route('class-level.destroy', $level->id) }}" method="post" class="d-inline">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger btn-sm btn-circle">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                        @endforeach
+                    @endif
                 @endslot
             @endcomponent
         </div>

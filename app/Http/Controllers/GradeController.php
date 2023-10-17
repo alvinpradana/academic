@@ -9,8 +9,12 @@ class GradeController extends Controller
 {
     public function index () {
         $grades = Grade::orderBy('id', 'asc')->get();
+        $count = Grade::sum('id');
         
-        return view('class.grade.home', ['grades' => $grades]);
+        return view('class.grade.home', [
+            'grades' => $grades,
+            'count' => $count
+        ]);
     }
 
     public function create() {
