@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('class_grades', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->string('notes');
+            $table->string('title')->nullable();
+            $table->string('notes')->nullable();
             $table->timestamps();
         });
     }

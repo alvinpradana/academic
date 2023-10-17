@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('majors', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->string('notes');
+            $table->string('title')->nullable();
+            $table->string('notes')->nullable();
             $table->timestamps();
         });
     }
