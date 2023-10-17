@@ -98,32 +98,32 @@
                                         </div>
                                         <div class="col-md-6 col-lg-6 col-sm-12">
                                             <div class="mb-3">
-                                                <label for="phone-number" class="form-label">No. Telepon</label>
-                                                <input type="text" class="form-control" id="phone-number" name="phone_number" value="{{ $user->user_complements->phone_number }}">
+                                                <label for="phone" class="form-label">No. Telepon</label>
+                                                <input type="text" class="form-control" id="phone" name="phone" value="{{ $user->user_complements->phone_number }}">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="address-street" class="form-label">Alamat</label>
-                                        <input type="text" class="form-control" id="address-street" name="address" value="{{ $user->user_complements->address }}">
+                                        <label for="street" class="form-label">Alamat</label>
+                                        <input type="text" class="form-control" id="street" name="street" value="{{ $user->user_complements->street }}">
                                     </div>
                                     <div class="row">
                                         <div class="col-sm-12 col-md-5 col-lg-5">
                                             <div class="mb-3">
-                                                <label for="address-sub-district" class="form-label">Kec.</label>
-                                                <input type="text" class="form-control" id="address-sub-district" name="subdistrict" value="{{ $user->user_complements->subdistrict }}">
+                                                <label for="subdistrict" class="form-label">Kec.</label>
+                                                <input type="text" class="form-control" id="subdistrict" name="subdistrict" value="{{ $user->user_complements->subdistrict }}">
                                             </div>
                                         </div>
                                         <div class="col-sm-12 col-md-5 col-lg-5">
                                             <div class="mb-3">
-                                                <label for="address-regency" class="form-label">Kab.</label>
-                                                <input type="text" class="form-control" id="address-regency" name="regency" value="{{ $user->user_complements->regency }}">
+                                                <label for="district" class="form-label">Kab.</label>
+                                                <input type="text" class="form-control" id="district" name="district" value="{{ $user->user_complements->district }}">
                                             </div>
                                         </div>
                                         <div class="col-sm-12 col-md-2 col-lg-2">
                                             <div class="mb-3">
-                                                <label for="address-zip-code" class="form-label">ZIP</label>
-                                                <input type="text" class="form-control" id="address-zip-code" name="zip_code" value="{{ $user->user_complements->zip_code }}">
+                                                <label for="zip" class="form-label">ZIP</label>
+                                                <input type="text" class="form-control" id="zip" name="zip" value="{{ $user->user_complements->zip_code }}">
                                             </div>
                                         </div>
                                     </div>

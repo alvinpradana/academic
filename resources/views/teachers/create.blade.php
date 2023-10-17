@@ -95,32 +95,32 @@
                                         </div>
                                         <div class="col-md-6 col-lg-6 col-sm-12">
                                             <div class="mb-3">
-                                                <label for="phone-number" class="form-label">No. Telepon</label>
-                                                <input type="text" class="form-control" id="phone-number" name="phone_number">
+                                                <label for="phone" class="form-label">No. Telepon</label>
+                                                <input type="text" class="form-control" id="phone" name="phone">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="address-street" class="form-label">Alamat</label>
-                                        <input type="text" class="form-control" id="address-street" name="address">
+                                        <label for="street" class="form-label">Alamat</label>
+                                        <input type="text" class="form-control" id="street" name="street">
                                     </div>
                                     <div class="row">
                                         <div class="col-sm-12 col-md-5 col-lg-5">
                                             <div class="mb-3">
-                                                <label for="address-sub-district" class="form-label">Kec.</label>
-                                                <input type="text" class="form-control" id="address-sub-district" name="subdistrict">
+                                                <label for="subdistrict" class="form-label">Kec.</label>
+                                                <input type="text" class="form-control" id="subdistrict" name="subdistrict">
                                             </div>
                                         </div>
                                         <div class="col-sm-12 col-md-5 col-lg-5">
                                             <div class="mb-3">
-                                                <label for="address-regency" class="form-label">Kab.</label>
-                                                <input type="text" class="form-control" id="address-regency" name="regency">
+                                                <label for="district" class="form-label">Kab.</label>
+                                                <input type="text" class="form-control" id="district" name="district">
                                             </div>
                                         </div>
                                         <div class="col-sm-12 col-md-2 col-lg-2">
                                             <div class="mb-3">
-                                                <label for="address-zip-code" class="form-label">ZIP</label>
-                                                <input type="text" class="form-control" id="address-zip-code" name="zip_code">
+                                                <label for="zip" class="form-label">ZIP</label>
+                                                <input type="text" class="form-control" id="zip" name="zip">
                                             </div>
                                         </div>
                                     </div>

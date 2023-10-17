@@ -22,9 +22,9 @@ return new class extends Migration
             $table->enum('religion', ['A', 'B', 'C', 'D', 'E'])->default('E')->nullable();
             $table->text('image')->nullable();
             $table->string('phone_number')->nullable();
-            $table->string('address')->nullable();
+            $table->string('street')->nullable();
             $table->string('subdistrict')->nullable();
-            $table->string('regency')->nullable();
+            $table->string('district')->nullable();
             $table->string('zip_code')->nullable();
             $table->timestamps();
         });

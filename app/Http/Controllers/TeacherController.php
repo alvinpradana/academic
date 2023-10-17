@@ -48,11 +48,11 @@ class TeacherController extends Controller
             'age' => $request->age,
             'religion' => $request->religion,
             'image' => $request->image,
-            'phone_number' => $request->phone_number,
-            'address' => $request->address,
+            'phone_number' => $request->phone,
+            'street' => $request->street,
             'subdistrict' => $request->subdistrict,
-            'regency' => $request->regency,
-            'zip_code' => $request->zip_code
+            'district' => $request->district,
+            'zip_code' => $request->zip
         ]);
 
         TeacherComplement::insert([
@@ -87,11 +87,11 @@ class TeacherController extends Controller
             'age' => $request->age,
             'religion' => $request->religion,
             'image' => $request->image,
-            'phone_number' => $request->phone_number,
-            'address' => $request->address,
+            'phone_number' => $request->phone,
+            'street' => $request->street,
             'subdistrict' => $request->subdistrict,
-            'regency' => $request->regency,
-            'zip_code' => $request->zip_code
+            'district' => $request->district,
+            'zip_code' => $request->zip
         ]);
 
         TeacherComplement::where('user_id', $id)->update([
