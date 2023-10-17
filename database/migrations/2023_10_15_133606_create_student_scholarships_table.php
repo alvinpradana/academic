@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('student_id')->constrained('users')->onDelete('cascade');
             $table->foreignId('scholarship_id')->constrained('scholarships')->onDelete('cascade');
+            $table->string('notes')->nullable();
             $table->timestamps();
         });
     }

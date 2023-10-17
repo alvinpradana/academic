@@ -54,7 +54,7 @@
         <div id="scholarshipTab" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Data Beasiswa</h6>
-                <a class="collapse-item" href="{{ route('scholarships.index') }}">Semua Beasiswa</a>
+                <a class="collapse-item" href="{{ route('student-scholarship.index') }}">Beasiswa Pelajar</a>
                 <a class="collapse-item" href="{{ route('scholarships.index') }}">Data Beasiswa</a>
             </div>
         </div>

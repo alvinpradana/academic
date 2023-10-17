@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\StudentScholarshipController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\LessonController;
@@ -26,6 +27,7 @@ Route::resource('class', ClassController::class);
 Route::resource('class-level', ClassLevelController::class);
 Route::resource('grades', GradeController::class);
 Route::resource('majors', MajorController::class);
+Route::resource('student-scholarship', StudentScholarshipController::class);
 
 Route::get('/login', function () {
     return view('login');
