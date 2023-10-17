@@ -79,13 +79,8 @@
                                         </div>
                                         <div class="col-md-6 col-lg-6 col-sm-12">
                                             <div class="mb-3">
-                                                <label for="position" class="form-label">Jabatan</label>
-                                                <select id="position" class="form-select form-control" name="position">
-                                                    <option value="0" selected disabled>Select status</option>
-                                                    @foreach ($positions as $position)
-                                                        <option value="{{ $position->id }}">{{ $position->title }}</option>
-                                                    @endforeach
-                                                </select>
+                                                <label for="nik" class="form-label">NIK</label>
+                                                <input type="text" class="form-control" id="nik" name="nik">
                                             </div>
                                         </div>
                                     </div>

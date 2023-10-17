@@ -80,13 +80,10 @@
                                         </div>
                                         <div class="col-md-6 col-lg-6 col-sm-12">
                                             <div class="mb-3">
-                                                <label for="position" class="form-label">Jabatan</label>
-                                                <select id="position" class="form-select form-control" name="position">
-                                                    <option value="0" disabled>Select status</option>
-                                                    @foreach ($positions as $position)
-                                                        <option value="{{ $position->id }}" @selected($position->id == $user->user_complements->user_positions->id)>{{ $position->title }}</option>
-                                                    @endforeach
-                                                </select>
+                                                <div class="mb-3">
+                                                    <label for="nik" class="form-label">NIK</label>
+                                                    <input type="text" class="form-control" id="nik" name="nik" value="{{ $user->user_complements->id_number }}">
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -96,7 +93,7 @@
                                         <div class="col-md-6 col-lg-6 col-sm-12">
                                             <div class="mb-3">
                                                 <label for="nip" class="form-label">NIP</label>
-                                                <input type="text" class="form-control" id="nip" name="nip" value="{{ $user->user_complements->nip_number }}">
+                                                <input type="text" class="form-control" id="nip" name="nip" value="{{ $user->teacher_complements->nip_number }}">
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-lg-6 col-sm-12">

@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Position;
+use App\Models\TeacherComplement;
 use App\Models\User;
 use App\Models\UserComplement;
-use App\Models\UserPosition;
 use Illuminate\Http\Request;
 
 class TeacherController extends Controller
@@ -13,6 +13,7 @@ class TeacherController extends Controller
     public function index () {
         $users = User::with([
             'user_complements',
+            'teacher_complements',
             'positions'
         ])->where('position_id', 1)->orderBy('id', 'desc')->get();
 
@@ -32,7 +33,7 @@ class TeacherController extends Controller
 
     public function store(Request $request) {
         User::insert([
-            'position_id' => $request->position,
+            'position_id' => 1,
             'email' => $request->email,
             'password' => $request->nip,
         ]);
@@ -41,8 +42,8 @@ class TeacherController extends Controller
         UserComplement::insert([
             'user_id' => $user_id,
             'name' => $request->name,
-            'nip_number' => $request->nip,
             'gender' => $request->gender,
+            'id_number' => $request->nik,
             'birth_date_place' => $request->birth_date_place,
             'age' => $request->age,
             'religion' => $request->religion,
@@ -52,6 +53,11 @@ class TeacherController extends Controller
             'subdistrict' => $request->subdistrict,
             'regency' => $request->regency,
             'zip_code' => $request->zip_code
+        ]);
+
+        TeacherComplement::insert([
+            'user_id' => $user_id,
+            'nip_number' => $request->nip,
         ]);
 
         return redirect()->route('teachers.index');
@@ -60,6 +66,7 @@ class TeacherController extends Controller
     public function edit($id) {
         $user = User::find($id);
         $positions = Position::orderBy('id', 'desc')->get();
+
         return view('teachers.edit', [
             'user' => $user,
             'positions' => $positions
@@ -68,16 +75,14 @@ class TeacherController extends Controller
 
     public function update(Request $request, $id) {
         User::where('id', $id)->update([
-            'position_id' => $request->position,
             'email' => $request->email,
             'password' => $request->nip
         ]);
 
         UserComplement::where('user_id', $id)->update([
-            'user_id' => $id,
             'name' => $request->name,
-            'nip_number' => $request->nip,
             'gender' => $request->gender,
+            'id_number' => $request->nik,
             'birth_date_place' => $request->birth_date_place,
             'age' => $request->age,
             'religion' => $request->religion,
@@ -88,6 +93,11 @@ class TeacherController extends Controller
             'regency' => $request->regency,
             'zip_code' => $request->zip_code
         ]);
+
+        TeacherComplement::where('user_id', $id)->update([
+            'nip_number' => $request->nip,
+        ]);
+
         return redirect()->route('teachers.index');
     }
 
