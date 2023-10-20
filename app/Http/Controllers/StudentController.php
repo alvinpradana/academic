@@ -99,4 +99,9 @@ class StudentController extends Controller
 
         return redirect()->route('students.index');
     }
+
+    public function destroy($id) {
+        User::findOrFail($id)->delete();
+        return redirect()->back();
+    }
 }
