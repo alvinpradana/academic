@@ -34,22 +34,45 @@
                     </tr>
                 @endslot
                 @slot('body')
-                    <tr>
-                        <td>John Doe</td>
-                        <td>Fisika</td>
-                        <td>9A</td>
-                        <td>Laki-laki</td>
-                        <td>Active</td>
-                        <td>$145,600</td>
-                    </tr>
-                    <tr>
-                        <td>Mas Al</td>
-                        <td>Komputer</td>
-                        <td>9A</td>
-                        <td>Laki-laki</td>
-                        <td>Active</td>
-                        <td>$145,600</td>
-                    </tr>
+                    @if ($count == 0)
+                        <tr>
+                            <td colspan="5" class="text-center">No data available.</td>
+                        </tr>
+                    @else
+                        @foreach ($students as $student)
+                            <tr>
+                                <td>{{ $student->user_complements->name }}</td>
+                                <td>Fisika</td>
+                                <td>9A</td>
+                                @switch($student->user_complements->gender)
+                                    @case('A')
+                                        <td>Laki-laki</td>
+                                        @break
+                                    @case('B')
+                                        <td>Perempuan</td>
+                                        @break
+                                    @default
+                                    <td>Lainnya</td>
+                                @endswitch
+                                <td>Active</td>
+                                <td>
+                                    <a href="#" class="btn btn-primary btn-sm btn-circle">
+                                        <i class="fas fa-eye"></i>
+                                    </a>
+                                    <a href="{{ route('students.edit', $student->id) }}" class="btn btn-success btn-sm btn-circle">
+                                        <i class="fas fa-pen"></i>
+                                    </a>
+                                    <form action="{{ route('students.destroy', $student->id) }}" method="post" class="d-inline">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger btn-sm btn-circle">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                        @endforeach
+                    @endif
                 @endslot
             @endcomponent
         </div>
