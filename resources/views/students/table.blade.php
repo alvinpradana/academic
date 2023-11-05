@@ -36,7 +36,7 @@
                 @slot('body')
                     @if ($count == 0)
                         <tr>
-                            <td colspan="5" class="text-center">No data available.</td>
+                            <td colspan="6" class="text-center">No data available.</td>
                         </tr>
                     @else
                         @foreach ($students as $student)

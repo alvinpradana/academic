@@ -20,8 +20,8 @@ return new class extends Migration
             $table->string('mother_id_number')->nullable();
             $table->string('father_phone_number')->nullable();
             $table->string('mother_phone_number')->nullable();
-            $table->enum('father_work', ['A', 'B', 'C', 'D', 'E'])->default('E');
-            $table->enum('mother_work', ['A', 'B', 'C', 'D', 'E'])->default('E');
+            $table->enum('father_work', ['A', 'B', 'C', 'D', 'E'])->default('E')->nullable();
+            $table->enum('mother_work', ['A', 'B', 'C', 'D', 'E'])->default('E')->nullable();
             $table->timestamps();
         });
     }

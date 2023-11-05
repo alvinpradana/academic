@@ -16,7 +16,9 @@ class ClassGroupController extends Controller
             'grades'
         ])->orderBy('id', 'asc')->get();
 
-        return view('class.group.home', ['class' => $class]);
+        $count = $class->sum('id');
+
+        return view('class.group.home', ['class' => $class, 'count' => $count]);
     }
 
     public function show($id) {
@@ -29,11 +31,15 @@ class ClassGroupController extends Controller
         $students = ClassGroup::where('class_id', $id)->with('users.user_complements')->get();
         $count = $students->sum('id');
 
-        $class_level = $class_group->class->class_levels->level;
-        $class_grade = $class_group->class->grades->title;
-        $class_major = $class_group->class->majors->title;
+        $current_class = '';
 
-        $current_class = $class_level . ' ' . $class_major . ' ' . $class_grade;
+        if ($class_group != null) {
+            $class_level = $class_group->class->class_levels->level;
+            $class_grade = $class_group->class->grades->title;
+            $class_major = $class_group->class->majors->title;
+
+            $current_class = $class_level . ' ' . $class_major . ' ' . $class_grade;
+        }
 
         return view('class.group.show', [
             'count' => $count,
