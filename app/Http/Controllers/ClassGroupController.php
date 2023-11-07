@@ -69,10 +69,13 @@ class ClassGroupController extends Controller
         $student = User::where('password', $request->nip)->first();
 
         $possible_to_insert = false;
+        $return_alert = '';
+        $student_not_found = 'Siswa tidak ditemukan.';
+        $student_has_added = 'Siswa sudah berada di kelas lain.';
 
-        $student_in_group = ClassGroup::where('student_id', $student->id)->first();
+        $student_in_class = ClassGroup::where('student_id', $student->id)->first();
 
-        if (($student_in_group == null) && ($student->position_id == 2)) {
+        if (($student_in_class == null) && ($student->position_id == 2)) {
             $possible_to_insert = true;
         }
 
@@ -83,6 +86,6 @@ class ClassGroupController extends Controller
             ]);
         }
 
-        return redirect()->back();
+        return redirect()->route('class-group.show', ['class_group' => $request->class_id]);
     }
 }
