@@ -67,12 +67,21 @@ class ClassGroupController extends Controller
 
     public function store(Request $request) {
         $student = User::where('password', $request->nip)->first();
-        $class = Classes::where('id', $request->class)->first();
 
-        ClassGroup::insert([
-            'student_id' => $student->id,
-            'class_id' => $class->class
-        ]);
+        $possible_to_insert = false;
+
+        $student_in_group = ClassGroup::where('student_id', $student->id)->first();
+
+        if (($student_in_group == null) && ($student->position_id == 2)) {
+            $possible_to_insert = true;
+        }
+
+        if ($possible_to_insert) {
+            ClassGroup::insert([
+                'student_id' => $student->id,
+                'class_id' => $request->class_id
+            ]);
+        }
 
         return redirect()->back();
     }
