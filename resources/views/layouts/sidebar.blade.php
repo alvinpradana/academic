@@ -38,7 +38,7 @@
         <div id="classTab" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Data Kelas</h6>
-                <a class="collapse-item" href="{{ route('class.index') }}">Semua Kelas</a>
+                <a class="collapse-item" href="{{ route('class-group.index') }}">Semua Kelas</a>
                 <a class="collapse-item" href="{{ route('class.index') }}">Data Kelas</a>
                 <a class="collapse-item" href="{{ route('class-level.index') }}">Level Kelas</a>
                 <a class="collapse-item" href="{{ route('majors.index') }}">Kejuruan</a>

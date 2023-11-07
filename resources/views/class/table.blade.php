@@ -40,7 +40,7 @@
                     @else
                         @foreach ($classes as $class)
                             <tr>
-                                <td>{{ $class->class_levels->level }}</td>
+                                <td>{{ $class->levels->level }}</td>
                                 <td>{{ $class->majors->title }}</td>
                                 <td>{{ $class->grades->title }}</td>
                                 <td>{{ $class->users->user_complements->name }}</td>

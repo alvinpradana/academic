@@ -14,7 +14,7 @@ class Classes extends Model
     protected $table = 'class';
     protected $guarded = 'id';
     
-    public function class_levels() {
+    public function levels() {
         return $this->belongsTo(LevelClass::class, 'class_level_id');
     }
 

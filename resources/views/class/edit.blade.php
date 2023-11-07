@@ -20,7 +20,7 @@
                                 <select id="class-level" class="form-select form-control" name="level">
                                     <option value="0" selected disabled>Select level</option>
                                     @foreach ($levels as $level)
-                                        <option value="{{ $level->id }}" @selected($level->id == $class->class_levels->id)>{{ $level->level }}</option>
+                                        <option value="{{ $level->id }}" @selected($level->id == $class->levels->id)>{{ $level->level }}</option>
                                     @endforeach
                                 </select>
                             </div>

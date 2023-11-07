@@ -21,7 +21,7 @@
                                                 Kelas
                                             </div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                                {{ $item->class_levels->level }} {{ $item->majors->title }} {{ $item->grades->title }}
+                                                {{ $item->levels->level }} {{ $item->majors->title }} {{ $item->grades->title }}
                                             </div>
                                         </div>
                                         <div class="col-auto">

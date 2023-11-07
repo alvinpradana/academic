@@ -14,7 +14,7 @@ class ClassController extends Controller
     public function index() {
         $classes = Classes::with([
             'majors',
-            'class_levels',
+            'levels',
             'grades',
             'users'
         ])->orderBy('id', 'desc')->get();
