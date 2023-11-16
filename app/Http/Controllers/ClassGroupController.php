@@ -101,4 +101,11 @@ class ClassGroupController extends Controller
 
         return redirect()->route('class-group.show', ['class_group' => $request->class_id])->with($return_alert, $alert_message);
     }
+
+    public function destroy(Request $request, $id) {
+        $student = ClassGroup::where('student_id', $id)->first();
+
+        $student->delete();
+        return redirect()->back()->with('success','Data berhasil dihapus.');
+    }
 }

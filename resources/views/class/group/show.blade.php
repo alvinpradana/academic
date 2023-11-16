@@ -63,19 +63,19 @@
                                     <td>{{ $student->users->user_complements->gender }}</td>
                                     <td>{{ $student->users->user_complements->age }}</td>
                                     <td>
-                                        {{-- <a href="#" class="btn btn-primary btn-sm btn-circle">
+                                        <a href="#" class="btn btn-primary btn-sm btn-circle">
                                             <i class="fas fa-eye"></i>
                                         </a>
-                                        <a href="{{ route('class.edit', $class->id) }}" class="btn btn-success btn-sm btn-circle">
+                                        <a href="#" class="btn btn-success btn-sm btn-circle">
                                             <i class="fas fa-pen"></i>
                                         </a>
-                                        <form action="{{ route('class.destroy', $class->id) }}" method="post" class="d-inline">
+                                        <form action="{{ route('class-group.destroy', $student->users->id) }}" method="post" class="d-inline">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-danger btn-sm btn-circle">
                                                 <i class="fas fa-trash"></i>
                                             </button>
-                                        </form> --}}
+                                        </form>
                                     </td>
                                 </tr>
                             @endforeach
