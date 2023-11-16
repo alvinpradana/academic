@@ -60,13 +60,21 @@
                                 <tr>
                                     <td>{{ $student->users->user_complements->name }}</td>
                                     <td>{{ $student->users->password }}</td>
-                                    <td>{{ $student->users->user_complements->gender }}</td>
+                                    <td>
+                                        @if ($student->users->user_complements->gender == 'A')
+                                            Laki-laki
+                                        @elseif($student->users->user_complements->gender == 'B')
+                                            Perempuan
+                                        @else
+                                            Lainnya
+                                        @endif
+                                    </td>
                                     <td>{{ $student->users->user_complements->age }}</td>
                                     <td>
                                         <a href="#" class="btn btn-primary btn-sm btn-circle">
                                             <i class="fas fa-eye"></i>
                                         </a>
-                                        <a href="#" class="btn btn-success btn-sm btn-circle">
+                                        <a href="{{ route('students.edit', $student->users->id) }}" class="btn btn-success btn-sm btn-circle">
                                             <i class="fas fa-pen"></i>
                                         </a>
                                         <form action="{{ route('class-group.destroy', $student->users->id) }}" method="post" class="d-inline">
