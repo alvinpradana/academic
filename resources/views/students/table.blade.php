@@ -26,10 +26,10 @@
                 @slot('head')
                     <tr>
                         <th>Nama</th>
-                        <th>Kejuruan</th>
-                        <th>Kelas</th>
+                        <th>NIP</th>
                         <th>Gender</th>
-                        <th>Status</th>
+                        <th>Usia</th>
+                        <th>Telepon</th>
                         <th>Action</th>
                     </tr>
                 @endslot
@@ -42,8 +42,7 @@
                         @foreach ($students as $student)
                             <tr>
                                 <td>{{ $student->user_complements->name }}</td>
-                                <td>Fisika</td>
-                                <td>9A</td>
+                                <td>{{ $student->student_complements->nip_number }}</td>
                                 @switch($student->user_complements->gender)
                                     @case('A')
                                         <td>Laki-laki</td>
@@ -54,7 +53,8 @@
                                     @default
                                     <td>Lainnya</td>
                                 @endswitch
-                                <td>Active</td>
+                                <td>{{ $student->user_complements->age }} Tahun</td>
+                                <td>{{ $student->user_complements->phone_number }}</td>
                                 <td>
                                     <a href="#" class="btn btn-primary btn-sm btn-circle">
                                         <i class="fas fa-eye"></i>
