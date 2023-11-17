@@ -76,9 +76,20 @@
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-sm-12">
-                                    <div class="mb-3">
-                                        <label for="nik" class="form-label">NIK</label>
-                                        <input type="text" class="form-control" id="nik" name="nik">
+                                    <div class="row">
+                                        <div class="col-sm-12 col-md-8 col-lg-8">
+                                            <div class="mb-3">
+                                                <label for="nik" class="form-label">NIK</label>
+                                                <input type="text" class="form-control" id="nik" name="nik">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-12 col-md-4 col-lg-4">
+                                            <div class="mb-3">
+                                                <label for="nip" class="form-label">NIP</label>
+                                                <input type="text" class="form-control" id="nip" value="{{ $nip }}" disabled>
+                                                <input type="hidden" class="form-control" name="nip" value="{{ $nip }}">
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-sm-12 col-md-8 col-lg-8">

@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('student_complements', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+            $table->string('nip_number')->nullable();
             $table->string('school_alumnae')->nullable();
             $table->string('last_report_value')->nullable();
             $table->timestamps();

@@ -17,8 +17,6 @@ class StudentController extends Controller
 
         $count = User::where('position_id', 2)->sum('id');
 
-        // dd($users);
-
         return view('students.home', [
             'students' => $students,
             'count' => $count
@@ -26,14 +24,17 @@ class StudentController extends Controller
     }
 
     public function create() {
-        return view('students.create');
+        $last_nip = User::where('position_id', 2)->pluck('id')->last();
+        $nip = date('Ym') . sprintf('%04s', $last_nip + 1);
+        
+        return view('students.create', ['nip' => $nip]);
     }
 
     public function store(Request $request) {
         User::insert([
             'position_id' => 2,
             'email' => $request->email,
-            'password' => $request->nik,
+            'password' => $request->nip,
         ]);
 
         $user_id = User::orderBy('id', 'desc')->pluck('id')->first();
@@ -55,6 +56,7 @@ class StudentController extends Controller
 
         StudentComplement::insert([
             'user_id' => $user_id,
+            'nip_number' => $request->nip,
             'school_alumnae' => $request->alumnae,
             'last_report_value' => $request->report
         ]);
@@ -73,8 +75,7 @@ class StudentController extends Controller
 
     public function update(Request $request, $id) {
         User::where('id', $id)->update([
-            'email' => $request->email,
-            'password' => $request->nik
+            'email' => $request->email
         ]);
 
         UserComplement::where('user_id', $id)->update([
