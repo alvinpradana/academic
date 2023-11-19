@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 
 class StudentController extends Controller
 {
-    public function index () {
+    public function index() {
         $students = User::with([
             'user_complements',
             'student_complements'
@@ -21,6 +21,16 @@ class StudentController extends Controller
             'students' => $students,
             'count' => $count
         ]);
+    }
+
+    public function show($id) {
+        $student = User::with([
+            'user_complements',
+            'student_complements'
+        ])->where('id', $id)->first();
+
+        return view('students.show', ['student' => $student]);
+
     }
 
     public function create() {
