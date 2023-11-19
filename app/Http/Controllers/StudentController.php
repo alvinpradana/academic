@@ -25,7 +25,7 @@ class StudentController extends Controller
 
     public function create() {
         $last_nip = User::where('position_id', 2)->pluck('id')->last();
-        $nip = date('Ym') . sprintf('%04s', $last_nip + 1);
+        $nip = date('Y') . sprintf('%04s', $last_nip + 1);
         
         return view('students.create', ['nip' => $nip]);
     }
