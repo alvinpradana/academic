@@ -51,7 +51,7 @@ class ClassController extends Controller
             'class_grade_id' => $request->grade,
             'notes' => $request->notes
         ]);
-        return redirect()->route('class.index');
+        return redirect()->route('class.index')->with('success', 'Data kelas berhasil ditambahkan.');
     }
 
     public function edit($id) {
@@ -81,11 +81,11 @@ class ClassController extends Controller
             'notes' => $request->notes
         ]);
 
-        return redirect()->route('class.index');
+        return redirect()->route('class.index')->with('success', 'Data kelas berhasil diperbarui.');
     }
 
     public function destroy($id) {
         Classes::findOrFail($id)->delete();
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Data kels berhasil dihapus.');
     }
 }
