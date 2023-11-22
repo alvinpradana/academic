@@ -67,11 +67,11 @@
                                 <strong>:</strong>
                                 @if ($student->user_complements->religion == 'A')
                                     Islam
-                                @elseif($student->user_complements->gender == 'B')
+                                @elseif($student->user_complements->religion == 'B')
                                     Kristen
-                                @elseif($student->user_complements->gender == 'C')
+                                @elseif($student->user_complements->religion == 'C')
                                     Budha
-                                @elseif($student->user_complements->gender == 'D')
+                                @elseif($student->user_complements->religion == 'D')
                                     Hindu
                                 @else
                                     Lainnya
