@@ -16,7 +16,7 @@
                             <div class="col-sm-12 col-md-3 col-lg-3 mb-2">
                                 <strong>Nama Lengkap</strong>
                             </div>
-                            <div class="col-sm-12 col-md-8 col-lg-8 mb-2">
+                            <div class="col-sm-12 col-md-8 col-lg-8 mb-2 text-capitalize">
                                 <strong>:</strong> {{ $student->user_complements->name }}
                             </div>
                         </div>
@@ -32,7 +32,7 @@
                             <div class="col-sm-12 col-md-3 col-lg-3 mb-2">
                                 <strong>Tempat, Tanggal Lahir</strong>
                             </div>
-                            <div class="col-sm-12 col-md-8 col-lg-8 mb-2">
+                            <div class="col-sm-12 col-md-8 col-lg-8 mb-2 text-capitalize">
                                 <strong>:</strong> {{ $student->user_complements->birth_date_place }}
                             </div>
                         </div>
@@ -98,7 +98,7 @@
                             <div class="col-sm-12 col-md-3 col-lg-3 mb-2">
                                 <strong>Alamat</strong>
                             </div>
-                            <div class="col-sm-12 col-md-8 col-lg-8 mb-2">
+                            <div class="col-sm-12 col-md-8 col-lg-8 mb-2 text-capitalize">
                                 <strong>:</strong> {{ $student->user_complements->street }}, {{ $student->user_complements->subdistrict }}, {{ $student->user_complements->district }}, {{ $student->user_complements->zip_code }}
                             </div>
                         </div>
