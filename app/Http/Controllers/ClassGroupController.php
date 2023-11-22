@@ -71,14 +71,33 @@ class ClassGroupController extends Controller
         $possible_to_insert = false;
         $alert_message = '';
         $student_not_found = 'Siswa tidak ditemukan.';
-        $student_has_added = 'Siswa sudah berada di kelas lain.';
+        $student_in_other_class = 'Siswa sudah berada di kelas lain.';
         $success_added = 'Siswa berhasil ditambahkan.';
 
         $return_alert = '';
+        $student_in_class = null;
 
-        $student_in_class = ClassGroup::where('student_id', $student->id)->first();
+        $student_found = false;
+        $student_has_added = false;
 
-        if (($student_in_class == null) && ($student->position_id == 2)) {
+        if ($student != null) {
+            if ($student->position_id == 2) {
+                $student_found = true;
+            }
+        } else {
+            $alert_message = $student_not_found;
+        }
+        
+        if ($student_found) {
+            $student_in_class = ClassGroup::where('student_id', $student->id)->first();
+
+            if ($student_in_class != null) {
+                $student_has_added = true;
+                $alert_message = $student_in_other_class;
+            }
+        }
+        
+        if (($student_found) && (!$student_has_added) ) {
             $possible_to_insert = true;
         }
 
@@ -91,12 +110,7 @@ class ClassGroupController extends Controller
             $return_alert = 'success';
             $alert_message = $success_added;
         } else {
-            $return_alert = 'warning';
-            if ($student_in_class != null) {
-                $alert_message = $student_not_found;
-            } elseif ($student->position_id > 2) {
-                $alert_message = $student_not_found;
-            }
+            $return_alert = 'error';
         }
 
         return redirect()->route('class-group.show', ['class_group' => $request->class_id])->with($return_alert, $alert_message);
