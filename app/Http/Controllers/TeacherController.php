@@ -60,7 +60,7 @@ class TeacherController extends Controller
             'nip_number' => $request->nip,
         ]);
 
-        return redirect()->route('teachers.index');
+        return redirect()->route('teachers.index')->with('success', 'Data guru berhasil ditambahkan.');
     }
 
     public function edit($id) {
@@ -98,11 +98,11 @@ class TeacherController extends Controller
             'nip_number' => $request->nip,
         ]);
 
-        return redirect()->route('teachers.index');
+        return redirect()->route('teachers.index')->with('success', 'Data guru berhasil diperbarui.');
     }
 
     public function destroy($id) {
         User::find($id)->delete();
-        return back();
+        return back()->with('success', 'Data guru berhasil dihapus.');
     }
 }
