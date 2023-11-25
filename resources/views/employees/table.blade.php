@@ -16,6 +16,21 @@
         </form>
     @endslot
 @endcomponent
+@if (session('success'))
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ session('success') }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+@elseif (session('error'))
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        {{ session('error') }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+@endif
 <div class="card shadow mb-4">
     <div class="card-header py-3">
         <h6 class="m-0 font-weight-bold text-primary">Data Karyawan</h6>
@@ -29,27 +44,50 @@
                         <th>Jabatan</th>
                         <th>Gender</th>
                         <th>Usia</th>
-                        <th>Status</th>
                         <th>Action</th>
                     </tr>
                 @endslot
                 @slot('body')
-                    <tr>
-                        <td>Mas John</td>
-                        <td>Office Boy</td>
-                        <td>Laki-laki</td>
-                        <td>30</td>
-                        <td>Active</td>
-                        <td>$145,600</td>
-                    </tr>
-                    <tr>
-                        <td>Brodin</td>
-                        <td>Security</td>
-                        <td>Laki-laki</td>
-                        <td>35</td>
-                        <td>Active</td>
-                        <td>$145,600</td>
-                    </tr>
+                    @if ($count == 0)
+                        <tr>
+                            <td colspan="5" class="text-center">No data available.</td>
+                        </tr>
+                    @else
+                        @foreach ($employees as $employee)
+                            <tr>
+                                <td>{{ $employee->user_complements->name }}</td>
+                                <td>{{ $employee->positions->title }}</td>
+                                <td>
+                                    @switch($employee->user_complements->gender)
+                                        @case('A')
+                                            Laki-laki
+                                            @break
+                                        @case('B')
+                                            Perempuan
+                                            @break
+                                        @default
+                                            Tidak diketahui
+                                    @endswitch
+                                </td>
+                                <td>{{ $employee->user_complements->age }} Tahun</td>
+                                <td>
+                                    <a href="#" class="btn btn-primary btn-sm btn-circle">
+                                        <i class="fas fa-eye"></i>
+                                    </a>
+                                    <a href="{{ route('employees.edit', $employee->id) }}" class="btn btn-success btn-sm btn-circle">
+                                        <i class="fas fa-pen"></i>
+                                    </a>
+                                    <form action="{{ route('employees.destroy', $employee->id) }}" method="post" class="d-inline">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger btn-sm btn-circle">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                        @endforeach
+                    @endif
                 @endslot
             @endcomponent
         </div>
