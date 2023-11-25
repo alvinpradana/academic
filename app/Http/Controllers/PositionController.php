@@ -28,7 +28,7 @@ class PositionController extends Controller
             'title' => $request->title,
             'notes' => $request->notes
         ]);
-        return redirect()->route('positions.index');
+        return redirect()->route('positions.index')->with('success', 'Data jabatan berhasil ditambahkan.');
     }
 
     public function edit($id) {
@@ -41,12 +41,12 @@ class PositionController extends Controller
             'title' => $request->title,
             'notes' => $request->notes
         ]);
-        return redirect()->route('positions.index');
+        return redirect()->route('positions.index')->with('success', 'Data jabatan berhasil diperbarui.');
     }
 
     public function destroy($id) {
         Position::find($id)->delete();
 
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Data jabatan berhasil dihapus.');
     }
 }
