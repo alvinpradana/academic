@@ -71,7 +71,7 @@ class StudentController extends Controller
             'last_report_value' => $request->report
         ]);
 
-        return redirect()->route('students.index');
+        return redirect()->route('students.index')->with('success', 'Data siswa berhasil ditambahkan.');
     }
 
     public function edit($id) {
@@ -108,11 +108,11 @@ class StudentController extends Controller
             'last_report_value' => $request->report
         ]);
 
-        return redirect()->route('students.index');
+        return redirect()->route('students.index')->with('success', 'Data siswa berhasil diperbarui.');
     }
 
     public function destroy($id) {
         User::findOrFail($id)->delete();
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Data siswa berhasil dihapus.');
     }
 }
