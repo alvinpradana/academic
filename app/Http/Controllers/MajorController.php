@@ -26,7 +26,7 @@ class MajorController extends Controller
             'title' => $request->title,
             'notes' => $request->notes
         ]);
-        return redirect()->route('majors.index');
+        return redirect()->route('majors.index')->with('success', 'Data jurusan berhasil ditambahkan.');
     }
 
     public function edit($id) {
@@ -39,11 +39,11 @@ class MajorController extends Controller
             'title' => $request->title,
             'notes' => $request->notes
         ]);
-        return redirect()->route('majors.index');
+        return redirect()->route('majors.index')->with('success', 'Data jurusan berhasil diperbarui.');
     }
 
     public function destroy($id) {
         Major::find($id)->delete();
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Data jurusan berhasil dihapus.');
     }
 }
