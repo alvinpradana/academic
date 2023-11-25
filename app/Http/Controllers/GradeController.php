@@ -26,7 +26,7 @@ class GradeController extends Controller
             'title' => $request->title,
             'notes' => $request->notes
         ]);
-        return redirect()->route('grades.index');
+        return redirect()->route('grades.index')->with('success', 'Data grade kelas berhasil ditambahkan.');
     }
 
     public function edit($id) {
@@ -39,11 +39,11 @@ class GradeController extends Controller
             'title' => $request->title,
             'notes' => $request->notes
         ]);
-        return redirect()->route('grades.index');
+        return redirect()->route('grades.index')->with('success', 'Data grade kelas berhasil diperbarui.');
     }
 
     public function destroy($id) {
         Grade::find($id)->delete();
-        return back();
+        return back()->with('success', 'Data grade kelas berhasil dihapus.');
     }
 }
