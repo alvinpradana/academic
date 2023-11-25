@@ -26,7 +26,7 @@ class ClassLevelController extends Controller
             'level' => $request->level,
             'notes' => $request->notes
         ]);
-        return redirect()->route('class-level.index');
+        return redirect()->route('class-level.index')->with('success', 'Data level kelas berhasil ditambahkan.');
     }
 
     public function edit($id) {
@@ -39,11 +39,11 @@ class ClassLevelController extends Controller
             'level' => $request->level,
             'notes' => $request->notes
         ]);
-        return redirect()->route('class-level.index');
+        return redirect()->route('class-level.index')->with('success', 'Data level kelas berhasil diperbarui.');
     }
 
     public function destroy($id) {
         LevelClass::find($id)->delete();
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Data level kelas berhasil dihapus.');
     }
 }
