@@ -25,6 +25,15 @@ class TeacherController extends Controller
         ]);
     }
 
+    public function show($id) {
+        $teacher = User::with([
+            'user_complements',
+            'teacher_complements'
+        ])->where('id', $id)->first();
+
+        return view('teachers.show', compact('teacher'));
+    }
+
     public function create() {
         $positions = Position::orderBy('id', 'asc')->get();
 

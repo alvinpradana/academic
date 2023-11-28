@@ -63,7 +63,7 @@
                                 <td>{{ $user->user_complements->age }} Tahun</td>
                                 <td>{{ $user->user_complements->phone_number }}</td>
                                 <td>
-                                    <a href="#" class="btn btn-primary btn-sm btn-circle">
+                                    <a href="{{ route('teachers.show', $user->id) }}" class="btn btn-primary btn-sm btn-circle">
                                         <i class="fas fa-eye"></i>
                                     </a>
                                     <a href="{{ route('teachers.edit', $user->id) }}" class="btn btn-success btn-sm btn-circle">
