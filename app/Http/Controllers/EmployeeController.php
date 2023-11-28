@@ -23,6 +23,15 @@ class EmployeeController extends Controller
         ]);
     }
 
+    public function show($id) {
+        $employee = User::with([
+            'user_complements',
+            'positions'
+        ])->where('id', $id)->first();
+
+        return view('employees.show', compact('employee'));
+    }
+
     public function create() {
         $positions = Position::where('id', '<>', 1)->where('id', '<>', 2)->orderBy('title', 'asc')->get();
         

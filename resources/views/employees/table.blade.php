@@ -71,7 +71,7 @@
                                 </td>
                                 <td>{{ $employee->user_complements->age }} Tahun</td>
                                 <td>
-                                    <a href="#" class="btn btn-primary btn-sm btn-circle">
+                                    <a href="{{ route('employees.show', $employee->id) }}" class="btn btn-primary btn-sm btn-circle">
                                         <i class="fas fa-eye"></i>
                                     </a>
                                     <a href="{{ route('employees.edit', $employee->id) }}" class="btn btn-success btn-sm btn-circle">
