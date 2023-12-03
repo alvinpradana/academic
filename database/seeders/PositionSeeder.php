@@ -21,6 +21,10 @@ class PositionSeeder extends Seeder
             [
                 'title' => 'Pelajar',
                 'notes' => 'Siswa/Pelajar'
+            ],
+            [
+                'title' => 'Admin',
+                'notes' => 'Jabatan Admin'
             ]
         ])->each(function ($position) {
             Position::create($position);
