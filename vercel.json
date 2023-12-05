@@ -12,6 +12,14 @@
         {
             "src": "/(.*)",
             "dest": "/api/index.php"
+        },
+        {
+            "src": "/resources/(.*)",
+            "dest": "/public/resources/"
+        },
+        {
+            "src": "/favicon/(.*)",
+            "dest": "/public/favicon/"
         }
     ],
     "env": {
