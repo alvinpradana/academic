@@ -42,7 +42,7 @@
                                 </select>
                             </div>
                             <div class="mb-3">
-                                <label for="teacher-class" class="form-label">Teacher's Class</label>
+                                <label for="teacher-class" class="form-label">Wali Kelas</label>
                                 <select id="teacher-class" class="form-select form-control" name="teacher">
                                     <option value="0" selected disabled>Select teacher</option>
                                     @foreach ($teachers as $teacher)
