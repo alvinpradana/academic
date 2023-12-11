@@ -1,6 +1,6 @@
 <div class="d-flex justify-content-between align-items-center mb-4">
     <p class="my-auto">Tabel berikut merupakan data mata pelajaran pada SMK Crows Zero tahun ajaran 2023/2024.</p>
-    <button class="btn btn-primary" data-toggle="modal" data-target="#modal">Tambah</button>
+    <a href="{{ route('lessons.create') }}" class="btn btn-primary">Tambah</a>
 </div>
 @component('components.modal')
     @slot('body')
@@ -25,31 +25,40 @@
             @component('components.table')
                 @slot('head')
                     <tr>
-                        <th>Name</th>
-                        <th>Semester</th>
-                        <th>Kelas</th>
-                        <th>Ketentuan</th>
-                        <th>Status</th>
+                        <th>Mata Pelajaran</th>
+                        <th>Keterangan</th>
                         <th>Action</th>
                     </tr>
                 @endslot
                 @slot('body')
-                    <tr>
-                        <td>Ilmu Fisika</td>
-                        <td>Genap</td>
-                        <td>8</td>
-                        <td>Wajib</td>
-                        <td>Active</td>
-                        <td>$145,600</td>
-                    </tr>
-                    <tr>
-                        <td>Matematika</td>
-                        <td>Genap</td>
-                        <td>7</td>
-                        <td>Wajib</td>
-                        <td>Active</td>
-                        <td>$145,600</td>
-                    </tr>
+                    @if ($count == 0)
+                        <tr>
+                            <td colspan="6" class="text-center">No data available.</td>
+                        </tr>
+                    @else
+                        
+                        @foreach ($lessons as $lesson)
+                            <tr>
+                                <td>{{ $lesson->title }}</td>
+                                <td>{{ $lesson->notes }}</td>
+                                <td>
+                                    <a href="{{ route('lessons.show', $lesson->id) }}" class="btn btn-primary btn-sm btn-circle">
+                                        <i class="fas fa-eye"></i>
+                                    </a>
+                                    <a href="{{ route('lessons.edit', $lesson->id) }}" class="btn btn-success btn-sm btn-circle">
+                                        <i class="fas fa-pen"></i>
+                                    </a>
+                                    <form action="{{ route('lessons.destroy', $lesson->id) }}" method="post" class="d-inline">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger btn-sm btn-circle">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                        @endforeach
+                    @endif
                 @endslot
             @endcomponent
         </div>
