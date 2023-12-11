@@ -32,7 +32,7 @@ class LessonController extends Controller
             'notes' => $request->notes
         ]);
 
-        return redirect()->route('lessons.index');
+        return redirect()->route('lessons.index')->with('success', 'Data berhasil ditambahkan.');
     }
 
     public function edit($id) {
@@ -46,11 +46,11 @@ class LessonController extends Controller
             'notes' => $request->notes
         ]);
 
-        return redirect()->route('lessons.index');
+        return redirect()->route('lessons.index')->with('success', 'Data berhasil diubah.');
     }
 
     public function destroy($id) {
         Lesson::findOrFail($id)->delete();
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Data berhasil dihapus.');
     }
 }
