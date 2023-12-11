@@ -25,6 +25,7 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Data Akademik</h6>
                 <a class="collapse-item" href="{{ route('students.index') }}">Data Semester</a>
+                <a class="collapse-item" href="{{ route('students.index') }}">Data Mata Pelajaran</a>
                 <a class="collapse-item" href="{{ route('majors.index') }}">Data Jurusan</a>
                 <a class="collapse-item" href="{{ route('class-level.index') }}">Data Level Kelas</a>
                 <a class="collapse-item" href="{{ route('grades.index') }}">Data Grade Kelas</a>
