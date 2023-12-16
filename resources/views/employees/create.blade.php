@@ -71,9 +71,8 @@
                                                 <label for="marital-status" class="form-label">Status Pernikahan</label>
                                                 <select id="marital-status" class="form-select form-control" name="marital-status">
                                                     <option value="0" selected disabled>Select status</option>
-                                                    <option value="A">Belum Menikah</option>
-                                                    <option value="B">Menikah</option>
-                                                    <option value="C">Cerai</option>
+                                                    <option value="Y">Menikah</option>
+                                                    <option value="N">Belum Menikah</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -168,14 +167,14 @@
                                     <div class="row">
                                         <div class="col-sm-12 col-md-5 col-lg-5">
                                             <div class="mb-3">
-                                                <label for="family-address-sub-district" class="form-label">Kec.</label>
-                                                <input type="text" class="form-control" id="family-address-sub-district" name="family-address-sub-district">
+                                                <label for="family-address-subdistrict" class="form-label">Kec.</label>
+                                                <input type="text" class="form-control" id="family-address-subdistrict" name="family-address-subdistrict">
                                             </div>
                                         </div>
                                         <div class="col-sm-12 col-md-5 col-lg-5">
                                             <div class="mb-3">
-                                                <label for="family-address-district" class="form-label">Kab.</label>
-                                                <input type="text" class="form-control" id="family-address-district" name="family-address-district">
+                                                <label for="family-address-regency" class="form-label">Kab.</label>
+                                                <input type="text" class="form-control" id="family-address-regency" name="family-address-regency">
                                             </div>
                                         </div>
                                         <div class="col-sm-12 col-md-2 col-lg-2">

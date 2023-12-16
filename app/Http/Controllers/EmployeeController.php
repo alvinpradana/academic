@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\EmpployeeComplement;
+use App\Models\FamilyContact;
 use App\Models\Position;
 use App\Models\User;
 use App\Models\UserComplement;
@@ -33,7 +35,7 @@ class EmployeeController extends Controller
     }
 
     public function create() {
-        $positions = Position::where('id', '<>', 1)->where('id', '<>', 2)->orderBy('title', 'asc')->get();
+        $positions = Position::where('id', '<>', 1)->where('id', '<>', 2)->where('id', '<>', 3)->orderBy('title', 'asc')->get();
         
         return view('employees.create', compact('positions'));
     }
@@ -63,12 +65,28 @@ class EmployeeController extends Controller
             'zip_code' => $request->input('address-zip-code')
         ]);
 
+        EmpployeeComplement::insert([
+            'user_id' => $user_id,
+            'marital_status' => $request->input('marital-status')
+        ]);
+
+        FamilyContact::insert([
+            'user_id' => $user_id,
+            'name' => $request->input('family-name'),
+            'status' => $request->input('family-status'),
+            'phone_number' => $request->input('family-contact'),
+            'address' => $request->input('family-address-street'),
+            'subdistrict' => $request->input('family-address-subdistrict'),
+            'regency' => $request->input('family-address-regency'),
+            'zip_code' => $request->input('family-address-zip-code')
+        ]);
+
         return redirect()->route('employees.index')->with('success','Data karyawan berhasil ditambahkan.');
     }
 
     public function edit($id) {
-        $employee = User::with(['user_complements', 'positions'])->findOrFail($id);
-        $positions = Position::where('id', '<>', 1)->where('id', '<>', 2)->get();
+        $employee = User::with(['user_complements', 'employee_complements', 'positions'])->findOrFail($id);
+        $positions = Position::where('id', '<>', 1)->where('id', '<>', 2)->where('id', '<>', 3)->get();
 
         return view('employees.edit', ['employee' => $employee, 'positions' => $positions]);
     }
@@ -93,6 +111,21 @@ class EmployeeController extends Controller
             'subdistrict' => $request->input('address-sub-district'),
             'district' => $request->input('address-district'),
             'zip_code' => $request->input('address-zip-code')
+        ]);
+
+        EmpployeeComplement::where('user_id', $id)->update([
+            'marital_status' => $request->input('marital-status')
+
+        ]);
+
+        FamilyContact::where('user_id', $id)->update([
+            'name' => $request->input('family-name'),
+            'status' => $request->input('family-status'),
+            'phone_number' => $request->input('family-contact'),
+            'address' => $request->input('family-address-street'),
+            'subdistrict' => $request->input('family-address-subdistrict'),
+            'regency' => $request->input('family-address-regency'),
+            'zip_code' => $request->input('family-address-zip-code')
         ]);
 
         return redirect()->route('employees.index')->with('success','Data karyawan berhasil diperbarui.');

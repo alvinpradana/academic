@@ -71,9 +71,9 @@
                                             <div class="mb-3">
                                                 <label for="marital-status" class="form-label">Status Pernikahan</label>
                                                 <select id="marital-status" class="form-select form-control" name="marital-status">
-                                                    <option value="0" disabled>Select status</option>
-                                                    <option value="Y" @selected($employee->user_complements->marital_status == 'Y')>Menikah</option>
-                                                    <option value="N" @selected($employee->user_complements->marital_status == 'N')>Belum Menikah</option>
+                                                    <option value="0" disabled @selected($employee->employee_complements->id == null)>Select status</option>
+                                                    <option value="Y" @selected($employee->employee_complements->marital_status == 'Y')>Menikah</option>
+                                                    <option value="N" @selected($employee->employee_complements->marital_status == 'N')>Belum Menikah</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -137,25 +137,25 @@
                                 <div class="col-md-6 col-sm-12">
                                     <div class="mb-3">
                                         <label for="family-name" class="form-label">Nama Keluarga/Kerabat</label>
-                                        <input type="text" class="form-control" id="family-name" name="family-name">
+                                        <input type="text" class="form-control" id="family-name" name="family-name" value="{{ $employee->families->name }}">
                                     </div>
                                     <div class="row">
                                         <div class="col-sm-12 col-md-6 col-lg-6">
                                             <div class="mb-3">
                                                 <label for="family-status" class="form-label">Status Keluarga</label>
                                                 <select id="family-status" class="form-select form-control" name="family-status">
-                                                    <option value="0" selected disabled>Select status</option>
-                                                    <option value="A">Suami/Istri</option>
-                                                    <option value="B">Keluarga</option>
-                                                    <option value="C">Kerabat</option>
-                                                    <option value="D">Lainnya</option>
+                                                    <option value="0" disabled @selected($employee->families->id == null)>Select status</option>
+                                                    <option value="A" @selected($employee->families->status == 'A')>Suami/Istri</option>
+                                                    <option value="B" @selected($employee->families->status == 'B')>Keluarga</option>
+                                                    <option value="C" @selected($employee->families->status == 'C')>Kerabat</option>
+                                                    <option value="D" @selected($employee->families->status == 'D')>Lainnya</option>
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="col-sm-12 col-md-6 col-lg-6">
                                             <div class="mb-3">
                                                 <label for="family-contact" class="form-label">No. Telp Keluarga/Kerabat</label>
-                                                <input type="text" class="form-control" id="family-contact" name="family-contact">
+                                                <input type="text" class="form-control" id="family-contact" name="family-contact" value="{{ $employee->families->phone_number }}">
                                             </div>
                                         </div>
                                     </div>
@@ -163,25 +163,25 @@
                                 <div class="col-md-6 col-sm-12">
                                     <div class="mb-3">
                                         <label for="family-address-street" class="form-label">Alamat Kerabat</label>
-                                        <input type="text" class="form-control" id="family-address-street" name="family-address-street">
+                                        <input type="text" class="form-control" id="family-address-street" name="family-address-street" value="{{ $employee->families->address }}">
                                     </div>
                                     <div class="row">
                                         <div class="col-sm-12 col-md-5 col-lg-5">
                                             <div class="mb-3">
-                                                <label for="family-address-sub-district" class="form-label">Kec.</label>
-                                                <input type="text" class="form-control" id="family-address-sub-district" name="family-address-sub-district">
+                                                <label for="family-address-subdistrict" class="form-label">Kec.</label>
+                                                <input type="text" class="form-control" id="family-address-subdistrict" name="family-address-subdistrict" value="{{ $employee->families->subdistrict }}">
                                             </div>
                                         </div>
                                         <div class="col-sm-12 col-md-5 col-lg-5">
                                             <div class="mb-3">
-                                                <label for="family-address-district" class="form-label">Kab.</label>
-                                                <input type="text" class="form-control" id="family-address-district" name="family-address-district">
+                                                <label for="family-address-regency" class="form-label">Kab.</label>
+                                                <input type="text" class="form-control" id="family-address-regency" name="family-address-regency" value="{{ $employee->families->regency }}">
                                             </div>
                                         </div>
                                         <div class="col-sm-12 col-md-2 col-lg-2">
                                             <div class="mb-3">
                                                 <label for="family-address-zip-code" class="form-label">ZIP</label>
-                                                <input type="text" class="form-control" id="family-address-zip-code" name="family-address-zip-code">
+                                                <input type="text" class="form-control" id="family-address-zip-code" name="family-address-zip-code" value="{{ $employee->families->zip_code }}">
                                             </div>
                                         </div>
                                     </div>

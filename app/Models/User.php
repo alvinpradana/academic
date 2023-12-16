@@ -55,6 +55,11 @@ class User extends Authenticatable
     public function teacher_complements()  {
         return $this->hasOne(TeacherComplement::class);
     }
+    
+    public function employee_complements()  {
+        return $this->hasOne(EmpployeeComplement::class);
+    }
+
     public function families()  {
         return $this->hasOne(FamilyContact::class);
     }
