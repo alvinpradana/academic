@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->string('nip_number')->nullable();
+            $table->enum('marital_status', ['Y', 'N'])->default('N')->nullable();
             $table->timestamps();
         });
     }

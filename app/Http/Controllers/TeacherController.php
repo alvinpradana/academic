@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\FamilyContact;
 use App\Models\Position;
 use App\Models\TeacherComplement;
 use App\Models\User;
@@ -67,6 +68,18 @@ class TeacherController extends Controller
         TeacherComplement::insert([
             'user_id' => $user_id,
             'nip_number' => $request->nip,
+            'marital_status' => $request->marital_status
+        ]);
+
+        FamilyContact::insert([
+            'user_id' => $user_id,
+            'name' => $request->input('family-name'),
+            'status' => $request->input('family-status'),
+            'phone_number' => $request->input('family-contact'),
+            'address' => $request->input('family-address-street'),
+            'subdistrict' => $request->input('family-subdistrict'),
+            'regency' => $request->input('family-regency'),
+            'zip_code' => $request->input('family-zip-code')
         ]);
 
         return redirect()->route('teachers.index')->with('success', 'Data guru berhasil ditambahkan.');
@@ -105,6 +118,17 @@ class TeacherController extends Controller
 
         TeacherComplement::where('user_id', $id)->update([
             'nip_number' => $request->nip,
+            'marital_status' => $request->marital_status
+        ]);
+
+        FamilyContact::where('user_id', $id)->update([
+            'name' => $request->input('family-name'),
+            'status' => $request->input('family-status'),
+            'phone_number' => $request->input('family-contact'),
+            'address' => $request->input('family-address-street'),
+            'subdistrict' => $request->input('family-subdistrict'),
+            'regency' => $request->input('family-regency'),
+            'zip_code' => $request->input('family-zip-code')
         ]);
 
         return redirect()->route('teachers.index')->with('success', 'Data guru berhasil diperbarui.');

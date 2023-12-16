@@ -134,13 +134,13 @@
                                 <div class="col-md-6 col-sm-12">
                                     <div class="mb-3">
                                         <label for="family-name" class="form-label">Nama Keluarga/Kerabat</label>
-                                        <input type="text" class="form-control" id="family-name" name="family_name">
+                                        <input type="text" class="form-control" id="family-name" name="family-name">
                                     </div>
                                     <div class="row">
                                         <div class="col-sm-12 col-md-6 col-lg-6">
                                             <div class="mb-3">
                                                 <label for="family-status" class="form-label">Status Keluarga</label>
-                                                <select id="family-status" class="form-select form-control" name="family_status">
+                                                <select id="family-status" class="form-select form-control" name="family-status">
                                                     <option value="0" selected disabled>Select status</option>
                                                     <option value="A">Suami/Istri</option>
                                                     <option value="B">Keluarga</option>
@@ -152,7 +152,7 @@
                                         <div class="col-sm-12 col-md-6 col-lg-6">
                                             <div class="mb-3">
                                                 <label for="family-contact" class="form-label">No. Telp Keluarga/Kerabat</label>
-                                                <input type="text" class="form-control" id="family-contact" name="family_contact">
+                                                <input type="text" class="form-control" id="family-contact" name="family-contact">
                                             </div>
                                         </div>
                                     </div>
@@ -160,25 +160,25 @@
                                 <div class="col-md-6 col-sm-12">
                                     <div class="mb-3">
                                         <label for="family-address-street" class="form-label">Alamat Kerabat</label>
-                                        <input type="text" class="form-control" id="family-address-street" name="family_address">
+                                        <input type="text" class="form-control" id="family-address-street" name="family-address-street">
                                     </div>
                                     <div class="row">
                                         <div class="col-sm-12 col-md-5 col-lg-5">
                                             <div class="mb-3">
                                                 <label for="family-address-subdistrict" class="form-label">Kec.</label>
-                                                <input type="text" class="form-control" id="family-address-subdistrict" name="family_subdistrict">
+                                                <input type="text" class="form-control" id="family-address-subdistrict" name="family-subdistrict">
                                             </div>
                                         </div>
                                         <div class="col-sm-12 col-md-5 col-lg-5">
                                             <div class="mb-3">
                                                 <label for="family-address-regency" class="form-label">Kab.</label>
-                                                <input type="text" class="form-control" id="family-address-regency" name="family_regency">
+                                                <input type="text" class="form-control" id="family-address-regency" name="family-regency">
                                             </div>
                                         </div>
                                         <div class="col-sm-12 col-md-2 col-lg-2">
                                             <div class="mb-3">
                                                 <label for="family-zip-code" class="form-label">ZIP</label>
-                                                <input type="text" class="form-control" id="family-zip-code" name="family_zip_code">
+                                                <input type="text" class="form-control" id="family-zip-code" name="family-zip-code">
                                             </div>
                                         </div>
                                     </div>
