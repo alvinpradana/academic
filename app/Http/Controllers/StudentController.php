@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ParentContact;
 use App\Models\StudentComplement;
 use App\Models\User;
 use App\Models\UserComplement;
@@ -71,13 +72,26 @@ class StudentController extends Controller
             'last_report_value' => $request->report
         ]);
 
+        ParentContact::insert([
+            'user_id' => $user_id,
+            'father_name' => $request->input('father-name'),
+            'mother_name' => $request->input('mother-name'),
+            'father_id_number' => $request->input('father-id-number'),
+            'mother_id_number' => $request->input('mother-id-number'),
+            'father_phone_number' => $request->input('father-phone'),
+            'mother_phone_number' => $request->input('mother-phone'),
+            'father_work' => $request->input('father-work'),
+            'mother_work' => $request->input('mother-work'),
+        ]);
+
         return redirect()->route('students.index')->with('success', 'Data siswa berhasil ditambahkan.');
     }
 
     public function edit($id) {
         $student = User::with([
             'user_complements',
-            'student_complements'
+            'student_complements',
+            'parents'
         ])->where('id', $id)->first();
 
         return view('students.edit', ['student' => $student]);
@@ -106,6 +120,17 @@ class StudentController extends Controller
         StudentComplement::where('user_id', $id)->update([
             'school_alumnae' => $request->alumnae,
             'last_report_value' => $request->report
+        ]);
+
+        ParentContact::where('user_id', $id)->update([
+            'father_name' => $request->input('father-name'),
+            'mother_name' => $request->input('mother-name'),
+            'father_id_number' => $request->input('father-id-number'),
+            'mother_id_number' => $request->input('mother-id-number'),
+            'father_phone_number' => $request->input('father-phone'),
+            'mother_phone_number' => $request->input('mother-phone'),
+            'father_work' => $request->input('father-work'),
+            'mother_work' => $request->input('mother-work'),
         ]);
 
         return redirect()->route('students.index')->with('success', 'Data siswa berhasil diperbarui.');

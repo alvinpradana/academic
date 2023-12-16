@@ -129,23 +129,23 @@
                                 <div class="col-md-6 col-sm-12">
                                     <div class="mb-3">
                                         <label for="father-name" class="form-label">Nama Ayah Kandung</label>
-                                        <input type="text" class="form-control" id="father-name" name="father-name">
+                                        <input type="text" class="form-control" id="father-name" name="father-name" value="{{ $student->parents->father_name }}">
                                     </div>
                                     <div class="mb-3">
                                         <label for="mother-name" class="form-label">Nama Ibu Kandung</label>
-                                        <input type="text" class="form-control" id="mother-name" name="mother-name">
+                                        <input type="text" class="form-control" id="mother-name" name="mother-name" value="{{ $student->parents->mother_name }}">
                                     </div>
                                     <div class="row">
                                         <div class="col-sm-12 col-md-6 col-lg-6">
                                             <div class="mb-3">
                                                 <label for="father-id-number" class="form-label">NIK Ayah</label>
-                                                <input type="text" class="form-control" id="father-id-number" name="father-id-number">
+                                                <input type="text" class="form-control" id="father-id-number" name="father-id-number" value="{{ $student->parents->father_id_number }}">
                                             </div>
                                         </div>
                                         <div class="col-sm-12 col-md-6 col-lg-6">
                                             <div class="mb-3">
                                                 <label for="mother-id-number" class="form-label">NIK Ibu</label>
-                                                <input type="text" class="form-control" id="mother-id-number" name="mother-id-number">
+                                                <input type="text" class="form-control" id="mother-id-number" name="mother-id-number" value="{{ $student->parents->mother_id_number }}">
                                             </div>
                                         </div>
                                     </div>
@@ -155,32 +155,32 @@
                                         <div class="col-sm-12 col-md-6 col-lg-6">
                                             <div class="mb-3">
                                                 <label for="father-phone" class="form-label">No. Telepon Ayah</label>
-                                                <input type="text" class="form-control" id="father-phone" name="father-phone">
+                                                <input type="text" class="form-control" id="father-phone" name="father-phone"  value="{{ $student->parents->father_phone_number }}">
                                             </div>
                                         </div>
                                         <div class="col-sm-12 col-md-6 col-lg-6">
                                             <div class="mb-3">
                                                 <label for="mother-phone" class="form-label">No. Telepon Ibu</label>
-                                                <input type="text" class="form-control" id="mother-phone" name="mother-phone">
+                                                <input type="text" class="form-control" id="mother-phone" name="mother-phone" value="{{ $student->parents->mother_phone_number }}">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="mb-3">
                                         <label for="father-work" class="form-label">Pekerjaan Ayah</label>
                                         <select id="father-work" class="form-select form-control" name="father-work">
-                                            <option value="0" selected disabled>Select work</option>
-                                            <option value="1">Pengusaha</option>
-                                            <option value="2">Wiraswasta</option>
-                                            <option value="2">Lainnya</option>
+                                            <option value="0" disabled @selected($student->user_complements->father_work == null)>Select work</option>
+                                            <option value="A" @selected($student->parents->father_work == 'A')>Pengusaha</option>
+                                            <option value="B" @selected($student->parents->father_work == 'B')>Wiraswasta</option>
+                                            <option value="C" @selected($student->parents->father_work == 'C')>Lainnya</option>
                                         </select>
                                     </div>
                                     <div class="mb-3">
                                         <label for="mother-work" class="form-label">Pekerjaan Ibu</label>
                                         <select id="mother-work" class="form-select form-control" name="mother-work">
-                                            <option value="0" selected disabled>Select work</option>
-                                            <option value="1">Ibu Rumah Tangga</option>
-                                            <option value="2">Wiraswasta</option>
-                                            <option value="2">Lainnya</option>
+                                            <option value="0" disabled @selected($student->user_complements->mother_work == null)>Select work</option>
+                                            <option value="A" @selected($student->parents->mother_work == 'A')>Ibu Rumah Tangga</option>
+                                            <option value="B" @selected($student->parents->mother_work == 'B')>Wiraswasta</option>
+                                            <option value="C" @selected($student->parents->mother_work == 'C')>Lainnya</option>
                                         </select>
                                     </div>
                                 </div>

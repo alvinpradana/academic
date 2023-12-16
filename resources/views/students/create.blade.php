@@ -179,18 +179,18 @@
                                         <label for="father-work" class="form-label">Pekerjaan Ayah</label>
                                         <select id="father-work" class="form-select form-control" name="father-work">
                                             <option value="0" selected disabled>Select work</option>
-                                            <option value="1">Pengusaha</option>
-                                            <option value="2">Wiraswasta</option>
-                                            <option value="2">Lainnya</option>
+                                            <option value="A">Pengusaha</option>
+                                            <option value="B">Wiraswasta</option>
+                                            <option value="C">Lainnya</option>
                                         </select>
                                     </div>
                                     <div class="mb-3">
                                         <label for="mother-work" class="form-label">Pekerjaan Ibu</label>
                                         <select id="mother-work" class="form-select form-control" name="mother-work">
                                             <option value="0" selected disabled>Select work</option>
-                                            <option value="1">Ibu Rumah Tangga</option>
-                                            <option value="2">Wiraswasta</option>
-                                            <option value="2">Lainnya</option>
+                                            <option value="A">Ibu Rumah Tangga</option>
+                                            <option value="B">Wiraswasta</option>
+                                            <option value="C">Lainnya</option>
                                         </select>
                                     </div>
                                 </div>
