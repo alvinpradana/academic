@@ -115,7 +115,6 @@ class EmployeeController extends Controller
 
         EmpployeeComplement::where('user_id', $id)->update([
             'marital_status' => $request->input('marital-status')
-
         ]);
 
         FamilyContact::where('user_id', $id)->update([
