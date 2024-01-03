@@ -27,7 +27,7 @@ class ScholarshipController extends Controller
             'notes' => $request->notes
         ]);
 
-        return redirect()->route('scholarships.index');
+        return redirect()->route('scholarships.index')->with('success', 'Data beasiswa berhasil disimpan.');
     }
 
     public function edit($id) {
@@ -41,12 +41,12 @@ class ScholarshipController extends Controller
             'notes' => $request->notes
         ]);
 
-        return redirect()->route('scholarships.index');
+        return redirect()->route('scholarships.index')->with('success', 'Data beasiswa berhasil diperbarui.');
     }
 
     public function destroy($id) {
         Scholarship::findOrFail($id)->delete();
 
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Data beasiswa berhasil dihapus.');
     }
 }
