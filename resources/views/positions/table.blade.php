@@ -56,13 +56,13 @@
                                 <td>{{ $position->title }}</td>
                                 <td>{{ $position->notes }}</td>
                                 <td>
-                                    <a href="#" class="btn btn-primary btn-sm btn-circle">
-                                        <i class="fas fa-eye"></i>
-                                    </a>
-                                    <a href="{{ route('positions.edit', $position->id) }}" class="btn btn-success btn-sm btn-circle">
-                                        <i class="fas fa-pen"></i>
-                                    </a>
-                                    @if ($position->id > 2)
+                                    @if ($position->id > 3)
+                                        <a href="#" class="btn btn-primary btn-sm btn-circle">
+                                            <i class="fas fa-eye"></i>
+                                        </a>
+                                        <a href="{{ route('positions.edit', $position->id) }}" class="btn btn-success btn-sm btn-circle">
+                                            <i class="fas fa-pen"></i>
+                                        </a>
                                         <form action="{{ route('positions.destroy', $position->id) }}" method="post" class="d-inline">
                                             @csrf
                                             @method('DELETE')
@@ -70,8 +70,8 @@
                                                 <i class="fas fa-trash"></i>
                                             </button>
                                         </form>
-                                    @endif
-                                </td>
+                                        @endif
+                                    </td>
                             </tr>
                         @endforeach
                     @endif
