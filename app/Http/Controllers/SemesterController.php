@@ -46,6 +46,6 @@ class SemesterController extends Controller
 
     public function destroy($id) {
         Semester::findOrFail($id)->delete();
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Data semester berhasil dihapus.');
     }
 }
