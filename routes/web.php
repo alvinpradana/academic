@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ClassGroupController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PresenceController;
 use App\Http\Controllers\SemesterController;
 use App\Http\Controllers\StudentScholarshipController;
 use App\Http\Controllers\TeacherController;
@@ -31,6 +32,7 @@ Route::resource('grades', GradeController::class);
 Route::resource('majors', MajorController::class);
 Route::resource('student-scholarship', StudentScholarshipController::class);
 Route::resource('semesters', SemesterController::class);
+Route::resource('presences', PresenceController::class);
 
 Route::get('class-group/create/{class_id}', [ClassGroupController::class, 'create'])->name('class-group.create');
 Route::resource('class-group', ClassGroupController::class);

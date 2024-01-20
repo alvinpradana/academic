@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class SemesterController extends Controller
 {
     public function index() {
-        $semesters = Semester::orderBy('id', 'desc')->get();
+        $semesters = Semester::orderBy('id', 'asc')->get();
         $count = Semester::sum('id');
 
         return view('semesters.home', [
