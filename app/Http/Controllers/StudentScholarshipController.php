@@ -10,7 +10,16 @@ use Illuminate\Http\Request;
 class StudentScholarshipController extends Controller
 {
     public function index() {
-        return view('scholarships.student.home');
+        $scholarships = StudentScholarship::with('users')
+            ->with('scholarships')
+            ->orderBy('id', 'desc')
+            ->get();
+        $count = StudentScholarship::sum('id');
+
+        return view('scholarships.student.home', [
+            'scholarships' => $scholarships,
+            'count' => $count
+        ]);
     }
 
     public function create() {
@@ -30,6 +39,34 @@ class StudentScholarshipController extends Controller
             'notes' => $request->notes
         ]);
 
-        return redirect()->route('student-scholarship.index');
+        return redirect()->route('student-scholarship.index')->with('success', 'Data penerima beasiswa berhasil ditambahkan.');
+    }
+
+    public function edit($id) {
+        $student_scholarship = StudentScholarship::find($id);
+        $scholarships = Scholarship::orderBy('id', 'desc')->get();
+        $students = User::with(['user_complements'])->where('position_id', 2)->orderBy('id', 'asc')->get();
+
+        return view('scholarships.student.edit', [
+            'student_scholarship' => $student_scholarship,
+            'scholarships' => $scholarships,
+            'students' => $students
+        ]);
+    }
+
+    public function update(Request $request, $id) {
+        StudentScholarship::where('id', $id)->update([
+            'student_id' => $request->student,
+            'scholarship_id' => $request->scholarship,
+            'notes' => $request->notes
+        ]);
+
+        return redirect()->route('student-scholarship.index')->with('success', 'Data penerima beasiswa berhasil diperbarui.');
+    }
+
+    public function destroy($id) {
+        StudentScholarship::findOrFail($id)->delete();
+
+        return redirect()->back()->with('success', 'Data penerima beasiswa berhasil dihapus');
     }
 }

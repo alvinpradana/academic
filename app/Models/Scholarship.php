@@ -11,4 +11,8 @@ class Scholarship extends Model
 
     protected $table = 'scholarships';
     protected $guarded = 'id';
+
+    public function student_scholarships() {
+        return $this->belongsTo(StudentScholarship::class);
+    }
 }

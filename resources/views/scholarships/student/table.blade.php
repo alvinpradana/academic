@@ -16,6 +16,21 @@
         </form>
     @endslot
 @endcomponent
+@if (session('success'))
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ session('success') }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+@elseif (session('error'))
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        {{ session('error') }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+@endif
 <div class="card shadow mb-4">
     <div class="card-header py-3">
         <h6 class="m-0 font-weight-bold text-primary">Data Beasiswa Pelajar</h6>
@@ -26,28 +41,30 @@
                 @slot('head')
                     <tr>
                         <th>Nama Pelajar</th>
+                        <th>NIP Siswa</th>
                         <th>Nama Beasiswa</th>
                         <th>Action</th>
                     </tr>
                 @endslot
                 @slot('body')
-                    {{-- @if ($count == 0)
+                    @if ($count == 0)
                         <tr>
-                            <td colspan="3" class="text-center">No data available.</td>
+                            <td colspan="4" class="text-center">No data available.</td>
                         </tr>
                     @else
                         @foreach ($scholarships as $scholarship)
                             <tr>
-                                <td>{{ $scholarship->title }}</td>
-                                <td>{{ $scholarship->notes }}</td>
+                                <td>{{ $scholarship->users->user_complements->name }}</td>
+                                <td>{{ $scholarship->users->student_complements->nip_number }}</td>
+                                <td>{{ $scholarship->scholarships->title }}</td>
                                 <td>
                                     <a href="#" class="btn btn-primary btn-sm btn-circle">
                                         <i class="fas fa-eye"></i>
                                     </a>
-                                    <a href="{{ route('scholarships.edit', $scholarship->id) }}" class="btn btn-success btn-sm btn-circle">
+                                    <a href="{{ route('student-scholarship.edit', $scholarship->id) }}" class="btn btn-success btn-sm btn-circle">
                                         <i class="fas fa-pen"></i>
                                     </a>
-                                    <form action="{{ route('scholarships.destroy', $scholarship->id) }}" method="post" class="d-inline">
+                                    <form action="{{ route('student-scholarship.destroy', $scholarship->id) }}" method="post" class="d-inline">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger btn-sm btn-circle">
@@ -57,7 +74,7 @@
                                 </td>
                             </tr>
                         @endforeach
-                    @endif --}}
+                    @endif
                 @endslot
             @endcomponent
         </div>
