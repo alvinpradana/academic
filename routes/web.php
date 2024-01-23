@@ -32,6 +32,9 @@ Route::resource('grades', GradeController::class);
 Route::resource('majors', MajorController::class);
 Route::resource('student-scholarship', StudentScholarshipController::class);
 Route::resource('semesters', SemesterController::class);
+
+Route::get('/presences/{semester}/{class}/{lesson}', [PresenceController::class, 'show'])->scopeBindings();
+Route::get('/presences/create/{class}', [PresenceController::class, 'create'])->name('presences-create.create')->scopeBindings();
 Route::resource('presences', PresenceController::class);
 
 Route::get('class-group/create/{class_id}', [ClassGroupController::class, 'create'])->name('class-group.create');
