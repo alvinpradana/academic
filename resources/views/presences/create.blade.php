@@ -12,6 +12,30 @@
                         <h6 class="m-0 font-weight-bold text-primary">Form Tambah Data Presensi</h6>
                     </div>
                     <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="semester" class="form-label">Pilih Semester</label>
+                                    <select id="semester" class="form-select form-control text-capitalize" name="semester">
+                                        <option value="0" selected disabled>Pilih Opsi</option>
+                                        @foreach ($semesters as $semester)
+                                            <option value="{{ $semester->id }}">{{ $semester->title }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="lesson" class="form-label">Pilih Mata Pelajaran</label>
+                                    <select id="lesson" class="form-select form-control" name="lesson">
+                                        <option value="0" selected disabled>Pilih Opsi</option>
+                                        @foreach ($lessons as $lesson)
+                                            <option value="{{ $lesson->id }}">{{ $lesson->title }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
                         <form action="{{ route('presences.store') }}" method="post">
                             @csrf
                             <table class="table table-bordered table-hovered" id="dataTable" width="100%" cellspacing="0">

@@ -9,5 +9,5 @@
             </a>
         </div>
     </div>
-    @include('presences.semester')
+    @include('presences.semester-table')
 @endsection
