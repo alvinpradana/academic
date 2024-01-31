@@ -44,11 +44,19 @@ class PresenceController extends Controller
         $students = ClassGroup::where('class_id', $class)->with('users.user_complements')->get();
         $semesters = Semester::orderBy('id', 'asc')->get();
         $lessons = Lesson::orderBy('id', 'asc')->get();
+        $class = Classes::with([
+            'majors',
+            'levels',
+            'grades'
+        ])->orderBy('id', 'asc')->get();
+        $index = 0;
 
         return view('presences.create', [
             'students' => $students,
             'semesters' => $semesters,
-            'lessons' => $lessons
+            'lessons' => $lessons,
+            'class' => $class,
+            'index' => $index
         ]);
     }
 
