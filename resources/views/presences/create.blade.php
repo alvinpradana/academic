@@ -49,6 +49,7 @@
                         </div>
                         <form action="{{ route('presences.store') }}" method="post">
                             @csrf
+                            <input type="hidden" class="form-control" name="count" value="{{ $count }}">
                             <table class="table table-bordered table-hovered" id="dataTable" width="100%" cellspacing="0">
                                 <thead>
                                     <tr>
@@ -66,11 +67,11 @@
                                                 <input type="hidden" class="form-control" name="student[{{ $index++ }}]" value="{{ $student->users->user_complements->name }}">
                                             </td>
                                             <td>
-                                                <input type="text" class="form-control" name="student[{{ $index++ }}]" value="{{ $student->users->student_complements->nip_number }}" disabled>
-                                                <input type="hidden" class="form-control" name="student[{{ $index++ }}]" value="{{ $student->users->student_complements->nip_number }}">
+                                                <input type="text" class="form-control" name="nip[{{ $index++ }}]" value="{{ $student->users->student_complements->nip_number }}" disabled>
+                                                <input type="hidden" class="form-control" name="nip[{{ $index++ }}]" value="{{ $student->users->student_complements->nip_number }}">
                                             </td>
                                             <td>
-                                                <select class="form-select form-control" name="presence[{{ $index++ }}]">
+                                                <select class="form-select form-control" name="status[{{ $index++ }}]">
                                                     <option value="A">Hadir</option>
                                                     <option value="B">Tidak Hadir</option>
                                                 </select>

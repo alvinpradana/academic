@@ -49,6 +49,7 @@ class PresenceController extends Controller
             'levels',
             'grades'
         ])->orderBy('id', 'asc')->get();
+        $count = $students->count('id');
         $index = 0;
 
         return view('presences.create', [
@@ -56,11 +57,21 @@ class PresenceController extends Controller
             'semesters' => $semesters,
             'lessons' => $lessons,
             'class' => $class,
-            'index' => $index
+            'index' => $index,
+            'count' => $count
         ]);
     }
 
-    public function store() {
-
+    public function store(Request $request) {
+        // $data = [];
+        // foreach ($request->count as $index) {
+        //     $data[] = [
+        //         $request[$index]->student,
+        //         $request[$index]->nip,
+        //         $request[$index]->status,
+        //         $request[$index]->notes
+        //     ];
+        // }
+        dd($request->student);
     }
 }
