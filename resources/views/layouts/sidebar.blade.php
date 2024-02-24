@@ -29,7 +29,7 @@
                 <a class="collapse-item" href="{{ route('majors.index') }}">Data Jurusan</a>
                 <a class="collapse-item" href="{{ route('class-level.index') }}">Data Level Kelas</a>
                 <a class="collapse-item" href="{{ route('grades.index') }}">Data Grade Kelas</a>
-                <a class="collapse-item" href="{{ route('students.index') }}">Data Nilai</a>
+                <a class="collapse-item" href="{{ route('scores.index') }}">Data Nilai</a>
                 <a class="collapse-item" href="{{ route('presences.index') }}">Data Presensi</a>
             </div>
         </div>

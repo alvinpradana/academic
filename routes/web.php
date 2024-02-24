@@ -3,6 +3,7 @@
 use App\Http\Controllers\ClassGroupController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PresenceController;
+use App\Http\Controllers\ScoreController;
 use App\Http\Controllers\SemesterController;
 use App\Http\Controllers\StudentScholarshipController;
 use App\Http\Controllers\TeacherController;
@@ -32,6 +33,11 @@ Route::resource('grades', GradeController::class);
 Route::resource('majors', MajorController::class);
 Route::resource('student-scholarship', StudentScholarshipController::class);
 Route::resource('semesters', SemesterController::class);
+
+Route::get('/scores/list/{class}', [ScoreController::class, 'list'])->name('scores.list');
+Route::get('/scores/list/{class}/lessons/{id}', [ScoreController::class, 'lessons'])->name('scores.show-lessons');
+Route::get('/scores/list/{class}/show/{id}', [ScoreController::class, 'load'])->name('scores.show-scores');
+Route::resource('scores', ScoreController::class);
 
 Route::get('/presences/{semester}/{class}/{lesson}', [PresenceController::class, 'show'])->scopeBindings();
 Route::get('/presences/create/{class}', [PresenceController::class, 'create'])->name('presences-create.create')->scopeBindings();
