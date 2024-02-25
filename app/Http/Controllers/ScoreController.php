@@ -7,6 +7,7 @@ use App\Models\ClassGroup;
 use App\Models\Lesson;
 use App\Models\Score;
 use App\Models\Semester;
+use App\Models\StudentScore;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 
@@ -56,22 +57,26 @@ class ScoreController extends Controller
     public function store(Request $request) {
         $data = [];
         $index = $request->count;
+        
+        Score::insert([
+            'class_id' => 1,
+            'lesson_id' => $request->lesson,
+            'task_name' => $request->task,
+            'teacher_name' => $request->teacher,
+            'created' => date('Y-m-d')
+        ]);
 
         foreach ($request->student as $key) {
             $index--;
             array_push($data, [
-                'class_id' => 1,
-                'lesson_id' => $request->lesson,
-                'task_name' => $request->task,
-                'teacher_name' => $request->teacher,
+                'score_id' => Score::pluck('id')->last(),
                 'student_id' => $request->student[$index],
                 'score' => $request->score[$index],
                 'notes' => $request->notes[$index],
-                'created' => date('Y-m-d')
             ]);
         }
-        
-        Score::insert($data);
+
+        StudentScore::insert($data);
         return redirect()->route('scores.index');
     }
 }
