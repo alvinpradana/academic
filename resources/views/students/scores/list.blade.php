@@ -4,8 +4,8 @@
     <div>
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">Data Nilai Siswa</h1>
-            <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
-                <i class="fas fa-download fa-sm text-white-50"></i> Generate Report
+            <a href="{{ route('scores.add', $class) }}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm px-3">
+                Create
             </a>
         </div>
         <div class="card shadow mb-4">
@@ -31,7 +31,7 @@
                                 <td>Tugas IPA 1</td>
                                 <td>Guru</td>
                                 <td>
-                                    <a href="{{ route('scores.show-lessons', ['class' => 1, 'id' => 1]) }}" class="btn btn-primary btn-sm px-3">
+                                    <a href="{{ route('scores.view', ['class' => 1, 'id' => 1]) }}" class="btn btn-primary btn-sm px-3">
                                         View
                                     </a>
                                 </td>

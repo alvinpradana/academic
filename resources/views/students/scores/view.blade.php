@@ -17,31 +17,21 @@
                     @component('components.table')
                         @slot('head')
                             <tr>
-                                <th>Tanggal</th>
-                                <th>Mata Pelajaran</th>
-                                <th>Pengajar</th>
+                                <th>NIP</th>
+                                <th>Nama Pelajar</th>
+                                <th>Nilai</th>
                                 <th>Action</th>
                             </tr>
                         @endslot
                         @slot('body')
                             <tr>
-                                <td>Selasa, 17 Dec 2023</td>
-                                <td>IPA</td>
-                                <td>Guru</td>
+                                <td>202300001</td>
+                                <td>Siswa</td>
+                                <td>80</td>
                                 <td>
-                                    <a href="{{ route('scores.show-scores', 1, 2) }}" class="btn btn-primary btn-sm btn-circle">
-                                        <i class="fas fa-eye"></i>
+                                    <a href="{{ route('scores.view', ['class' => 1, 'id' => 1]) }}" class="btn btn-primary btn-sm px-3">
+                                        Edit
                                     </a>
-                                    <a href="{{ route('scores.index') }}" class="btn btn-success btn-sm btn-circle">
-                                        <i class="fas fa-pen"></i>
-                                    </a>
-                                    <form action="{{ route('scores.index') }}" method="post" class="d-inline">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-danger btn-sm btn-circle">
-                                            <i class="fas fa-trash"></i>
-                                        </button>
-                                    </form>
                                 </td>
                             </tr>
                         @endslot
