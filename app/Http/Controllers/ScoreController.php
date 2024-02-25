@@ -29,7 +29,12 @@ class ScoreController extends Controller
     }
 
     public function list($class) {
-        return view('students.scores.list', compact('class'));
+        $scores = Score::with('lesson')->where('class_id', $class)->orderBy('id', 'desc')->get();
+
+        return view('students.scores.list', [
+            'scores' => $scores,
+            'class' => $class
+        ]);
     }
 
     public function task() {

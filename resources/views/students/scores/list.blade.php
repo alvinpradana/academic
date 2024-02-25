@@ -25,17 +25,19 @@
                             </tr>
                         @endslot
                         @slot('body')
-                            <tr>
-                                <td>Selasa, 17 Dec 2023</td>
-                                <td>IPA</td>
-                                <td>Tugas IPA 1</td>
-                                <td>Guru</td>
-                                <td>
-                                    <a href="{{ route('scores.view', ['class' => 1, 'id' => 1]) }}" class="btn btn-primary btn-sm px-3">
-                                        View
-                                    </a>
-                                </td>
-                            </tr>
+                            @foreach ($scores as $score)    
+                                <tr>
+                                    <td>{{ $score->created }}</td>
+                                    <td>{{ $score->lesson->title }}</td>
+                                    <td>{{ $score->task_name }}</td>
+                                    <td>{{ $score->teacher_name }}</td>
+                                    <td>
+                                        <a href="{{ route('scores.view', ['class' => $class, 'id' => $score->id]) }}" class="btn btn-primary btn-sm px-3">
+                                            View
+                                        </a>
+                                    </td>
+                                </tr>
+                            @endforeach
                         @endslot
                     @endcomponent
                 </div>

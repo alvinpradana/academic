@@ -11,4 +11,8 @@ class Lesson extends Model
 
     protected $table = 'lessons';
     protected $guarded = 'id';
+
+    public function scores() {
+        return $this->belongsTo(Score::class);
+    }
 }
