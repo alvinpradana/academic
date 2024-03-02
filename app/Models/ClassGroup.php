@@ -22,4 +22,8 @@ class ClassGroup extends Model
     public function class(): HasOne {
         return $this->hasOne(Classes::class, 'id');
     }
+
+    public function scores(): HasMany {
+        return $this->hasMany(Score::class, 'id');
+    }
 }

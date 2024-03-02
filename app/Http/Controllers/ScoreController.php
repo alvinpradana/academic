@@ -37,12 +37,16 @@ class ScoreController extends Controller
         ]);
     }
 
-    public function task() {
-        return view('students.scores.task');
-    }
+    public function view($class, $score) {
+        $student_scores = StudentScore::with([
+            'scores',
+            'students.student_complements',
+            'students.user_complements'
+        ])->where('score_id', $score)->orderBy('student_id', 'asc')->get();
 
-    public function view($class, $id) {
-        return view('students.scores.view');
+        return view('students.scores.view', [
+            'student_scores' => $student_scores
+        ]);
     }
 
     public function add($class) {

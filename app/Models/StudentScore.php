@@ -11,4 +11,12 @@ class StudentScore extends Model
 
     protected $table = 'student_score';
     protected $guarded = 'id';
+
+    public function scores() {
+        return $this->belongsTo(Score::class, 'score_id');
+    }
+
+    public function students() {
+        return $this->belongsTo(User::class, 'student_id');
+    }
 }

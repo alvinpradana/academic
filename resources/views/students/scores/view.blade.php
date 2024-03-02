@@ -24,16 +24,18 @@
                             </tr>
                         @endslot
                         @slot('body')
-                            <tr>
-                                <td>202300001</td>
-                                <td>Siswa</td>
-                                <td>80</td>
-                                <td>
-                                    <a href="{{ route('scores.view', ['class' => 1, 'id' => 1]) }}" class="btn btn-primary btn-sm px-3">
-                                        Edit
-                                    </a>
-                                </td>
-                            </tr>
+                            @foreach ($student_scores as $key => $item)
+                                <tr>
+                                    <td>{{ $item->students->student_complements->nip_number }}</td>
+                                    <td>{{ $item->students->user_complements->name }}</td>
+                                    <td>{{ $item->score }}</td>
+                                    <td>
+                                        <a href="{{ route('scores.view', ['class' => 1, 'id' => 1]) }}" class="btn btn-primary btn-sm px-3">
+                                            Edit
+                                        </a>
+                                    </td>
+                                </tr>
+                            @endforeach
                         @endslot
                     @endcomponent
                 </div>

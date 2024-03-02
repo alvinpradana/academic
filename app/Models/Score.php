@@ -12,7 +12,15 @@ class Score extends Model
     protected $table = 'scores';
     protected $guarded = 'id';
 
+    public function class_group() {
+        return $this->belongsTo(ClassGroup::class, 'class_id');
+    }
+    
     public function lesson() {
-        return $this->belongsTo(Lesson::class);
+        return $this->belongsTo(Lesson::class, 'lesson_id');
+    }
+
+    public function student_scores() {
+        return $this->hasMany(StudentScore::class);
     }
 }
