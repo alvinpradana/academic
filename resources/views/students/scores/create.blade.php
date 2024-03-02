@@ -14,6 +14,7 @@
                     <div class="card-body">
                         <form action="{{ route('scores.store') }}" method="post">
                             @csrf
+                            <input type="hidden" class="form-control" name="class" value="{{ $class }}">
                             <div class="row">
                                 <div class="col-md-3">
                                     <div class="mb-3">

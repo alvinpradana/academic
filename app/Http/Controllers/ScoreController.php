@@ -59,7 +59,8 @@ class ScoreController extends Controller
             'semesters' => $semesters,
             'lessons' => $lessons,
             'students' => $students,
-            'count' => $count
+            'count' => $count,
+            'class' => $class
         ]);
     }
 
@@ -68,7 +69,7 @@ class ScoreController extends Controller
         $index = $request->count;
         
         Score::insert([
-            'class_id' => 1,
+            'class_id' => $request->class,
             'lesson_id' => $request->lesson,
             'task_name' => $request->task,
             'teacher_name' => $request->teacher,
