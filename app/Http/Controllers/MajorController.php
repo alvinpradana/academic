@@ -17,6 +17,12 @@ class MajorController extends Controller
         ]);
     }
     
+    public function show($id) {
+        $major = Major::findOrFail($id);
+
+        return view('majors.show', ['major' => $major]);
+    }
+    
     public function create() {
         return view('majors.create');
     }

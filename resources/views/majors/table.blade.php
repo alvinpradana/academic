@@ -56,7 +56,7 @@
                                 <td>{{ $major->title }}</td>
                                 <td>{{ $major->notes }}</td>
                                 <td>
-                                    <a href="#" class="btn btn-primary btn-sm btn-circle">
+                                    <a href="{{ route('majors.show', $major->id) }}" class="btn btn-primary btn-sm btn-circle">
                                         <i class="fas fa-eye"></i>
                                     </a>
                                     <a href="{{ route('majors.edit', $major->id) }}" class="btn btn-success btn-sm btn-circle">
