@@ -17,6 +17,12 @@ class ScholarshipController extends Controller
         ]);
     }
 
+    public function show($id) {
+        $scholarship = Scholarship::findOrFail($id);
+        
+        return view('scholarships.show', ['scholarship' => $scholarship]);
+    }
+
     public function create() {
         return view('scholarships.create');
     }

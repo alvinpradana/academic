@@ -56,7 +56,7 @@
                                 <td>{{ $scholarship->title }}</td>
                                 <td>{{ $scholarship->notes }}</td>
                                 <td>
-                                    <a href="#" class="btn btn-primary btn-sm btn-circle">
+                                    <a href="{{ route('scholarships.show', $scholarship->id) }}" class="btn btn-primary btn-sm btn-circle">
                                         <i class="fas fa-eye"></i>
                                     </a>
                                     <a href="{{ route('scholarships.edit', $scholarship->id) }}" class="btn btn-success btn-sm btn-circle">
