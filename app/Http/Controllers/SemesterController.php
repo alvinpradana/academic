@@ -17,6 +17,12 @@ class SemesterController extends Controller
         ]);
     }
 
+    public function show($id) {
+        $semester = Semester::findOrFail($id);
+
+        return view('semesters.show', ['semester' => $semester]);
+    }
+
     public function create() {
         return view('semesters.create');
     }
