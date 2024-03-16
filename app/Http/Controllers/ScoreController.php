@@ -115,4 +115,32 @@ class ScoreController extends Controller
             'students' => $students
         ]);
     }
+
+    public function update(Request $request, $class, $score) {
+        $data = [];
+        $index = $request->count;
+
+        Score::where('id', $score)->update([
+            'semester_id' => $request->semester,
+            'class_id' => $request->class,
+            'lesson_id' => $request->lesson,
+            'task_name' => $request->task,
+            'teacher_name' => $request->teacher
+        ]);
+
+        foreach ($request->student as $key) {
+            $index--;
+            array_push($data, [
+                'score_id' => Score::pluck('id')->last(),
+                'student_id' => $request->student[$index],
+                'score' => $request->score[$index],
+                'notes' => $request->notes[$index],
+            ]);
+        }
+
+        StudentScore::where('score_id', $score)->delete();
+        StudentScore::insert($data);
+
+        return redirect()->route('scores.list', ['class' => $class]);
+    }
 }

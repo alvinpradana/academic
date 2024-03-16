@@ -37,7 +37,7 @@ Route::resource('semesters', SemesterController::class);
 Route::get('/scores/list/{class}', [ScoreController::class, 'list'])->name('scores.list');
 Route::get('/scores/list/{class}/view/{id}', [ScoreController::class, 'view'])->name('scores.view');
 Route::get('/scores/list/{class}/view/{id}/edit', [ScoreController::class, 'edit'])->name('scores.edit-score');
-Route::put('/scores/list/{class}/view/{id}', [ScoreController::class, 'edit'])->name('scores.update-score');
+Route::put('/scores/list/{class}/view/{score}', [ScoreController::class, 'update'])->name('scores.update-score');
 Route::get('/scores/create/{class}', [ScoreController::class, 'add'])->name('scores.add');
 Route::resource('scores', ScoreController::class);
 

@@ -12,8 +12,9 @@
                         <h6 class="m-0 font-weight-bold text-primary">Form Edit Data Nilai</h6>
                     </div>
                     <div class="card-body">
-                        <form action="{{ route('scores.update-score', ['class' => $class, 'id' => $score]) }}" method="post">
+                        <form action="{{ route('scores.update-score', ['class' => $class, 'score' => $score]) }}" method="post">
                             @csrf
+                            @method('PUT')
                             <input type="hidden" class="form-control" name="class" value="{{ $class }}">
                             <div class="row">
                                 <div class="col-md-3">
@@ -41,13 +42,13 @@
                                 <div class="col-md-3">
                                     <div class="mb-3">
                                         <label for="task" class="form-label">Nama Tugas</label>
-                                        <input type="text" class="form-control" id="task" name="task" value={{ $scores->task_name }}>
+                                        <input type="text" class="form-control" id="task" name="task" value="{{ $scores->task_name }}">
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="mb-3">
                                         <label for="teacher" class="form-label">Nama Pengajar</label>
-                                        <input type="text" class="form-control" id="teacher" name="teacher" value={{ $scores->teacher_name }}>
+                                        <input type="text" class="form-control" id="teacher" name="teacher" value="{{ $scores->teacher_name }}">
                                     </div>
                                 </div>
                             </div>

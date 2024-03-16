@@ -37,12 +37,19 @@
                                         <td>{{ $score->task_name }}</td>
                                         <td>{{ $score->teacher_name }}</td>
                                         <td>
-                                            <a href="{{ route('scores.view', ['class' => $class, 'id' => $score->id]) }}" class="btn btn-primary btn-sm px-3">
-                                                View
+                                            <a href="{{ route('scores.view', ['class' => $class, 'id' => $score->id]) }}" class="btn btn-primary btn-sm btn-circle">
+                                                <i class="fas fa-eye"></i>
                                             </a>
-                                            <a href="{{ route('scores.edit-score', ['class' => $class, 'id' => $score->id]) }}" class="btn btn-primary btn-sm px-3">
-                                                Edit
+                                            <a href="{{ route('scores.edit-score', ['class' => $class, 'id' => $score->id]) }}" class="btn btn-success btn-sm btn-circle">
+                                                <i class="fas fa-pen"></i>
                                             </a>
+                                            <form action="#" method="post" class="d-inline">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-danger btn-sm btn-circle">
+                                                    <i class="fas fa-trash"></i>
+                                                </button>
+                                            </form>
                                         </td>
                                     </tr>
                                 @endforeach
