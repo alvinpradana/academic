@@ -17,6 +17,12 @@ class GradeController extends Controller
         ]);
     }
 
+    public function show($id) {
+        $grade = Grade::findOrFail($id);
+
+        return view('class.grade.show', ['grade' => $grade]);
+    }
+
     public function create() {
         return view('class.grade.create');
     }

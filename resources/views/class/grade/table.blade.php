@@ -56,7 +56,7 @@
                                 <td>{{ $grade->title }}</td>
                                 <td>{{ $grade->notes }}</td>
                                 <td>
-                                    <a href="#" class="btn btn-primary btn-sm btn-circle">
+                                    <a href="{{ route('grades.show', $grade->id) }}" class="btn btn-primary btn-sm btn-circle">
                                         <i class="fas fa-eye"></i>
                                     </a>
                                     <a href="{{ route('grades.edit', $grade->id) }}" class="btn btn-success btn-sm btn-circle">

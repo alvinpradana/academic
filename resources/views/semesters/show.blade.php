@@ -15,7 +15,7 @@
                         <div>
                             <div class="mb-3">
                                 <label for="title" class="form-label">Nama Semester</label>
-                                <input type="text" class="form-control" id="title" name="title" autofocus value="{{ $semester->title }}" disabled>
+                                <input type="text" class="form-control" id="title" name="title" value="{{ $semester->title }}" disabled>
                             </div>
                             <div class="mb-3">
                                 <label for="notes" class="form-label">Keterangan</label>

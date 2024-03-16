@@ -15,7 +15,7 @@
                         <div>
                             <div class="mb-3">
                                 <label for="title" class="form-label">Level Kelas</label>
-                                <input type="number" class="form-control" id="title" name="title" autofocus value="{{ $class->level }}" disabled>
+                                <input type="number" class="form-control" id="title" name="title" value="{{ $class->level }}" disabled>
                             </div>
                             <div class="mb-3">
                                 <label for="notes" class="form-label">Keterangan</label>
