@@ -56,7 +56,7 @@
                                 <td>{{ $level->level }}</td>
                                 <td>{{ $level->notes }}</td>
                                 <td>
-                                    <a href="#" class="btn btn-primary btn-sm btn-circle">
+                                    <a href="{{ route('class-level.show', $level->id) }}" class="btn btn-primary btn-sm btn-circle">
                                         <i class="fas fa-eye"></i>
                                     </a>
                                     <a href="{{ route('class-level.edit', $level->id) }}" class="btn btn-success btn-sm btn-circle">

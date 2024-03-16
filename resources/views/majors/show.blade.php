@@ -1,4 +1,4 @@
-@extends('layouts.app', ['title' => 'Show Data Lesson'])
+@extends('layouts.app', ['title' => 'Show Data Major'])
 
 @section('content')
     <div>

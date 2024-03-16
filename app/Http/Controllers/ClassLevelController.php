@@ -17,6 +17,12 @@ class ClassLevelController extends Controller
         ]);
     }
 
+    public function show($id) {
+        $class = LevelClass::findOrFail($id);
+        
+        return view('class.level.show', ['class' => $class]);
+    }
+
     public function create() {
         return view('class.level.create');
     }
