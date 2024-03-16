@@ -43,7 +43,7 @@
                                             <a href="{{ route('scores.edit-score', ['class' => $class, 'id' => $score->id]) }}" class="btn btn-success btn-sm btn-circle">
                                                 <i class="fas fa-pen"></i>
                                             </a>
-                                            <form action="#" method="post" class="d-inline">
+                                            <form action="{{ route('scores.destroy', $score->id) }}" method="post" class="d-inline">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-danger btn-sm btn-circle">

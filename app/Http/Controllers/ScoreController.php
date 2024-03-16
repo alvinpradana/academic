@@ -91,7 +91,7 @@ class ScoreController extends Controller
         }
 
         StudentScore::insert($data);
-        return redirect()->route('scores.index');
+        return redirect()->route('scores.list', $request->class);
     }
 
     public function edit($class, $id) {
@@ -142,5 +142,10 @@ class ScoreController extends Controller
         StudentScore::insert($data);
 
         return redirect()->route('scores.list', ['class' => $class]);
+    }
+
+    public function destroy($score) {
+        Score::findOrFail($score)->delete();
+        return redirect()->back();
     }
 }
