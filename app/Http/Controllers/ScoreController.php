@@ -9,7 +9,6 @@ use App\Models\Score;
 use App\Models\Semester;
 use App\Models\StudentScore;
 use Illuminate\Http\Request;
-use Illuminate\Support\Carbon;
 
 class ScoreController extends Controller
 {
@@ -29,11 +28,13 @@ class ScoreController extends Controller
     }
 
     public function list($class) {
+        $count = Score::where('class_id', $class)->count('id');
         $scores = Score::with('lesson')->where('class_id', $class)->orderBy('id', 'desc')->get();
 
         return view('students.scores.list', [
             'scores' => $scores,
-            'class' => $class
+            'class' => $class,
+            'count' => $count
         ]);
     }
 
@@ -45,7 +46,9 @@ class ScoreController extends Controller
         ])->where('score_id', $score)->orderBy('student_id', 'asc')->get();
 
         return view('students.scores.view', [
-            'student_scores' => $student_scores
+            'student_scores' => $student_scores,
+            'class' => $class,
+            'score_id' => $score
         ]);
     }
 
@@ -69,6 +72,7 @@ class ScoreController extends Controller
         $index = $request->count;
         
         Score::insert([
+            'semester_id' => $request->semester,
             'class_id' => $request->class,
             'lesson_id' => $request->lesson,
             'task_name' => $request->task,
@@ -88,5 +92,27 @@ class ScoreController extends Controller
 
         StudentScore::insert($data);
         return redirect()->route('scores.index');
+    }
+
+    public function edit($class, $id) {
+        $students = ClassGroup::where('class_id', $class)->with('users.user_complements')->get();
+        $semesters = Semester::orderBy('id', 'asc')->get();
+        $lessons = Lesson::orderBy('id', 'asc')->get();
+        $scores = Score::where('id', $id)->first();
+        $student_scores = StudentScore::with([
+            'scores',
+            'students.student_complements',
+            'students.user_complements'
+        ])->where('score_id', $id)->orderBy('student_id', 'asc')->get();
+
+        return view('students.scores.edit', [
+            'student_scores' => $student_scores,
+            'scores' => $scores,
+            'semesters' => $semesters,
+            'class' => $class,
+            'score' => $id,
+            'lessons' => $lessons,
+            'students' => $students
+        ]);
     }
 }

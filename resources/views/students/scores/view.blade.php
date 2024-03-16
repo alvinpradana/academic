@@ -20,7 +20,7 @@
                                 <th>NIP</th>
                                 <th>Nama Pelajar</th>
                                 <th>Nilai</th>
-                                <th>Action</th>
+                                <th>Keterangan</th>
                             </tr>
                         @endslot
                         @slot('body')
@@ -29,11 +29,7 @@
                                     <td>{{ $item->students->student_complements->nip_number }}</td>
                                     <td>{{ $item->students->user_complements->name }}</td>
                                     <td>{{ $item->score }}</td>
-                                    <td>
-                                        <a href="{{ route('scores.view', ['class' => 1, 'id' => 1]) }}" class="btn btn-primary btn-sm px-3">
-                                            Edit
-                                        </a>
-                                    </td>
+                                    <td>{{ $item->notes }}</td>
                                 </tr>
                             @endforeach
                         @endslot

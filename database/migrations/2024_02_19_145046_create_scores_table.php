@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('scores', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('semester_id')->constrained('semesters')->onDelete('cascade');
             $table->foreignId('class_id')->constrained('class_group')->onDelete('cascade');
             $table->foreignId('lesson_id')->constrained('lessons')->onDelete('cascade');
             $table->string('task_name');

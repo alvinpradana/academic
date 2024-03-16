@@ -25,19 +25,28 @@
                             </tr>
                         @endslot
                         @slot('body')
-                            @foreach ($scores as $score)    
+                            @if ($count == 0)
                                 <tr>
-                                    <td>{{ $score->created }}</td>
-                                    <td>{{ $score->lesson->title }}</td>
-                                    <td>{{ $score->task_name }}</td>
-                                    <td>{{ $score->teacher_name }}</td>
-                                    <td>
-                                        <a href="{{ route('scores.view', ['class' => $class, 'id' => $score->id]) }}" class="btn btn-primary btn-sm px-3">
-                                            View
-                                        </a>
-                                    </td>
+                                    <td colspan="5" class="text-center">No data available.</td>
                                 </tr>
-                            @endforeach
+                            @else
+                                @foreach ($scores as $score)    
+                                    <tr>
+                                        <td>{{ $score->created }}</td>
+                                        <td>{{ $score->lesson->title }}</td>
+                                        <td>{{ $score->task_name }}</td>
+                                        <td>{{ $score->teacher_name }}</td>
+                                        <td>
+                                            <a href="{{ route('scores.view', ['class' => $class, 'id' => $score->id]) }}" class="btn btn-primary btn-sm px-3">
+                                                View
+                                            </a>
+                                            <a href="{{ route('scores.edit-score', ['class' => $class, 'id' => $score->id]) }}" class="btn btn-primary btn-sm px-3">
+                                                Edit
+                                            </a>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            @endif
                         @endslot
                     @endcomponent
                 </div>
