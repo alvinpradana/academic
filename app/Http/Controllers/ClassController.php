@@ -26,6 +26,14 @@ class ClassController extends Controller
             'count' => $count,
         ]);
     }
+
+    public function show($id) {
+        $class = Classes::findOrFail($id);
+
+        return view('class.show', [
+            'class' => $class
+        ]);
+    }
     
     public function create() {
         $levels = LevelClass::orderBy('level', 'asc')->get();

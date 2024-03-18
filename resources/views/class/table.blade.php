@@ -60,7 +60,7 @@
                                 <td>{{ $class->grades->title }}</td>
                                 <td>{{ $class->users->user_complements->name }}</td>
                                 <td>
-                                    <a href="#" class="btn btn-primary btn-sm btn-circle">
+                                    <a href="{{ route('class.show', $class->id) }}" class="btn btn-primary btn-sm btn-circle">
                                         <i class="fas fa-eye"></i>
                                     </a>
                                     <a href="{{ route('class.edit', $class->id) }}" class="btn btn-success btn-sm btn-circle">
