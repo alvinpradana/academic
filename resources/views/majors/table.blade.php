@@ -2,20 +2,6 @@
     <p class="my-auto">Tabel berikut merupakan data jurusan pada SMK Crows Zero tahun ajaran 2023/2024.</p>
     <a href="{{ route('majors.create') }}" class="btn btn-primary">Tambah</a>
 </div>
-@component('components.modal')
-    @slot('body')
-        <form>
-            <div class="mb-3">
-                <label for="recipient-name" class="col-form-label">Recipient:</label>
-                <input type="text" class="form-control" id="recipient-name">
-            </div>
-            <div class="mb-3">
-                <label for="message-text" class="col-form-label">Message:</label>
-                <textarea class="form-control" id="message-text"></textarea>
-            </div>
-        </form>
-    @endslot
-@endcomponent
 @if (session('success'))
     <div class="alert alert-success alert-dismissible fade show" role="alert">
         {{ session('success') }}
@@ -62,13 +48,24 @@
                                     <a href="{{ route('majors.edit', $major->id) }}" class="btn btn-success btn-sm btn-circle">
                                         <i class="fas fa-pen"></i>
                                     </a>
-                                    <form action="{{ route('majors.destroy', $major->id) }}" method="post" class="d-inline">
+                                    {{-- <form action="{{ route('majors.destroy', $major->id) }}" method="post" class="d-inline">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger btn-sm btn-circle">
                                             <i class="fas fa-trash"></i>
                                         </button>
-                                    </form>
+                                    </form> --}}
+                                    @component('components.modal')
+                                        @slot('body')
+                                            Are you sure you want to delete this data?
+                                        @endslot
+                                        @slot('route')
+                                            {{ route('majors.destroy', $major->id) }}
+                                        @endslot
+                                    @endcomponent
+                                    <button type="button" class="btn btn-danger btn-sm btn-circle" data-toggle="modal" data-target="#modal">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
                                 </td>
                             </tr>
                         @endforeach
