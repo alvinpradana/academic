@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Position;
-use App\Models\User;
-use App\Models\UserPosition;
 use Illuminate\Http\Request;
 
 class PositionController extends Controller
@@ -16,6 +14,14 @@ class PositionController extends Controller
         return view('positions.home', [
             'positions' => $positions,
             'count' => $count
+        ]);
+    }
+
+    public function show($id) {
+        $position = Position::find($id);
+
+        return view('positions.show', [
+            'position' => $position
         ]);
     }
 

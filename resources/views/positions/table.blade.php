@@ -57,7 +57,7 @@
                                 <td>{{ $position->notes }}</td>
                                 <td>
                                     @if ($position->id > 3)
-                                        <a href="#" class="btn btn-primary btn-sm btn-circle">
+                                        <a href="{{ route('positions.show', $position->id) }}" class="btn btn-primary btn-sm btn-circle">
                                             <i class="fas fa-eye"></i>
                                         </a>
                                         <a href="{{ route('positions.edit', $position->id) }}" class="btn btn-success btn-sm btn-circle">
