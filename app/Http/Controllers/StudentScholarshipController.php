@@ -22,6 +22,14 @@ class StudentScholarshipController extends Controller
         ]);
     }
 
+    public function show($id) {
+        $student_scholarship = StudentScholarship::find($id);
+
+        return view('scholarships.student.show', [
+            'student_scholarship' => $student_scholarship
+        ]);
+    }
+
     public function create() {
         $scholarships = Scholarship::orderBy('id', 'desc')->get();
         $students = User::with(['user_complements'])->where('position_id', 2)->orderBy('id', 'asc')->get();

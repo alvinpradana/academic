@@ -58,7 +58,7 @@
                                 <td>{{ $scholarship->users->student_complements->nip_number }}</td>
                                 <td>{{ $scholarship->scholarships->title }}</td>
                                 <td>
-                                    <a href="#" class="btn btn-primary btn-sm btn-circle">
+                                    <a href="{{ route('student-scholarship.show', $scholarship->id) }}" class="btn btn-primary btn-sm btn-circle">
                                         <i class="fas fa-eye"></i>
                                     </a>
                                     <a href="{{ route('student-scholarship.edit', $scholarship->id) }}" class="btn btn-success btn-sm btn-circle">
