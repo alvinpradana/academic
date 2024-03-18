@@ -72,8 +72,8 @@
                                         <button type="button" class="btn btn-danger btn-sm btn-circle" data-toggle="modal" data-target="#modal">
                                             <i class="fas fa-trash"></i>
                                         </button>
-                                        @endif
-                                    </td>
+                                    @endif
+                                </td>
                             </tr>
                         @endforeach
                     @endif
