@@ -62,13 +62,27 @@
                                     <a href="{{ route('class-level.edit', $level->id) }}" class="btn btn-success btn-sm btn-circle">
                                         <i class="fas fa-pen"></i>
                                     </a>
-                                    <form action="{{ route('class-level.destroy', $level->id) }}" method="post" class="d-inline">
+                                    {{-- <form action="{{ route('class-level.destroy', $level->id) }}" method="post" class="d-inline">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger btn-sm btn-circle">
                                             <i class="fas fa-trash"></i>
                                         </button>
-                                    </form>
+                                    </form> --}}
+                                    @component('components.modal')
+                                        @slot('id')
+                                            {{ $level->id }}
+                                        @endslot
+                                        @slot('body')
+                                            Are you sure you want to delete this data?
+                                        @endslot
+                                        @slot('route')
+                                            {{ route('class-level.destroy', $level->id) }}
+                                        @endslot
+                                    @endcomponent
+                                    <button type="button" class="btn btn-danger btn-sm btn-circle" data-toggle="modal" data-target="#modal_{{ $level->id }}">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
                                 </td>
                             </tr>
                         @endforeach

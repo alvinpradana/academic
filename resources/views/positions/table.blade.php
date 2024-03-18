@@ -62,6 +62,9 @@
                                             </button>
                                         </form> --}}
                                         @component('components.modal')
+                                            @slot('id')
+                                                {{ $position->id }}
+                                            @endslot
                                             @slot('body')
                                                 Are you sure you want to delete this data?
                                             @endslot
@@ -69,7 +72,7 @@
                                                 {{ route('positions.destroy', $position->id) }}
                                             @endslot
                                         @endcomponent
-                                        <button type="button" class="btn btn-danger btn-sm btn-circle" data-toggle="modal" data-target="#modal">
+                                        <button type="button" class="btn btn-danger btn-sm btn-circle" data-toggle="modal" data-target="#modal_{{ $position->id }}">
                                             <i class="fas fa-trash"></i>
                                         </button>
                                     @endif
