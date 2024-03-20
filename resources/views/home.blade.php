@@ -17,7 +17,7 @@
                                 <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                     Data Pengajar
                                 </div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">120 Pengajar</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $teachers_count }} Pengajar</div>
                             </div>
                             <div class="col-auto">
                                 <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -34,7 +34,7 @@
                                 <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                     Data Siswa
                                 </div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">3000 Siswa</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $students_count }} Siswa</div>
                             </div>
                             <div class="col-auto">
                                 <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -51,7 +51,7 @@
                                 <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                     Data Kelas
                                 </div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">70 Kelas</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $class_count }} Kelas</div>
                             </div>
                             <div class="col-auto">
                                 <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -66,9 +66,9 @@
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
                                 <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                    Organisasi Siswa
+                                    Data Karyawan
                                 </div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">10 Organisasi</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $employee_count }} Karyawan</div>
                             </div>
                             <div class="col-auto">
                                 <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
