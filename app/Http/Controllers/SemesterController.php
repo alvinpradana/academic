@@ -28,6 +28,10 @@ class SemesterController extends Controller
     }
 
     public function store(Request $request) {
+        $request->validate([
+            'title' => ['required'],
+        ]);
+        
         Semester::insert([
             'title' => $request->title,
             'notes' => $request->notes
@@ -42,6 +46,10 @@ class SemesterController extends Controller
     }
 
     public function update(Request $request, $id) {
+        $request->validate([
+            'title' => ['required'],
+        ]);
+        
         Semester::where('id', $id)->update([
             'title' => $request->title,
             'notes' => $request->notes
