@@ -27,6 +27,10 @@ class LessonController extends Controller
     }
 
     public function store(Request $request) {
+        $request->validate([
+            'title' => ['required']
+        ]);
+        
         Lesson::insert([
             'title' => $request->title,
             'notes' => $request->notes
@@ -41,6 +45,10 @@ class LessonController extends Controller
     }
 
     public function update(Request $request, $id) {
+        $request->validate([
+            'title' => ['required']
+        ]);
+        
         Lesson::where('id', $id)->update([
             'title' => $request->title,
             'notes' => $request->notes

@@ -17,7 +17,10 @@
                             @method('PUT')
                             <div class="mb-3">
                                 <label for="title" class="form-label">Nama Mata Pelajaran</label>
-                                <input type="text" class="form-control" id="title" name="title" autofocus value="{{ $lesson->title }}">
+                                <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" name="title" autofocus value="{{ $lesson->title }}">
+                                @error('title')
+                                    <span class="invalid-feedback">{{ $message }}</span>
+                                @enderror
                             </div>
                             <div class="mb-3">
                                 <label for="notes" class="form-label">Keterangan</label>
