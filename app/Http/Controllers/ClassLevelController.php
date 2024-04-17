@@ -28,6 +28,10 @@ class ClassLevelController extends Controller
     }
 
     public function store(Request $request) {
+        $request->validate([
+            'level' => ['required', 'numeric']
+        ]);
+        
         LevelClass::insert([
             'level' => $request->level,
             'notes' => $request->notes
@@ -41,6 +45,10 @@ class ClassLevelController extends Controller
     }
 
     public function update(Request $request, $id) {
+        $request->validate([
+            'level' => ['required', 'numeric']
+        ]);
+        
         LevelClass::where('id', $id)->update([
             'level' => $request->level,
             'notes' => $request->notes

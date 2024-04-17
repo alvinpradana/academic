@@ -17,7 +17,10 @@
                             @method('PUT')
                             <div class="mb-3">
                                 <label for="level-class" class="form-label">Tingkat Kelas</label>
-                                <input type="number" class="form-control" id="level-class" name="level" value="{{ $level->level }}" autofocus>
+                                <input type="text" class="form-control @error('level') is-invalid @enderror" id="level-class" name="level" value="{{ $level->level }}" autofocus>
+                                @error('level')
+                                    <span class="invalid-feedback">{{ $message }}</span>
+                                @enderror
                             </div>
                             <div class="mb-3">
                                 <label for="notes" class="form-label">Keterangan</label>
