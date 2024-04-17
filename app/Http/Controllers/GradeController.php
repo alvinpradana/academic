@@ -28,6 +28,10 @@ class GradeController extends Controller
     }
 
     public function store(Request $request) {
+        $request->validate([
+            'title' => ['required', 'alpha']
+        ]);
+        
         Grade::insert([
             'title' => $request->title,
             'notes' => $request->notes
@@ -41,6 +45,10 @@ class GradeController extends Controller
     }
 
     public function update(Request $request, $id) {
+        $request->validate([
+            'title' => ['required', 'alpha']
+        ]);
+
         Grade::where('id', $id)->update([
             'title' => $request->title,
             'notes' => $request->notes

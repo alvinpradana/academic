@@ -16,7 +16,10 @@
                             @csrf
                             <div class="mb-3">
                                 <label for="grade-title" class="form-label">Grade Kelas</label>
-                                <input type="text" class="form-control" id="grade-title" name="title" autofocus>
+                                <input type="text" class="form-control @error('title') is-invalid @enderror" id="grade-title" name="title" autofocus>
+                                @error('title')
+                                    <span class="invalid-feedback">{{ $message }}</span>
+                                @enderror
                             </div>
                             <div class="mb-3">
                                 <label for="grade-notes" class="form-label">Keterangan</label>
