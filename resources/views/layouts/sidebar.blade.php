@@ -1,5 +1,5 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('dashboard.index') }}">
         <div class="sidebar-brand-icon rotate-n-15">
             <i class="fas fa-laugh-wink"></i>
         </div>
@@ -30,7 +30,7 @@
                 <a class="collapse-item" href="{{ route('class-level.index') }}">Data Level Kelas</a>
                 <a class="collapse-item" href="{{ route('grades.index') }}">Data Grade Kelas</a>
                 <a class="collapse-item" href="{{ route('scores.index') }}">Data Nilai</a>
-                {{-- <a class="collapse-item" href="{{ route('presences.index') }}">Data Presensi</a> --}}
+                <a class="collapse-item" href="{{ route('presences.index') }}">Data Presensi</a>
             </div>
         </div>
     </li>
