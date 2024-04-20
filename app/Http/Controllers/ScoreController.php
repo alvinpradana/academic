@@ -70,6 +70,13 @@ class ScoreController extends Controller
     public function store(Request $request) {
         $data = [];
         $index = $request->count;
+
+        $request->validate([
+            'semester' => ['required'],
+            'lesson' => ['required'],
+            'task' => ['required'],
+            'teacher' => ['required']
+        ]);
         
         Score::insert([
             'semester_id' => $request->semester,
@@ -81,14 +88,18 @@ class ScoreController extends Controller
         ]);
 
         foreach ($request->student as $key) {
-            $index--;
+            $index--;            
             array_push($data, [
                 'score_id' => Score::pluck('id')->last(),
                 'student_id' => $request->student[$index],
-                'score' => $request->score[$index],
+                'score' => $request->input('score_'. $index),
                 'notes' => $request->notes[$index],
             ]);
         }
+        
+        $request->validate([
+            'score_'. $index => ['required', 'integer']
+        ]);
 
         StudentScore::insert($data);
         return redirect()->route('scores.list', $request->class);
