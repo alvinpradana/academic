@@ -19,19 +19,28 @@
                                 <div class="col-md-6 col-sm-12">
                                     <div class="mb-3">
                                         <label for="name" class="form-label">Nama Lengkap</label>
-                                        <input type="text" class="form-control" id="name" name="name" value="{{ $student->user_complements->name }}" autofocus>
+                                        <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" value="{{ old('name', $student->user_complements->name) }}" autofocus>
+                                        @error('name')
+                                            <span class="invalid-feedback">{{ $message }}</span>
+                                        @enderror
                                     </div>
                                     <div class="row">
                                         <div class="col-sm-12 col-md-10 col-lg-10">
                                             <div class="mb-3">
                                                 <label for="birth" class="form-label">Tempat, Tanggal Lahir</label>
-                                                <input type="text" class="form-control" id="birth" name="birth" value="{{ $student->user_complements->birth_date_place }}">
+                                                <input type="text" class="form-control @error('birth') is-invalid @enderror" id="birth" name="birth" value="{{ old('birth', $student->user_complements->birth_date_place) }}">
+                                                @error('birth')
+                                                    <span class="invalid-feedback">{{ $message }}</span>
+                                                @enderror
                                             </div>
                                         </div>
                                         <div class="col-sm-12 col-md-2 col-lg-2">
                                             <div class="mb-3">
                                                 <label for="age" class="form-label">Usia</label>
-                                                <input type="text" class="form-control" id="age" name="age" value="{{ $student->user_complements->age }}">
+                                                <input type="text" class="form-control @error('age') is-invalid @enderror" id="age" name="age" value="{{ old('age', $student->user_complements->age) }}">
+                                                {{-- @error('age')
+                                                    <span class="invalid-feedback">{{ $message }}</span>
+                                                @enderror --}}
                                             </div>
                                         </div>
                                     </div>
@@ -39,18 +48,24 @@
                                         <div class="col-sm-12 col-md-6 col-lg-6">
                                             <div class="mb-3">
                                                 <label for="gender" class="form-label">Jenis Kelamin</label>
-                                                <select id="gender" class="form-select form-control" name="gender">
+                                                <select id="gender" class="form-select form-control @error('gender') is-invalid @enderror" name="gender">
                                                     <option value="0" disabled @selected($student->user_complements->gender == null)>Select gender</option>
-                                                    <option value="A" @selected($student->user_complements->gender == 'A')>Laki-laki</option>
-                                                    <option value="B" @selected($student->user_complements->gender == 'B')>Perempuan</option>
-                                                    <option value="C" @selected($student->user_complements->gender == 'C')>Lainnya</option>
+                                                    <option {{ old('gender') == 'A' ? "selected" : "" }} value="A" @selected($student->user_complements->gender == 'A')>Laki-laki</option>
+                                                    <option {{ old('gender') == 'B' ? "selected" : "" }} value="B" @selected($student->user_complements->gender == 'B')>Perempuan</option>
+                                                    <option {{ old('gender') == 'C' ? "selected" : "" }} value="C" @selected($student->user_complements->gender == 'C')>Lainnya</option>
                                                 </select>
+                                                @error('gender')
+                                                    <span class="invalid-feedback">{{ $message }}</span>
+                                                @enderror
                                             </div>
                                         </div>
                                         <div class="col-sm-12 col-md-6 col-lg-6">
                                             <div class="mb-3">
                                                 <label for="email" class="form-label">Email</label>
-                                                <input type="email" class="form-control" id="email" name="email" value="{{ $student->email }}">
+                                                <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" value="{{ old('email', $student->email) }}">
+                                                @error('email')
+                                                    <span class="invalid-feedback">{{ $message }}</span>
+                                                @enderror
                                             </div>
                                         </div>
                                     </div>
@@ -58,20 +73,26 @@
                                         <div class="col-sm-12 col-md-6 col-lg-6">
                                             <div class="mb-3">
                                                 <label for="phone" class="form-label">No. Telepon</label>
-                                                <input type="text" class="form-control" id="phone" name="phone" value="{{ $student->user_complements->phone_number }}">
+                                                <input type="text" class="form-control @error('phone') is-invalid @enderror" id="phone" name="phone" value="{{ old('phone', $student->user_complements->phone_number) }}">
+                                                @error('phone')
+                                                    <span class="invalid-feedback">{{ $message }}</span>
+                                                @enderror
                                             </div>
                                         </div>
                                         <div class="col-sm-12 col-md-6 col-lg-6">
                                             <div class="mb-3">
                                                 <label for="religion" class="form-label">Agama</label>
-                                                <select id="religion" class="form-select form-control" name="religion">
+                                                <select id="religion" class="form-select form-control @error('religion') is-invalid @enderror" name="religion">
                                                     <option value="0" disabled @selected($student->user_complements->religion == null)>Select religion</option>
-                                                    <option value="A" @selected($student->user_complements->religion == 'A')>Islam</option>
-                                                    <option value="B" @selected($student->user_complements->religion == 'B')>Kristen</option>
-                                                    <option value="C" @selected($student->user_complements->religion == 'C')>Budha</option>
-                                                    <option value="D" @selected($student->user_complements->religion == 'D')>Hindu</option>
-                                                    <option value="E" @selected($student->user_complements->religion == 'E')>Lainnya</option>
+                                                    <option {{ old('religion') == 'A' ? "selected" : "" }} value="A" @selected($student->user_complements->religion == 'A')>Islam</option>
+                                                    <option {{ old('religion') == 'B' ? "selected" : "" }} value="B" @selected($student->user_complements->religion == 'B')>Kristen</option>
+                                                    <option {{ old('religion') == 'C' ? "selected" : "" }} value="C" @selected($student->user_complements->religion == 'C')>Budha</option>
+                                                    <option {{ old('religion') == 'D' ? "selected" : "" }} value="D" @selected($student->user_complements->religion == 'D')>Hindu</option>
+                                                    <option {{ old('religion') == 'E' ? "selected" : "" }} value="E" @selected($student->user_complements->religion == 'E')>Lainnya</option>
                                                 </select>
+                                                @error('religion')
+                                                    <span class="invalid-feedback">{{ $message }}</span>
+                                                @enderror
                                             </div>
                                         </div>
                                     </div>
@@ -79,13 +100,19 @@
                                 <div class="col-md-6 col-sm-12">
                                     <div class="mb-3">
                                         <label for="nik" class="form-label">NIK</label>
-                                        <input type="text" class="form-control" id="nik" name="nik" value="{{ $student->user_complements->id_number }}">
+                                        <input type="text" class="form-control @error('nik') is-invalid @enderror" id="nik" name="nik" value="{{ old('nik', $student->user_complements->id_number) }}">
+                                        @error('nik')
+                                            <span class="invalid-feedback">{{ $message }}</span>
+                                        @enderror
                                     </div>
                                     <div class="row">
                                         <div class="col-sm-12 col-md-8 col-lg-8">
                                             <div class="mb-3">
                                                 <label for="alumnae" class="form-label">Asal Sekolah</label>
-                                                <input type="text" class="form-control" id="alumnae" name="alumnae" value="{{ $student->student_complements->school_alumnae }}">
+                                                <input type="text" class="form-control @error('alumnae') is-invalid @enderror" id="alumnae" name="alumnae" value="{{ old('alumnae', $student->student_complements->school_alumnae) }}">
+                                                @error('alumnae')
+                                                    <span class="invalid-feedback">{{ $message }}</span>
+                                                @enderror
                                             </div>
                                         </div>
                                         <div class="col-sm-12 col-md-4 col-lg-4">
@@ -97,7 +124,10 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="street" class="form-label">Alamat</label>
-                                        <input type="text" class="form-control" id="street" name="street" value="{{ $student->user_complements->street }}">
+                                        <input type="text" class="form-control @error('street') is-invalid @enderror" id="street" name="street" value="{{ old('street', $student->user_complements->street) }}">
+                                        @error('street')
+                                            <span class="invalid-feedback">{{ $message }}</span>
+                                        @enderror
                                     </div>
                                     <div class="row">
                                         <div class="col-sm-12 col-md-5 col-lg-5">
@@ -129,23 +159,35 @@
                                 <div class="col-md-6 col-sm-12">
                                     <div class="mb-3">
                                         <label for="father-name" class="form-label">Nama Ayah Kandung</label>
-                                        <input type="text" class="form-control" id="father-name" name="father-name" value="{{ $student->parents->father_name }}">
+                                        <input type="text" class="form-control @error('father-name') is-invalid @enderror" id="father-name" name="father-name" value="{{ old('father-name', $student->parents->father_name) }}">
+                                        @error('father-name')
+                                            <span class="invalid-feedback">{{ $message }}</span>
+                                        @enderror
                                     </div>
                                     <div class="mb-3">
                                         <label for="mother-name" class="form-label">Nama Ibu Kandung</label>
-                                        <input type="text" class="form-control" id="mother-name" name="mother-name" value="{{ $student->parents->mother_name }}">
+                                        <input type="text" class="form-control @error('mother-name') is-invalid @enderror" id="mother-name" name="mother-name" value="{{ old('mother-name', $student->parents->mother_name) }}">
+                                        @error('mother-name')
+                                            <span class="invalid-feedback">{{ $message }}</span>
+                                        @enderror
                                     </div>
                                     <div class="row">
                                         <div class="col-sm-12 col-md-6 col-lg-6">
                                             <div class="mb-3">
                                                 <label for="father-id-number" class="form-label">NIK Ayah</label>
-                                                <input type="text" class="form-control" id="father-id-number" name="father-id-number" value="{{ $student->parents->father_id_number }}">
+                                                <input type="text" class="form-control @error('father-id-number') is-invalid @enderror" id="father-id-number" name="father-id-number" value="{{ old('father-id-number', $student->parents->father_id_number) }}">
+                                                @error('father-id-number')
+                                                    <span class="invalid-feedback">{{ $message }}</span>
+                                                @enderror
                                             </div>
                                         </div>
                                         <div class="col-sm-12 col-md-6 col-lg-6">
                                             <div class="mb-3">
                                                 <label for="mother-id-number" class="form-label">NIK Ibu</label>
-                                                <input type="text" class="form-control" id="mother-id-number" name="mother-id-number" value="{{ $student->parents->mother_id_number }}">
+                                                <input type="text" class="form-control @error('mother-id-number') is-invalid @enderror" id="mother-id-number" name="mother-id-number" value="{{ old('mother-id-number', $student->parents->mother_id_number) }}">
+                                                @error('mother-id-number')
+                                                    <span class="invalid-feedback">{{ $message }}</span>
+                                                @enderror
                                             </div>
                                         </div>
                                     </div>
@@ -155,13 +197,19 @@
                                         <div class="col-sm-12 col-md-6 col-lg-6">
                                             <div class="mb-3">
                                                 <label for="father-phone" class="form-label">No. Telepon Ayah</label>
-                                                <input type="text" class="form-control" id="father-phone" name="father-phone"  value="{{ $student->parents->father_phone_number }}">
+                                                <input type="text" class="form-control @error('father-phone') is-invalid @enderror" id="father-phone" name="father-phone"  value="{{ old('father-phone', $student->parents->father_phone_number) }}">
+                                                @error('father-phone')
+                                                    <span class="invalid-feedback">{{ $message }}</span>
+                                                @enderror
                                             </div>
                                         </div>
                                         <div class="col-sm-12 col-md-6 col-lg-6">
                                             <div class="mb-3">
                                                 <label for="mother-phone" class="form-label">No. Telepon Ibu</label>
-                                                <input type="text" class="form-control" id="mother-phone" name="mother-phone" value="{{ $student->parents->mother_phone_number }}">
+                                                <input type="text" class="form-control @error('mother-phone') is-invalid @enderror" id="mother-phone" name="mother-phone" value="{{ old('mother-phone', $student->parents->mother_phone_number) }}">
+                                                @error('mother-phone')
+                                                    <span class="invalid-feedback">{{ $message }}</span>
+                                                @enderror
                                             </div>
                                         </div>
                                     </div>
