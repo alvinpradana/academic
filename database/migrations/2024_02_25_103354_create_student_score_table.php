@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('score_id')->constrained('scores')->onDelete('cascade');
             $table->foreignId('student_id')->constrained('users')->onDelete('cascade');
-            $table->double('score');
+            $table->double('score')->nullable();
             $table->string('notes')->nullable();
             $table->timestamps();
         });

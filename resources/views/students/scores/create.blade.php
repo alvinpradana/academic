@@ -84,8 +84,8 @@
                                                 <input type="text" class="form-control" name="nip" value="{{ $student->users->student_complements->nip_number }}" disabled>
                                             </td>
                                             <td>
-                                                <input type="number" name="score_{{ $key }}" class="form-control @error('score_{{ $key }}') is-invalid @enderror" value={{ old('score_' . $key) }}>
-                                                @error('score_{{ $key }}')
+                                                <input type="number" name="score_{{ $key }}" class="form-control @error('score_'. $key) is-invalid @enderror" value={{ old('score_' . $key, 0) }}>
+                                                @error('score_'. $key)
                                                     <span class="invalid-feedback">{{ $message }}</span>
                                                 @enderror
                                             </td>

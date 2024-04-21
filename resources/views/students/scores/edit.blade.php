@@ -20,35 +20,47 @@
                                 <div class="col-md-3">
                                     <div class="mb-3">
                                         <label for="semester" class="form-label">Semester</label>
-                                        <select id="semester" name="semester" class="form-select form-control text-capitalize">
+                                        <select id="semester" name="semester" class="form-select form-control text-capitalize @error('semester') is-invalid @enderror">
                                             <option value="0" selected disabled>Pilih Opsi</option>
                                             @foreach ($semesters as $semester)
                                                 <option value="{{ $semester->id }}" @selected($semester->id == $scores->semester_id)>{{ $semester->title }}</option>
                                             @endforeach
                                         </select>
+                                        @error('semester')
+                                            <span class="invalid-feedback">{{ $message }}</span>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="mb-3">
                                         <label for="lesson" class="form-label">Mata Pelajaran</label>
-                                        <select id="lesson" name="lesson" class="form-select form-control">
+                                        <select id="lesson" name="lesson" class="form-select form-control @error('lesson') is-invalid @enderror">
                                             <option value="0" selected disabled>Pilih Opsi</option>
                                             @foreach ($lessons as $lesson)
                                                 <option value="{{ $lesson->id }}" @selected($lesson->id == $scores->lesson_id)>{{ $lesson->title }}</option>
                                             @endforeach
                                         </select>
+                                        @error('lesson')
+                                            <span class="invalid-feedback">{{ $message }}</span>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="mb-3">
                                         <label for="task" class="form-label">Nama Tugas</label>
-                                        <input type="text" class="form-control" id="task" name="task" value="{{ $scores->task_name }}">
+                                        <input type="text" class="form-control @error('task') is-invalid @enderror" id="task" name="task" value="{{ $scores->task_name }}">
+                                        @error('task')
+                                            <span class="invalid-feedback">{{ $message }}</span>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="mb-3">
                                         <label for="teacher" class="form-label">Nama Pengajar</label>
-                                        <input type="text" class="form-control" id="teacher" name="teacher" value="{{ $scores->teacher_name }}">
+                                        <input type="text" class="form-control @error('teacher') is-invalid @enderror" id="teacher" name="teacher" value="{{ $scores->teacher_name }}">
+                                        @error('teacher')
+                                            <span class="invalid-feedback">{{ $message }}</span>
+                                        @enderror
                                     </div>
                                 </div>
                             </div>
@@ -73,7 +85,10 @@
                                                 <input type="text" class="form-control" name="nip" value="{{ $student->students->student_complements->nip_number }}" disabled>
                                             </td>
                                             <td>
-                                                <input type="number" class="form-control" name="score[{{ $key }}]" value={{ $student->score }}>
+                                                <input type="number" class="form-control @error('score_'. $key) is-invalid @enderror" name="score_{{ $key }}" value={{ old('score_' . $key, $student->score) }}>
+                                                @error('score_'. $key)
+                                                    <span class="invalid-feedback">{{ $message }}</span>
+                                                @enderror
                                             </td>
                                             <td>
                                                 <input type="text" class="form-control" name="notes[{{ $key }}]" value={{ $student->notes }}>

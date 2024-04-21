@@ -96,13 +96,13 @@ class ScoreController extends Controller
                 'notes' => $request->notes[$index],
             ]);
         }
-        
-        $request->validate([
-            'score_'. $index => ['required', 'integer']
-        ]);
 
+        // $request->validate([
+        //     'score_'. $index => ['required', 'numeric']
+        // ]);
+        
         StudentScore::insert($data);
-        return redirect()->route('scores.list', $request->class);
+        return redirect()->route('scores.list', $request->class)->with('success', 'Data nilai berhasil disimpan.');
     }
 
     public function edit($class, $id) {
@@ -131,6 +131,13 @@ class ScoreController extends Controller
         $data = [];
         $index = $request->count;
 
+        $request->validate([
+            'semester' => ['required'],
+            'lesson' => ['required'],
+            'task' => ['required'],
+            'teacher' => ['required']
+        ]);
+        
         Score::where('id', $score)->update([
             'semester_id' => $request->semester,
             'class_id' => $request->class,
@@ -144,19 +151,23 @@ class ScoreController extends Controller
             array_push($data, [
                 'score_id' => Score::pluck('id')->last(),
                 'student_id' => $request->student[$index],
-                'score' => $request->score[$index],
+                'score' => $request->input('score_'. $index),
                 'notes' => $request->notes[$index],
             ]);
-        }
 
+            $request->validate([
+                'score_'. $index => ['required', 'numeric']
+            ]);
+        }
+        
         StudentScore::where('score_id', $score)->delete();
         StudentScore::insert($data);
 
-        return redirect()->route('scores.list', ['class' => $class]);
+        return redirect()->route('scores.list', ['class' => $class])->with('success', 'Data nilai berhasil diubah.');
     }
 
     public function destroy($score) {
         Score::findOrFail($score)->delete();
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Data nilai berhasil dihapus.');
     }
 }
