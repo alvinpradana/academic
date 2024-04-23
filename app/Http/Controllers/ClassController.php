@@ -52,6 +52,13 @@ class ClassController extends Controller
     }
 
     public function store(Request $request) {
+        $request->validate([
+            'teacher' => ['required'],
+            'level' => ['required'],
+            'major' => ['required'],
+            'grade' => ['required']
+        ]);
+        
         Classes::insert([
             'teacher_id' => $request->teacher,
             'class_level_id' => $request->level,
@@ -81,6 +88,13 @@ class ClassController extends Controller
     }
 
     public function update(Request $request, $id) {
+        $request->validate([
+            'teacher' => ['required'],
+            'level' => ['required'],
+            'major' => ['required'],
+            'grade' => ['required']
+        ]);
+        
         Classes::where('id', $id)->update([
             'teacher_id' => $request->teacher,
             'class_level_id' => $request->level,

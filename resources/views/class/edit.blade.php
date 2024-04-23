@@ -17,39 +17,51 @@
                             @method('PUT')
                             <div class="mb-3">
                                 <label for="class-level" class="form-label">Level Kelas</label>
-                                <select id="class-level" class="form-select form-control" name="level">
+                                <select id="class-level" class="form-select form-control @error('level') is-invalid @enderror" name="level">
                                     <option value="0" selected disabled>Select level</option>
                                     @foreach ($levels as $level)
-                                        <option value="{{ $level->id }}" @selected($level->id == $class->levels->id)>{{ $level->level }}</option>
+                                        <option {{ old('level') == $level->id ? "selected" : "" }} value="{{ $level->id }}" @selected($level->id == $class->levels->id)>{{ $level->level }}</option>
                                     @endforeach
                                 </select>
+                                @error('level')
+                                    <span class="invalid-feedback">{{ $message }}</span>
+                                @enderror
                             </div>
                             <div class="mb-3">
                                 <label for="class-major" class="form-label">Jurusan</label>
-                                <select id="class-major" class="form-select form-control" name="major">
+                                <select id="class-major" class="form-select form-control @error('major') is-invalid @enderror" name="major">
                                     <option value="0" selected disabled>Select major</option>
                                     @foreach ($majors as $major)
-                                        <option value="{{ $major->id }}" @selected($major->id == $class->majors->id)>{{ $major->title }}</option>
+                                        <option {{ old('major') == $major->id ? "selected" : "" }} value="{{ $major->id }}" @selected($major->id == $class->majors->id)>{{ $major->title }}</option>
                                     @endforeach
                                 </select>
+                                @error('major')
+                                    <span class="invalid-feedback">{{ $message }}</span>
+                                @enderror
                             </div>
                             <div class="mb-3">
                                 <label for="class-grade" class="form-label">Grade Kelas</label>
-                                <select id="class-grade" class="form-select form-control" name="grade">
+                                <select id="class-grade" class="form-select form-control @error('grade') is-invalid @enderror" name="grade">
                                     <option value="0" selected disabled>Select grade</option>
                                     @foreach ($grades as $grade)
-                                        <option value="{{ $grade->id }}" @selected($grade->id == $class->grades->id)>{{ $grade->title }}</option>
+                                        <option {{ old('grade') == $grade->id ? "selected" : "" }} value="{{ $grade->id }}" @selected($grade->id == $class->grades->id)>{{ $grade->title }}</option>
                                     @endforeach
                                 </select>
+                                @error('grade')
+                                    <span class="invalid-feedback">{{ $message }}</span>
+                                @enderror
                             </div>
                             <div class="mb-3">
-                                <label for="teacher-class" class="form-label">Teacher's Class</label>
-                                <select id="teacher-class" class="form-select form-control" name="teacher">
+                                <label for="teacher-class" class="form-label">Wali Kelas</label>
+                                <select id="teacher-class" class="form-select form-control @error('teacher') is-invalid @enderror" name="teacher">
                                     <option value="0" selected disabled>Select teacher</option>
                                     @foreach ($teachers as $teacher)
-                                        <option value="{{ $teacher->id }}" @selected($teacher->id == $class->users->id)>{{ $teacher->user_complements->name }}</option>
+                                        <option {{ old('teacher') == $teacher->id ? "selected" : "" }} value="{{ $teacher->id }}" @selected($teacher->id == $class->users->id)>{{ $teacher->user_complements->name }}</option>
                                     @endforeach
                                 </select>
+                                @error('teacher')
+                                    <span class="invalid-feedback">{{ $message }}</span>
+                                @enderror
                             </div>
                             <div class="mb-3">
                                 <label for="notes" class="form-label">Keterangan</label>
