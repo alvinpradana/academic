@@ -19,48 +19,63 @@
                                 <div class="col-md-6 col-sm-12">
                                     <div class="mb-3">
                                         <label for="full-name" class="form-label">Nama Lengkap</label>
-                                        <input type="text" class="form-control" id="full-name" name="full-name" value="{{ $employee->user_complements->name }}">
+                                        <input type="text" class="form-control @error('full-name') is-invalid @enderror" id="full-name" name="full-name" value="{{ old('full-name', $employee->user_complements->name) }}">
+                                        @error('full-name')
+                                            <span class="invalid-feedback">{{ $message }}</span>
+                                        @enderror
                                     </div>
                                     <div class="row">
                                         <div class="col-sm-12 col-md-10 col-lg-10">
                                             <div class="mb-3">
                                                 <label for="birth-date-place" class="form-label">Tempat, Tanggal Lahir</label>
-                                                <input type="text" class="form-control" id="birth-date-place" name="birth-date-place" value="{{ $employee->user_complements->birth_date_place }}">
+                                                <input type="text" class="form-control @error('birth-date-place') is-invalid @enderror" id="birth-date-place" name="birth-date-place" value="{{ old('birth-date-place', $employee->user_complements->birth_date_place) }}">
+                                                @error('birth-date-place')
+                                                    <span class="invalid-feedback">{{ $message }}</span>
+                                                @enderror
                                             </div>
                                         </div>
                                         <div class="col-sm-12 col-md-2 col-lg-2">
                                             <div class="mb-3">
                                                 <label for="age" class="form-label">Usia</label>
-                                                <input type="text" class="form-control" id="age" name="age" value="{{ $employee->user_complements->age }}">
+                                                <input type="text" class="form-control @error('age') is-invalid @enderror" id="age" name="age" value="{{ old('age', $employee->user_complements->age) }}">
+                                                @error('age')
+                                                    <span class="invalid-feedback">{{ $message }}</span>
+                                                @enderror
                                             </div>
                                         </div>
                                     </div>
                                     <div class="mb-3">
                                         <label for="email" class="form-label">Email</label>
-                                        <input type="text" class="form-control" id="email" name="email" value="{{ $employee->email }}">
+                                        <input type="text" class="form-control @error('email') is-invalid @enderror" id="email" name="email" value="{{ old('email', $employee->email) }}">
+                                        @error('email')
+                                            <span class="invalid-feedback">{{ $message }}</span>
+                                        @enderror
                                     </div>
                                     <div class="row">
                                         <div class="col-sm-12 col-md-6 col-lg-6">
                                             <div class="mb-3">
                                                 <label for="gender" class="form-label">Jenis Kelamin</label>
-                                                <select id="gender" class="form-select form-control" name="gender">
-                                                    <option value="0" disabled @selected($employee->user_complements->gender == null)>Select gender</option>
-                                                    <option value="A" @selected($employee->user_complements->gender == 'A')>Laki-laki</option>
-                                                    <option value="B" @selected($employee->user_complements->gender == 'B')>Perempuan</option>
+                                                <select id="gender" class="form-select form-control @error('gender') is-invalid @enderror" name="gender">
+                                                    <option {{ old('gender') == '0' ? "selected" : "" }} value="0" disabled @selected($employee->user_complements->gender == null)>Select gender</option>
+                                                    <option {{ old('gender') == 'A' ? "selected" : "" }} value="A" @selected($employee->user_complements->gender == 'A')>Laki-laki</option>
+                                                    <option {{ old('gender') == 'B' ? "selected" : "" }} value="B" @selected($employee->user_complements->gender == 'B')>Perempuan</option>
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="col-sm-12 col-md-6 col-lg-6">
                                             <div class="mb-3">
                                                 <label for="religion" class="form-label">Agama</label>
-                                                <select id="religion" class="form-select form-control" name="religion">
-                                                    <option value="0" disabled @selected($employee->user_complements->religion == null)>Select religion</option>
-                                                    <option value="A" @selected($employee->user_complements->religion == 'A')>Islam</option>
-                                                    <option value="B" @selected($employee->user_complements->religion == 'B')>Kristen</option>
-                                                    <option value="C" @selected($employee->user_complements->religion == 'C')>Budha</option>
-                                                    <option value="D" @selected($employee->user_complements->religion == 'D')>Hindu</option>
-                                                    <option value="E" @selected($employee->user_complements->religion == 'E')>Lainnya</option>
+                                                <select id="religion" class="form-select form-control @error('religion') is-invalid @enderror" name="religion">
+                                                    <option {{ old('religion') == '0' ? "selected" : "" }} value="0" disabled @selected($employee->user_complements->religion == null)>Select religion</option>
+                                                    <option {{ old('religion') == 'A' ? "selected" : "" }} value="A" @selected($employee->user_complements->religion == 'A')>Islam</option>
+                                                    <option {{ old('religion') == 'B' ? "selected" : "" }} value="B" @selected($employee->user_complements->religion == 'B')>Kristen</option>
+                                                    <option {{ old('religion') == 'C' ? "selected" : "" }} value="C" @selected($employee->user_complements->religion == 'C')>Budha</option>
+                                                    <option {{ old('religion') == 'D' ? "selected" : "" }} value="D" @selected($employee->user_complements->religion == 'D')>Hindu</option>
+                                                    <option {{ old('religion') == 'E' ? "selected" : "" }} value="E" @selected($employee->user_complements->religion == 'E')>Lainnya</option>
                                                 </select>
+                                                @error('religion')
+                                                    <span class="invalid-feedback">{{ $message }}</span>
+                                                @enderror
                                             </div>
                                         </div>
                                     </div>
@@ -70,22 +85,28 @@
                                         <div class="col-sm-12 col-md-6 col-lg-6">
                                             <div class="mb-3">
                                                 <label for="marital-status" class="form-label">Status Pernikahan</label>
-                                                <select id="marital-status" class="form-select form-control" name="marital-status">
-                                                    <option value="0" disabled @selected($employee->employee_complements->id == null)>Select status</option>
-                                                    <option value="Y" @selected($employee->employee_complements->marital_status == 'Y')>Menikah</option>
-                                                    <option value="N" @selected($employee->employee_complements->marital_status == 'N')>Belum Menikah</option>
+                                                <select id="marital-status" class="form-select form-control @error('marital-status') is-invalid @enderror" name="marital-status">
+                                                    <option {{ old('marital-status') == '0' ? "selected" : "" }} value="0" disabled @selected($employee->employee_complements->id == null)>Select status</option>
+                                                    <option {{ old('marital-status') == 'Y' ? "selected" : "" }} value="Y" @selected($employee->employee_complements->marital_status == 'Y')>Menikah</option>
+                                                    <option {{ old('marital-status') == 'N' ? "selected" : "" }} value="N" @selected($employee->employee_complements->marital_status == 'N')>Belum Menikah</option>
                                                 </select>
+                                                @error('marital-status')
+                                                    <span class="invalid-feedback">{{ $message }}</span>
+                                                @enderror
                                             </div>
                                         </div>
                                         <div class="col-sm-12 col-md-6 col-lg-6">
                                             <div class="mb-3">
                                                 <label for="position" class="form-label">Posisi Pekerjaan</label>
-                                                <select id="position" class="form-select form-control" name="position">
+                                                <select id="position" class="form-select form-control @error('position') is-invalid @enderror" name="position">
                                                     <option value="0" disabled @selected($employee->positions->id == null)>Select position</option>
                                                     @foreach ($positions as $position)
-                                                        <option value="{{ $position->id }}" @selected($employee->positions->id == $position->id)>{{ $position->title }}</option>
+                                                        <option {{ old('position') == $position->id ? "selected" : "" }} value="{{ $position->id }}" @selected($employee->positions->id == $position->id)>{{ $position->title }}</option>
                                                     @endforeach
                                                 </select>
+                                                @error('position')
+                                                    <span class="invalid-feedback">{{ $message }}</span>
+                                                @enderror
                                             </div>
                                         </div>
                                     </div>
@@ -93,19 +114,28 @@
                                         <div class="col-md-6 col-lg-6 col-sm-12">
                                             <div class="mb-3">
                                                 <label for="id-number" class="form-label">NIK</label>
-                                                <input type="text" class="form-control" id="id-number" name="id-number" value="{{ $employee->user_complements->id_number }}">
+                                                <input type="text" class="form-control @error('nik') is-invalid @enderror" id="id-number" name="id-number" value="{{ old('id-number', $employee->user_complements->id_number) }}">
+                                                @error('nik')
+                                                    <span class="invalid-feedback">{{ $message }}</span>
+                                                @enderror
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-lg-6 col-sm-12">
                                             <div class="mb-3">
                                                 <label for="phone-number" class="form-label">No. Telepon</label>
-                                                <input type="text" class="form-control" id="phone-number" name="phone-number" value="{{ $employee->user_complements->phone_number }}">
+                                                <input type="text" class="form-control @error('phone-number') is-invalid @enderror" id="phone-number" name="phone-number" value="{{ old('phone-number', $employee->user_complements->phone_number) }}">
+                                                @error('phone-number')
+                                                    <span class="invalid-feedback">{{ $message }}</span>
+                                                @enderror
                                             </div>
                                         </div>
                                     </div>
                                     <div class="mb-3">
                                         <label for="address-street" class="form-label">Alamat</label>
-                                        <input type="text" class="form-control" id="address-street" name="address-street" value="{{ $employee->user_complements->street }}">
+                                        <input type="text" class="form-control @error('address-street') is-invalid @enderror" id="address-street" name="address-street" value="{{ old('address-street', $employee->user_complements->street) }}">
+                                        @error('address-street')
+                                            <span class="invalid-feedback">{{ $message }}</span>
+                                        @enderror
                                     </div>
                                     <div class="row">
                                         <div class="col-sm-12 col-md-5 col-lg-5">
@@ -137,25 +167,34 @@
                                 <div class="col-md-6 col-sm-12">
                                     <div class="mb-3">
                                         <label for="family-name" class="form-label">Nama Keluarga/Kerabat</label>
-                                        <input type="text" class="form-control" id="family-name" name="family-name" value="{{ $employee->families->name }}">
+                                        <input type="text" class="form-control @error('family-name') is-invalid @enderror" id="family-name" name="family-name" value="{{ old('family-name', $employee->families->name) }}">
+                                        @error('family-name')
+                                            <span class="invalid-feedback">{{ $message }}</span>
+                                        @enderror
                                     </div>
                                     <div class="row">
                                         <div class="col-sm-12 col-md-6 col-lg-6">
                                             <div class="mb-3">
                                                 <label for="family-status" class="form-label">Status Keluarga</label>
-                                                <select id="family-status" class="form-select form-control" name="family-status">
-                                                    <option value="0" disabled @selected($employee->families->id == null)>Select status</option>
-                                                    <option value="A" @selected($employee->families->status == 'A')>Suami/Istri</option>
-                                                    <option value="B" @selected($employee->families->status == 'B')>Keluarga</option>
-                                                    <option value="C" @selected($employee->families->status == 'C')>Kerabat</option>
-                                                    <option value="D" @selected($employee->families->status == 'D')>Lainnya</option>
+                                                <select id="family-status" class="form-select form-control @error('family-status') is-invalid @enderror" name="family-status">
+                                                    <option {{ old('family-status') == '0' ? "selected" : "" }} value="0" disabled @selected($employee->families->id == null)>Select status</option>
+                                                    <option {{ old('family-status') == 'A' ? "selected" : "" }} value="A" @selected($employee->families->status == 'A')>Suami/Istri</option>
+                                                    <option {{ old('family-status') == 'B' ? "selected" : "" }} value="B" @selected($employee->families->status == 'B')>Keluarga</option>
+                                                    <option {{ old('family-status') == 'C' ? "selected" : "" }} value="C" @selected($employee->families->status == 'C')>Kerabat</option>
+                                                    <option {{ old('family-status') == 'D' ? "selected" : "" }} value="D" @selected($employee->families->status == 'D')>Lainnya</option>
                                                 </select>
+                                                @error('family-status')
+                                                    <span class="invalid-feedback">{{ $message }}</span>
+                                                @enderror
                                             </div>
                                         </div>
                                         <div class="col-sm-12 col-md-6 col-lg-6">
                                             <div class="mb-3">
                                                 <label for="family-contact" class="form-label">No. Telp Keluarga/Kerabat</label>
-                                                <input type="text" class="form-control" id="family-contact" name="family-contact" value="{{ $employee->families->phone_number }}">
+                                                <input type="text" class="form-control @error('family-contact') is-invalid @enderror" id="family-contact" name="family-contact" value="{{ old('family-contact', $employee->families->phone_number) }}">
+                                                @error('family-contact')
+                                                    <span class="invalid-feedback">{{ $message }}</span>
+                                                @enderror
                                             </div>
                                         </div>
                                     </div>
@@ -163,7 +202,10 @@
                                 <div class="col-md-6 col-sm-12">
                                     <div class="mb-3">
                                         <label for="family-address-street" class="form-label">Alamat Kerabat</label>
-                                        <input type="text" class="form-control" id="family-address-street" name="family-address-street" value="{{ $employee->families->address }}">
+                                        <input type="text" class="form-control @error('family-address-street') is-invalid @enderror" id="family-address-street" name="family-address-street" value="{{ old('family-address-street', $employee->families->address) }}">
+                                        @error('family-address-street')
+                                            <span class="invalid-feedback">{{ $message }}</span>
+                                        @enderror
                                     </div>
                                     <div class="row">
                                         <div class="col-sm-12 col-md-5 col-lg-5">

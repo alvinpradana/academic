@@ -41,6 +41,24 @@ class EmployeeController extends Controller
     }
 
     public function store (Request $request) {
+        $request->validate([
+            'full-name' => ['required', 'alpha'],
+            'birth-date-place' => ['required'],
+            'age' => ['required', 'numeric'],
+            'email' => ['required','email', 'unique:users'],
+            'gender' => ['required'],
+            'religion' => ['required'],
+            'marital-status' => ['required'],
+            'position' => ['required'],
+            'id-number' => ['required', 'numeric'],
+            'phone-number' => ['required', 'numeric'],
+            'address-street' => ['required'],
+            'family-name' => ['required', 'alpha'],
+            'family-status' => ['required'],
+            'family-contact' => ['required', 'numeric'],
+            'family-address-street' => ['required'],
+        ]);
+        
         User::insert([
             'position_id' => $request->input('position'),
             'email'=> $request->input('email'),
@@ -92,6 +110,24 @@ class EmployeeController extends Controller
     }
 
     public function update(Request $request, $id) {
+        $request->validate([
+            'full-name' => ['required', 'alpha'],
+            'birth-date-place' => ['required'],
+            'age' => ['required', 'numeric'],
+            'email' => ['required', 'email', 'unique:users,email,'. $id],
+            'gender' => ['required'],
+            'religion' => ['required'],
+            'marital-status' => ['required'],
+            'position' => ['required'],
+            'id-number' => ['required', 'numeric'],
+            'phone-number' => ['required', 'numeric'],
+            'address-street' => ['required'],
+            'family-name' => ['required', 'alpha'],
+            'family-status' => ['required'],
+            'family-contact' => ['required', 'numeric'],
+            'family-address-street' => ['required'],
+        ]);
+        
         User::where('id', $id)->update([
             'position_id' => $request->input('position'),
             'email'=> $request->input('email'),
