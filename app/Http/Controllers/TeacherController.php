@@ -42,6 +42,24 @@ class TeacherController extends Controller
     }
 
     public function store(Request $request) {
+        $request->validate([
+            'name' => ['required'],
+            'birth_date_place' => ['required'],
+            'age' => ['required', 'numeric'],
+            'gender' => ['required'],
+            'religion' => ['required'],
+            'marital_status' => ['required'],
+            'email' => ['required', 'email', 'unique:users'],
+            'nik' => ['required', 'numeric'],
+            'nip' => ['required'],
+            'phone' => ['required', 'numeric'],
+            'street' => ['required'],
+            'family-name' => ['required'],
+            'family-status' => ['required'],
+            'family-contact' => ['required', 'numeric'],
+            'family-address-street' => ['required'],
+        ]);
+        
         User::insert([
             'position_id' => 1,
             'email' => $request->email,
@@ -96,6 +114,24 @@ class TeacherController extends Controller
     }
 
     public function update(Request $request, $id) {
+        $request->validate([
+            'name' => ['required'],
+            'birth_date_place' => ['required'],
+            'age' => ['required', 'numeric'],
+            'gender' => ['required'],
+            'religion' => ['required'],
+            'marital_status' => ['required'],
+            'email' => ['required', 'email', 'unique:users,email,'. $id],
+            'nik' => ['required', 'numeric'],
+            'nip' => ['required'],
+            'phone' => ['required', 'numeric'],
+            'street' => ['required'],
+            'family-name' => ['required'],
+            'family-status' => ['required'],
+            'family-contact' => ['required', 'numeric'],
+            'family-address-street' => ['required'],
+        ]);
+        
         User::where('id', $id)->update([
             'email' => $request->email,
             'password' => $request->nip
