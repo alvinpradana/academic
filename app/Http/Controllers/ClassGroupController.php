@@ -29,7 +29,7 @@ class ClassGroupController extends Controller
             'majors'
         ])->find($id);
 
-        $students = ClassGroup::where('class_id', $id)->with('users.user_complements')->get();
+        $students = ClassGroup::where('class_id', $id)->with('users.user_complements')->orderBy('created_at', 'desc')->get();
         $count = $students->sum('id');
 
         $current_class = '';
@@ -66,6 +66,10 @@ class ClassGroupController extends Controller
     }
 
     public function store(Request $request) {
+        $request->validate([
+            'nip' => ['required', 'numeric']
+        ]);
+        
         $student = User::where('password', $request->nip)->first();
 
         $possible_to_insert = false;
@@ -104,7 +108,8 @@ class ClassGroupController extends Controller
         if ($possible_to_insert) {
             ClassGroup::insert([
                 'student_id' => $student->id,
-                'class_id' => $request->class_id
+                'class_id' => $request->class_id,
+                'created_at' => now()
             ]);
 
             $return_alert = 'success';

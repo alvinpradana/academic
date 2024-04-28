@@ -14,6 +14,7 @@ class ClassGroup extends Model
 
     protected $table = 'class_group';
     protected $guarded = 'id';
+    public $timestamps = true;
 
     public function users(): BelongsTo {
         return $this->belongsTo(User::class, 'student_id');
