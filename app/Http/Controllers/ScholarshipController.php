@@ -28,6 +28,10 @@ class ScholarshipController extends Controller
     }
 
     public function store(Request $request) {
+        $request->validate([
+            'title' => ['required']
+        ]);
+        
         Scholarship::insert([
             'title' => $request->title,
             'notes' => $request->notes
@@ -42,6 +46,10 @@ class ScholarshipController extends Controller
     }
 
     public function update(Request $request, $id) {
+        $request->validate([
+            'title' => ['required']
+        ]);
+        
         Scholarship::where('id', $id)->update([
             'title' => $request->title,
             'notes' => $request->notes
