@@ -17,21 +17,27 @@
                             @method('PUT')
                             <div class="mb-3">
                                 <label for="student" class="form-label">Nama Siswa</label>
-                                <select id="student" class="form-select form-control" name="student">
+                                <select id="student" class="form-select form-control @error('student') is-invalid @enderror" name="student">
                                     <option value="0" selected disabled>Select student</option>
                                     @foreach ($students as $student)
-                                        <option value="{{ $student->id }}" @selected($student->id == $student_scholarship->student_id)>{{ $student->user_complements->name }}</option>
+                                        <option {{ old('student') == $student->id ? "selected" : "" }} value="{{ $student->id }}" @selected($student->id == $student_scholarship->student_id)>{{ $student->user_complements->name }}</option>
                                     @endforeach
                                 </select>
+                                @error('student')
+                                    <span class="invalid-feedback">{{ $message }}</span>
+                                @enderror
                             </div>
                             <div class="mb-3">
                                 <label for="scholarship" class="form-label">Beasiswa</label>
-                                <select id="scholarship" class="form-select form-control" name="scholarship">
+                                <select id="scholarship" class="form-select form-control @error('scholarship') is-invalid @enderror" name="scholarship">
                                     <option value="0" selected disabled>Select scholarship</option>
                                     @foreach ($scholarships as $scholarship)
-                                        <option value="{{ $scholarship->id }}" @selected($scholarship->id == $student_scholarship->scholarship_id)>{{ $scholarship->title }}</option>
+                                        <option {{ old('scholarship') == $scholarship->id ? "selected" : "" }} value="{{ $scholarship->id }}" @selected($scholarship->id == $student_scholarship->scholarship_id)>{{ $scholarship->title }}</option>
                                     @endforeach
                                 </select>
+                                @error('scholarship')
+                                    <span class="invalid-feedback">{{ $message }}</span>
+                                @enderror
                             </div>
                             <div class="mb-3">
                                 <label for="notes" class="form-label">Keterangan</label>

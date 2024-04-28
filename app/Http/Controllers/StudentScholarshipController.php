@@ -41,6 +41,11 @@ class StudentScholarshipController extends Controller
     }
 
     public function store(Request $request) {
+        $request->validate([
+            'student' => ['required'],
+            'scholarship' => ['required']
+        ]);
+        
         StudentScholarship::insert([
             'student_id' => $request->student,
             'scholarship_id' => $request->scholarship,
@@ -63,6 +68,11 @@ class StudentScholarshipController extends Controller
     }
 
     public function update(Request $request, $id) {
+        $request->validate([
+            'student' => ['required'],
+            'scholarship' => ['required']
+        ]);
+        
         StudentScholarship::where('id', $id)->update([
             'student_id' => $request->student,
             'scholarship_id' => $request->scholarship,
