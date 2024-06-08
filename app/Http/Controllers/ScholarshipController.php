@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class ScholarshipController extends Controller
 {
     public function index() {
-        $scholarships = Scholarship::orderBy('id', 'desc')->get();
+        $scholarships = Scholarship::orderBy('id', 'desc')->paginate(5);
         $count = Scholarship::sum('id');
 
         return view('scholarships.home', [

@@ -10,4 +10,5 @@
         </div>
     </div>
     @include('scholarships.table')
+    {{ $scholarships->links() }}
 @endsection

@@ -10,4 +10,5 @@
         </div>
     </div>
     @include('positions.table')
+    {{ $positions->links() }}
 @endsection

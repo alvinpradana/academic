@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class MajorController extends Controller
 {
     public function index() {
-        $majors = Major::orderBy('id', 'desc')->get();
+        $majors = Major::orderBy('id', 'desc')->paginate(5);
         $count = Major::sum('id');
         
         return view('majors.home', [

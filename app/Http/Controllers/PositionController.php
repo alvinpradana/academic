@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class PositionController extends Controller
 {
     public function index() {
-        $positions = Position::orderBy('id', 'desc')->get();
+        $positions = Position::orderBy('id', 'desc')->paginate(5);
         $count = Position::sum('id');
 
         return view('positions.home', [

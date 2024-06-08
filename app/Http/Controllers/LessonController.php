@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class LessonController extends Controller
 {
     public function index() {
-        $lessons = Lesson::orderBy('id', 'desc')->get();
+        $lessons = Lesson::orderBy('id', 'desc')->paginate(5);
         $count = Lesson::sum('id');
 
         return view('lessons.home', [

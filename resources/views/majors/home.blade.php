@@ -10,4 +10,5 @@
         </div>
     </div>
     @include('majors.table')
+    {{ $majors->links() }}
 @endsection

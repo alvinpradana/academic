@@ -15,7 +15,7 @@ class EmployeeController extends Controller
         $employees = User::with([
             'user_complements',
             'positions'
-        ])->where('position_id', '<>', 1)->where('position_id', '<>', 2)->orderBy('id', 'desc')->get();
+        ])->where('position_id', '<>', 1)->where('position_id', '<>', 2)->orderBy('id', 'desc')->paginate(10);
 
         $count = User::where('position_id', '<>', 1)->where('position_id', '<>', 2)->sum('id');
 

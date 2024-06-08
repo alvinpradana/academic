@@ -13,7 +13,7 @@ class StudentScholarshipController extends Controller
         $scholarships = StudentScholarship::with('users')
             ->with('scholarships')
             ->orderBy('id', 'desc')
-            ->get();
+            ->paginate(5);
         $count = StudentScholarship::sum('id');
 
         return view('scholarships.student.home', [

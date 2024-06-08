@@ -17,7 +17,7 @@ class ClassController extends Controller
             'levels',
             'grades',
             'users'
-        ])->orderBy('id', 'desc')->get();
+        ])->orderBy('id', 'desc')->paginate(5);
 
         $count = Classes::sum('id');
         

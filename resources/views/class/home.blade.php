@@ -10,4 +10,5 @@
         </div>
     </div>
     @include('class.table')
+    {{ $classes->links() }}
 @endsection

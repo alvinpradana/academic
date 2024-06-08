@@ -16,7 +16,7 @@ class TeacherController extends Controller
             'user_complements',
             'teacher_complements',
             'positions'
-        ])->where('position_id', 1)->orderBy('id', 'desc')->get();
+        ])->where('position_id', 1)->orderBy('id', 'desc')->paginate(10);
 
         $count = User::where('position_id', '=', 1)->sum('id');
 
