@@ -114,8 +114,8 @@
                                         <div class="col-md-6 col-lg-6 col-sm-12">
                                             <div class="mb-3">
                                                 <label for="id-number" class="form-label">NIK</label>
-                                                <input type="text" class="form-control @error('nik') is-invalid @enderror" id="id-number" name="id-number" value="{{ old('id-number', $employee->user_complements->id_number) }}">
-                                                @error('nik')
+                                                <input type="text" class="form-control @error('id-number') is-invalid @enderror" id="id-number" name="id-number" value="{{ old('id-number', $employee->user_complements->id_number) }}">
+                                                @error('id-number')
                                                     <span class="invalid-feedback">{{ $message }}</span>
                                                 @enderror
                                             </div>
