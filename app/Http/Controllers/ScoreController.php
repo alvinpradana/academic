@@ -29,7 +29,7 @@ class ScoreController extends Controller
 
     public function list($class) {
         $count = Score::where('class_id', $class)->count('id');
-        $scores = Score::with('lesson')->where('class_id', $class)->orderBy('id', 'desc')->get();
+        $scores = Score::with('lesson')->where('class_id', $class)->orderBy('id', 'desc')->paginate(5);
 
         return view('students.scores.list', [
             'scores' => $scores,

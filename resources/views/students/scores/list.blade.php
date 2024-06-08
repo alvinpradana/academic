@@ -86,6 +86,7 @@
                         @endslot
                     @endcomponent
                 </div>
+                {{ $scores->links() }}
             </div>
         </div>
     </div>
