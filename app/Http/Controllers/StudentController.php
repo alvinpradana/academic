@@ -14,7 +14,7 @@ class StudentController extends Controller
         $students = User::with([
             'user_complements',
             'student_complements'
-        ])->where('position_id', 2)->get();
+        ])->where('position_id', 2)->paginate(10);
 
         $count = User::where('position_id', 2)->sum('id');
 
@@ -44,7 +44,6 @@ class StudentController extends Controller
     public function store(Request $request) {
         $request->validate([
             'email' => ['required', 'email', 'unique:users'],
-            'password' => ['required'],
             'name' => ['required'],
             'birth' => ['required'],
             'gender' => ['required'],
