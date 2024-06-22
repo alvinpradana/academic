@@ -74,7 +74,7 @@
 
                         <div class="extra-nav">
                             <div class="extra-cell">
-                                <a href="https://www.sman6yogya.sch.id/login"
+                                <a href="{{ route('login') }}"
                                     class="btn shadow-primary btn-primary btn-xs btn-quote">
                                     <span>Login Akun</span>
                                 </a>

@@ -3,6 +3,7 @@
 use App\Http\Controllers\ClassGroupController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PresenceController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ScoreController;
 use App\Http\Controllers\SemesterController;
 use App\Http\Controllers\StudentScholarshipController;
@@ -48,11 +49,13 @@ Route::resource('presences', PresenceController::class);
 Route::get('class-group/create/{class_id}', [ClassGroupController::class, 'create'])->name('class-group.create');
 Route::resource('class-group', ClassGroupController::class);
 
+Route::resource('profile', ProfileController::class);
+
 Route::get('/login', function () {
     return view('login');
-});
+})->name('login');
 
 Route::get('/', function () {
     return view('index');
-});
+})->name('homepage');
 
