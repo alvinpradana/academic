@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\ClassGroupController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\PresenceController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ScoreController;
@@ -51,9 +53,10 @@ Route::resource('class-group', ClassGroupController::class);
 
 Route::resource('profile', ProfileController::class);
 
-Route::get('/login', function () {
-    return view('login');
-})->name('login');
+Route::get('login', [LoginController::class, 'create'])->name('login');
+Route::post('login', [LoginController::class, 'store']);
+
+Route::post('logout', LogoutController::class)->name('logout');
 
 Route::get('/', function () {
     return view('index');

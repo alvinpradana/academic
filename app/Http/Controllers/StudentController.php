@@ -14,7 +14,7 @@ class StudentController extends Controller
         $students = User::with([
             'user_complements',
             'student_complements'
-        ])->where('position_id', 2)->paginate(10);
+        ])->where('position_id', 2)->paginate(2);
 
         $count = User::where('position_id', 2)->sum('id');
 
@@ -64,7 +64,7 @@ class StudentController extends Controller
         User::insert([
             'position_id' => 2,
             'email' => $request->email,
-            'password' => $request->nip,
+            'password' => bcrypt($request->nip)
         ]);
 
         $user_id = User::orderBy('id', 'desc')->pluck('id')->first();

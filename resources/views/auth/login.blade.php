@@ -48,28 +48,35 @@
             </div>
             <div>
                 <div class="lg:p-12 max-w-lg lg:my-0 mx-auto p-6  ">
-                    <form class="p-6 space-y-4 relative bg-white shadow-xl rounded-lg" id="form-login">
+                    <form action="{{ route('login') }}" method="post" class="p-6 space-y-4 relative bg-white shadow-xl rounded-lg">
+                        @csrf
                         <div class="mb-6">
-                            <span
-                                class="lg:text-1xl text-xl font-semibold mb-1 text-transparent bg-clip-text bg-gradient-to-r to-blue-500 from-blue-600">Login</span><br>
-                            <span
-                                class="lg:text-1xl text-xl font-semibold mb-1 text-transparent bg-clip-text bg-gradient-to-r to-green-500 from-green-600">
-                                SMAN 6 YOGYAKARTA</span>
+                            <span class="lg:text-1xl text-xl font-semibold mb-1 text-transparent bg-clip-text bg-gradient-to-r to-blue-500 from-blue-600">Login</span><br>
+                            <span class="lg:text-1xl text-xl font-bold mb-1 text-transparent bg-clip-text bg-gradient-to-r to-green-500 from-green-600">SMAN 6 YOGYAKARTA</span>
                             <hr class="mt-3">
                             <div class="text-gray-600 text-xs mt-3">Silakan masukkan detail akun Anda.</div>
                         </div>
+                        @error('error')
+                            <div class="mb-3 mt-3 bg-red-50 px-2 py-4 border-rounder">
+                                <span class="text-red-500 text-xs">{{ $message }}</span>
+                            </div>
+                        @enderror
                         <div class="mb-6">
-                            <label for="username"
-                                class="block mb-2 text-sm font-medium">Email </label>
-                            <input type="text" name="username" placeholder="Masukan Email ..." class="with-border" autofocus autocomplete="off">
+                            <label for="email" class="block mb-2 text-sm font-medium">Email </label>
+                            <input type="text" name="email" placeholder="Masukan email ..." class="with-border @error('email') border-none border-red-900 @enderror" value="{{ old('email') }}" autofocus autocomplete="off">
+                            @error('email')
+                                <span class="text-red-500 text-xs">{{ $message }}</span>
+                            @enderror
                         </div>
                         <div class="mb-6">
-                            <label for="password" class="block mb-4 text-sm font-medium">Password
-                                <a href="{{ route('dashboard.index') }}" class="font-bold float-right text-blue-500 hover:underline text-sm">Lupa password ?</a></label>
-                            <input type="password" name="password" placeholder="Masukan Password ..."
+                            <label for="password" class="block mb-4 text-sm font-medium">Password<a href="#" class="font-semibold float-right text-blue-500 hover:underline text-sm">Lupa password ?</a></label>
+                            <input type="password" name="password" placeholder="Masukan password ..."
                                 class="with-border" autocomplete="on">
+                                @error('password')
+                                    <span class="text-red-500 text-xs">{{ $message }}</span>
+                                @enderror
                         </div>
-                        <button type="button" name="submit" id="submit-login" class="font-bold shadow-lg py-3 rounded-lg text-white bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800 hover:from-blue-800 hover:to-blue-900 text-center w-full">
+                        <button type="submit" class="font-semibold shadow-lg py-3 rounded-lg text-white bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800 hover:from-blue-800 hover:to-blue-900 text-center w-full">
                             Masuk
                         </button>
                     </form>

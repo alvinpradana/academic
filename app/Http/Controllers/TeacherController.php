@@ -63,7 +63,7 @@ class TeacherController extends Controller
         User::insert([
             'position_id' => 1,
             'email' => $request->email,
-            'password' => $request->nip,
+            'password' => bcrypt($request->nip),
         ]);
 
         $user_id = User::orderBy('id', 'desc')->pluck('id')->first();
