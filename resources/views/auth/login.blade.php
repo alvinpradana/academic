@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login SMAN 6 YOGYAKARTA</title>
+    <title>Login SMA N 9 MUKOMUKO</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Login Akun SMAN 6 YOGYAKARTA">
@@ -25,11 +25,13 @@
             <div class="max-w-6xl mx-auto">
                 <div class="flex items-center lg:justify-between justify-around">
                     <a href="#">
-                        <img src="https://www.sman6yogya.sch.id/assets/images/logo/1592363597-sma6-header.png"
-                            alt="logo" class="lg:mx-0 lg:w-52 mx-auto w-40">
-                        <div class="capitalize flex font-semibold hidden lg:block my-2 space-x-3 text-center text-sm">
-                            <a href="{{ route('homepage') }}" class="shadow-lg py-3 px-3 rounded-lg text-white bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800 hover:from-blue-800 hover:to-blue-900 text-center w-full hover:text-white">Ke website</a>
-                        </div>
+                    <div class="flex gap-3 items-center">
+                        <img src="{{ asset('assets/img/logo.png') }}" alt="logo" class="lg:mx-0 lg:w-22 mx-auto w-12">
+                        <p class="text-xl font-bold mb-1 text-transparent bg-clip-text bg-gradient-to-r to-green-500 from-green-600">SMK N 9 MUKOMUKO</p>
+                    </div>
+                    <div class="capitalize flex font-semibold hidden lg:block my-2 space-x-3 text-center text-sm">
+                        <a href="{{ route('homepage') }}" class="shadow-lg py-3 px-3 rounded-lg text-white bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800 hover:from-blue-800 hover:to-blue-900 text-center w-full hover:text-white">Ke website</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -52,7 +54,7 @@
                         @csrf
                         <div class="mb-6">
                             <span class="lg:text-1xl text-xl font-semibold mb-1 text-transparent bg-clip-text bg-gradient-to-r to-blue-500 from-blue-600">Login</span><br>
-                            <span class="lg:text-1xl text-xl font-bold mb-1 text-transparent bg-clip-text bg-gradient-to-r to-green-500 from-green-600">SMAN 6 YOGYAKARTA</span>
+                            <span class="lg:text-1xl text-xl font-bold mb-1 text-transparent bg-clip-text bg-gradient-to-r to-green-500 from-green-600">SMA N 9 MUKOMUKO</span>
                             <hr class="mt-3">
                             <div class="text-gray-600 text-xs mt-3">Silakan masukkan detail akun Anda.</div>
                         </div>

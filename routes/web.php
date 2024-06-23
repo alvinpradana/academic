@@ -22,43 +22,47 @@ use App\Http\Controllers\PositionController;
 use App\Http\Controllers\ScholarshipController;
 use Illuminate\Support\Facades\Route;
 
-Route::resource('dashboard', HomeController::class);
-Route::resource('teachers', TeacherController::class);
-Route::resource('students', StudentController::class);
-Route::resource('positions', PositionController::class);
-Route::resource('scholarships', ScholarshipController::class);
-Route::resource('employees', EmployeeController::class);
-Route::resource('lessons', LessonController::class);
-Route::resource('organizations', OrganizationController::class);
-Route::resource('class', ClassController::class);
-Route::resource('class-level', ClassLevelController::class);
-Route::resource('grades', GradeController::class);
-Route::resource('majors', MajorController::class);
-Route::resource('student-scholarship', StudentScholarshipController::class);
-Route::resource('semesters', SemesterController::class);
+Route::middleware('auth')->group(function() {
+    Route::resource('dashboard', HomeController::class);
+    Route::resource('teachers', TeacherController::class);
+    Route::resource('students', StudentController::class);
+    Route::resource('positions', PositionController::class);
+    Route::resource('scholarships', ScholarshipController::class);
+    Route::resource('employees', EmployeeController::class);
+    Route::resource('lessons', LessonController::class);
+    Route::resource('organizations', OrganizationController::class);
+    Route::resource('class', ClassController::class);
+    Route::resource('class-level', ClassLevelController::class);
+    Route::resource('grades', GradeController::class);
+    Route::resource('majors', MajorController::class);
+    Route::resource('student-scholarship', StudentScholarshipController::class);
+    Route::resource('semesters', SemesterController::class);
 
-Route::get('/scores/list/{class}', [ScoreController::class, 'list'])->name('scores.list');
-Route::get('/scores/list/{class}/view/{id}', [ScoreController::class, 'view'])->name('scores.view');
-Route::get('/scores/list/{class}/view/{id}/edit', [ScoreController::class, 'edit'])->name('scores.edit-score');
-Route::put('/scores/list/{class}/view/{score}', [ScoreController::class, 'update'])->name('scores.update-score');
-Route::get('/scores/create/{class}', [ScoreController::class, 'add'])->name('scores.add');
-Route::resource('scores', ScoreController::class);
+    Route::get('/scores/list/{class}', [ScoreController::class, 'list'])->name('scores.list');
+    Route::get('/scores/list/{class}/view/{id}', [ScoreController::class, 'view'])->name('scores.view');
+    Route::get('/scores/list/{class}/view/{id}/edit', [ScoreController::class, 'edit'])->name('scores.edit-score');
+    Route::put('/scores/list/{class}/view/{score}', [ScoreController::class, 'update'])->name('scores.update-score');
+    Route::get('/scores/create/{class}', [ScoreController::class, 'add'])->name('scores.add');
+    Route::resource('scores', ScoreController::class);
 
-Route::get('/presences/{semester}/{class}/{lesson}', [PresenceController::class, 'show'])->scopeBindings();
-Route::get('/presences/create/{class}', [PresenceController::class, 'create'])->name('presences-create.create')->scopeBindings();
-Route::resource('presences', PresenceController::class);
+    Route::get('class-group/create/{class_id}', [ClassGroupController::class, 'create'])->name('class-group.create');
+    Route::resource('class-group', ClassGroupController::class);
 
-Route::get('class-group/create/{class_id}', [ClassGroupController::class, 'create'])->name('class-group.create');
-Route::resource('class-group', ClassGroupController::class);
+    Route::resource('profile', ProfileController::class);
+});
 
-Route::resource('profile', ProfileController::class);
-
-Route::get('login', [LoginController::class, 'create'])->name('login');
-Route::post('login', [LoginController::class, 'store']);
+Route::middleware('guest')->group(function() {
+    Route::get('login', [LoginController::class, 'create'])->name('login');
+    Route::post('login', [LoginController::class, 'store']);
+});
 
 Route::post('logout', LogoutController::class)->name('logout');
 
 Route::get('/', function () {
     return view('index');
 })->name('homepage');
+
+Route::get('/presences/{semester}/{class}/{lesson}', [PresenceController::class, 'show'])->scopeBindings();
+Route::get('/presences/create/{class}', [PresenceController::class, 'create'])->name('presences-create.create')->scopeBindings();
+Route::resource('presences', PresenceController::class);
 
