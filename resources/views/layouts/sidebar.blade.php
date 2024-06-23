@@ -1,9 +1,10 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('dashboard.index') }}">
-        <div class="sidebar-brand-icon rotate-n-15">
+        {{-- <div class="sidebar-brand-icon rotate-n-15">
             <i class="fas fa-laugh-wink"></i>
-        </div>
-        <div class="sidebar-brand-text mx-3">Academics</div>
+        </div> --}}
+        <img src="{{ asset('assets/img/logo.png') }}" alt="" class="h-100">
+        <div class="sidebar-brand-text ml-2" style="font-size: 0.8rem;">SMK N 9 MUKOMUKO</div>
     </a>
     <hr class="sidebar-divider my-0">
     <li class="nav-item active">

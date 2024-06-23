@@ -24,7 +24,7 @@
                                         <strong>Nama Lengkap</strong>
                                     </div>
                                     <div class="col-sm-12 col-md-8 col-lg-8 mb-2 text-capitalize">
-                                        <strong class="mr-2">:</strong> Alvin Novian Perdana
+                                        <strong class="mr-2">:</strong> {{ Auth::user()->user_complements->name ?? '-' }}
                                     </div>
                                 </div>
                                 <div class="row mb-3">
@@ -32,7 +32,7 @@
                                         <strong>Nomor Induk Pelajar (NIP)</strong>
                                     </div>
                                     <div class="col-sm-12 col-md-8 col-lg-8 mb-2">
-                                        <strong class="mr-2">:</strong> 
+                                        <strong class="mr-2">:</strong> {{ Auth::user()->student_complements->nip_number }}
                                     </div>
                                 </div>
                                 <div class="row mb-3">
@@ -40,7 +40,7 @@
                                         <strong>Tempat, Tanggal Lahir</strong>
                                     </div>
                                     <div class="col-sm-12 col-md-8 col-lg-8 mb-2 text-capitalize">
-                                        <strong class="mr-2">:</strong> 
+                                        <strong class="mr-2">:</strong> {{ Auth::user()->user_complements->birth_date_place }}
                                     </div>
                                 </div>
                                 <div class="row mb-3">
@@ -48,7 +48,14 @@
                                         <strong>Jenis Kelamin</strong>
                                     </div>
                                     <div class="col-sm-12 col-md-8 col-lg-8 mb-2">
-                                        <strong class="mr-2">:</strong>
+                                        <strong class="mr-2">:</strong> 
+                                            @if (Auth::user()->user_complements->gender == 'A')
+                                                Laki-laki
+                                            @elseif (Auth::user()->user_complements->gender == 'B')
+                                                Perempuan
+                                            @else
+                                                Lainnya
+                                            @endif
                                     </div>
                                 </div>
                                 <div class="row mb-3">
@@ -56,7 +63,7 @@
                                         <strong>Usia</strong>
                                     </div>
                                     <div class="col-sm-12 col-md-8 col-lg-8 mb-2">
-                                        <strong class="mr-2">:</strong> 
+                                        <strong class="mr-2">:</strong> {{ Auth::user()->user_complements->age }} Tahun
                                     </div>
                                 </div>
                                 <div class="row mb-3">
@@ -65,6 +72,17 @@
                                     </div>
                                     <div class="col-sm-12 col-md-8 col-lg-8 mb-2">
                                         <strong class="mr-2">:</strong>
+                                            @if (Auth::user()->user_complements->religion == 'A')
+                                                Islam
+                                            @elseif (Auth::user()->user_complements->religion == 'B')
+                                                Kristen
+                                            @elseif (Auth::user()->user_complements->religion == 'C')
+                                                Budha
+                                            @elseif (Auth::user()->user_complements->religion == 'D')
+                                                Hindu
+                                            @else
+                                                Lainnya
+                                            @endif
                                     </div>
                                 </div>
                                 <div class="row mb-3">
@@ -72,7 +90,7 @@
                                         <strong>Nomor HP</strong>
                                     </div>
                                     <div class="col-sm-12 col-md-8 col-lg-8 mb-2">
-                                        <strong class="mr-2">:</strong> 
+                                        <strong class="mr-2">:</strong> {{ Auth::user()->user_complements->phone_number }}
                                     </div>
                                 </div>
                                 <div class="row mb-3">
@@ -80,7 +98,7 @@
                                         <strong>Email Aktif</strong>
                                     </div>
                                     <div class="col-sm-12 col-md-8 col-lg-8 mb-2">
-                                        <strong class="mr-2">:</strong> 
+                                        <strong class="mr-2">:</strong> {{ Auth::user()->email }}
                                     </div>
                                 </div>
                                 <div class="row mb-3">
@@ -88,7 +106,7 @@
                                         <strong>Alamat</strong>
                                     </div>
                                     <div class="col-sm-12 col-md-8 col-lg-8 mb-2 text-capitalize">
-                                        <strong class="mr-2">:</strong> 
+                                        <strong class="mr-2">:</strong> {{ Auth::user()->user_complements->street ?? '-' }}, {{ Auth::user()->user_complements->subdistrict ?? '-' }}, {{ Auth::user()->user_complements->district ?? '-' }}, {{ Auth::user()->user_complements->zip_code ?? '-' }}
                                     </div>
                                 </div>
                             </div>
