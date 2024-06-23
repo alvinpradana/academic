@@ -45,7 +45,7 @@
                             @foreach ($students as $student)
                                 <tr>
                                     <td>{{ $student->users->user_complements->name }}</td>
-                                    <td>{{ $student->users->password }}</td>
+                                    <td>{{ $student->users->student_complements->nip_number }}</td>
                                     <td>
                                         @if ($student->users->user_complements->gender == 'A')
                                             Laki-laki

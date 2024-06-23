@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Classes;
 use App\Models\ClassGroup;
+use App\Models\StudentComplement;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -70,7 +71,8 @@ class ClassGroupController extends Controller
             'nip' => ['required', 'numeric']
         ]);
         
-        $student = User::where('password', $request->nip)->first();
+        $student = StudentComplement::where('nip_number', $request->nip)->first();
+        $user = User::where('id', $student->user_id)->first();
 
         $possible_to_insert = false;
         $alert_message = '';
@@ -85,7 +87,7 @@ class ClassGroupController extends Controller
         $student_has_added = false;
 
         if ($student != null) {
-            if ($student->position_id == 2) {
+            if ($user->position_id == 2) {
                 $student_found = true;
             }
         } else {
@@ -93,7 +95,7 @@ class ClassGroupController extends Controller
         }
         
         if ($student_found) {
-            $student_in_class = ClassGroup::where('student_id', $student->id)->first();
+            $student_in_class = ClassGroup::where('student_id', $student->user_id)->first();
 
             if ($student_in_class != null) {
                 $student_has_added = true;
@@ -107,7 +109,7 @@ class ClassGroupController extends Controller
 
         if ($possible_to_insert) {
             ClassGroup::insert([
-                'student_id' => $student->id,
+                'student_id' => $student->user_id,
                 'class_id' => $request->class_id,
                 'created_at' => now()
             ]);
