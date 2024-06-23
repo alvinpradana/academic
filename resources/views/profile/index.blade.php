@@ -32,7 +32,14 @@
                                         <strong>Nomor Induk Pelajar (NIP)</strong>
                                     </div>
                                     <div class="col-sm-12 col-md-8 col-lg-8 mb-2">
-                                        <strong class="mr-2">:</strong> {{ Auth::user()->student_complements->nip_number ?? '-' }}
+                                        <strong class="mr-2">:</strong> 
+                                        @if (Auth::user()->position_id == 2)
+                                            {{ Auth::user()->student_complements->nip_number }}
+                                        @elseif (Auth::user()->position_id == 1)
+                                            {{ Auth::user()->teacher_complements->nip_number }}
+                                        @else
+                                            -
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="row mb-3">
