@@ -32,7 +32,7 @@
                                         <strong>Nomor Induk Pelajar (NIP)</strong>
                                     </div>
                                     <div class="col-sm-12 col-md-8 col-lg-8 mb-2">
-                                        <strong class="mr-2">:</strong> {{ Auth::user()->student_complements->nip_number }}
+                                        <strong class="mr-2">:</strong> {{ Auth::user()->student_complements->nip_number ?? '-' }}
                                     </div>
                                 </div>
                                 <div class="row mb-3">
@@ -40,7 +40,7 @@
                                         <strong>Tempat, Tanggal Lahir</strong>
                                     </div>
                                     <div class="col-sm-12 col-md-8 col-lg-8 mb-2 text-capitalize">
-                                        <strong class="mr-2">:</strong> {{ Auth::user()->user_complements->birth_date_place }}
+                                        <strong class="mr-2">:</strong> {{ Auth::user()->user_complements->birth_date_place ?? '-' }}
                                     </div>
                                 </div>
                                 <div class="row mb-3">
@@ -63,7 +63,7 @@
                                         <strong>Usia</strong>
                                     </div>
                                     <div class="col-sm-12 col-md-8 col-lg-8 mb-2">
-                                        <strong class="mr-2">:</strong> {{ Auth::user()->user_complements->age }} Tahun
+                                        <strong class="mr-2">:</strong> {{ Auth::user()->user_complements->age ?? '-' }} Tahun
                                     </div>
                                 </div>
                                 <div class="row mb-3">
@@ -90,7 +90,7 @@
                                         <strong>Nomor HP</strong>
                                     </div>
                                     <div class="col-sm-12 col-md-8 col-lg-8 mb-2">
-                                        <strong class="mr-2">:</strong> {{ Auth::user()->user_complements->phone_number }}
+                                        <strong class="mr-2">:</strong> {{ Auth::user()->user_complements->phone_number ?? '-' }}
                                     </div>
                                 </div>
                                 <div class="row mb-3">
