@@ -10,6 +10,10 @@ use Illuminate\Http\Request;
 
 class StudentController extends Controller
 {
+    public function __construct() {
+        $this->middleware('admin')->except(['index']);
+    }
+    
     public function index() {
         $students = User::with([
             'user_complements',
