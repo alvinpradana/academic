@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 
 class GradeController extends Controller
 {
+    public function __construct() {
+        $this->middleware('admin')->except('index');
+    }
+    
     public function index () {
         $grades = Grade::orderBy('id', 'asc')->get();
         $count = Grade::sum('id');

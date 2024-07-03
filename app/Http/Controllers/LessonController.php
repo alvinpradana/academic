@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 
 class LessonController extends Controller
 {
+    public function __construct() {
+        $this->middleware('admin')->except(['index']);
+    }
+    
     public function index() {
         $lessons = Lesson::orderBy('id', 'desc')->paginate(5);
         $count = Lesson::sum('id');

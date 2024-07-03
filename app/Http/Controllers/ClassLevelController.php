@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 
 class ClassLevelController extends Controller
 {
+    public function __construct() {
+        $this->middleware('admin')->except(['index']);
+    }
+    
     public function index() {
         $levels = LevelClass::orderBy('level', 'asc')->get();
         $count = LevelClass::sum('id');

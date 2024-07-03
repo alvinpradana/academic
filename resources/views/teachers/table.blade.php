@@ -73,9 +73,11 @@
                                             {{ route('teachers.destroy', $user->id) }}
                                         @endslot
                                     @endcomponent
-                                    <button type="button" class="btn btn-danger btn-sm btn-circle" data-toggle="modal" data-target="#modal_{{ $user->id }}">
-                                        <i class="fas fa-trash"></i>
-                                    </button>
+                                    @if (Auth::user()->position_id == 3)
+                                        <button type="button" class="btn btn-danger btn-sm btn-circle" data-toggle="modal" data-target="#modal_{{ $user->id }}">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    @endif
                                 </td>
                             </tr>
                         @endforeach

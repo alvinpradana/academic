@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 
 class SemesterController extends Controller
 {
+    public function __construct() {
+        $this->middleware('admin')->except(['index']);
+    }
+    
     public function index() {
         $semesters = Semester::orderBy('id', 'asc')->get();
         $count = Semester::sum('id');

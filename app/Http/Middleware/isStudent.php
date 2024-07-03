@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
-class isTeacher
+class isStudent
 {
     /**
      * Handle an incoming request.
@@ -16,10 +16,10 @@ class isTeacher
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (Auth::user() && Auth::user()->position_id == 1) {
+        if (Auth::user() && Auth::user()->position_id == 2) {
             return $next($request);
         }
 
-        return redirect()->back()->with('error', 'You have not teacher access.');
+        return redirect()->back()->with('error', 'You have not student access.');
     }
 }

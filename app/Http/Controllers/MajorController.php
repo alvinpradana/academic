@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 
 class MajorController extends Controller
 {
+    public function __construct() {
+        $this->middleware('admin')->except(['index']);
+    }
+    
     public function index() {
         $majors = Major::orderBy('id', 'desc')->paginate(5);
         $count = Major::sum('id');

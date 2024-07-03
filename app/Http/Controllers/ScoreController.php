@@ -8,10 +8,15 @@ use App\Models\Lesson;
 use App\Models\Score;
 use App\Models\Semester;
 use App\Models\StudentScore;
+use GuzzleHttp\Middleware;
 use Illuminate\Http\Request;
 
 class ScoreController extends Controller
 {
+    public function __construct() {
+        $this->middleware('teacher')->except(['index', 'list', 'view']);
+    }
+    
     public function index() {
         $class = Classes::with([
             'majors',
