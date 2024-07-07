@@ -9,6 +9,10 @@ use Illuminate\Http\Request;
 
 class StudentScholarshipController extends Controller
 {
+    public function __construct() {
+        $this->middleware('admin')->except(['index', 'show']);
+    }
+    
     public function index() {
         $scholarships = StudentScholarship::with('users')
             ->with('scholarships')

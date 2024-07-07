@@ -10,6 +10,10 @@ use Illuminate\Http\Request;
 
 class ClassGroupController extends Controller
 {
+    public function __construct() {
+        $this->middleware('admin')->except(['index', 'show', 'view']);
+    }
+    
     public function index() {
         $class = Classes::with([
             'majors',

@@ -33,9 +33,11 @@
                                 <label for="notes" class="form-label">Keterangan</label>
                                 <textarea type="text" class="form-control" id="notes" name="notes" rows="3" disabled>{{ $class->notes }}</textarea>
                             </div>
-                            <a class="btn btn-primary" href="{{ route('class.edit', $class->id) }}">
-                                Edit Data
-                            </a>
+                            @if (Auth::user()->position_id == 3)
+                                <a class="btn btn-primary" href="{{ route('class.edit', $class->id) }}">
+                                    Edit Data
+                                </a>
+                            @endif
                         </div>
                     </div>
                 </div>

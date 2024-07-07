@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 
 class PositionController extends Controller
 {
+    public function __construct() {
+        $this->middleware('admin')->except('index');
+    }
+    
     public function index() {
         $positions = Position::orderBy('id', 'desc')->paginate(5);
         $count = Position::sum('id');

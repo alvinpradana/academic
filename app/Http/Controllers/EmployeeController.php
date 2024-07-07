@@ -11,13 +11,17 @@ use Illuminate\Http\Request;
 
 class EmployeeController extends Controller
 {
+    public function __construct() {
+        $this->middleware('admin')->except('index');
+    }
+    
     public function index() {
         $employees = User::with([
             'user_complements',
             'positions'
-        ])->where('position_id', '<>', 1)->where('position_id', '<>', 2)->orderBy('id', 'desc')->paginate(10);
+        ])->where('position_id', '<>', 1)->where('position_id', '<>', 2)->where('position_id', '<>', 3)->orderBy('id', 'desc')->paginate(10);
 
-        $count = User::where('position_id', '<>', 1)->where('position_id', '<>', 2)->sum('id');
+        $count = User::where('position_id', '<>', 1)->where('position_id', '<>', 2)->where('position_id', '<>', 3)->sum('id');
 
         return view('employees.home', [
             'employees' => $employees,

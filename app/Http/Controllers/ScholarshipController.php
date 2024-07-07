@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 
 class ScholarshipController extends Controller
 {
+    public function __construct() {
+        $this->middleware('admin')->except(['index', 'show']);
+    }
+    
     public function index() {
         $scholarships = Scholarship::orderBy('id', 'desc')->paginate(5);
         $count = Scholarship::sum('id');
