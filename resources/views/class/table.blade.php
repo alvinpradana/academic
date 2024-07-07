@@ -1,5 +1,5 @@
 <div class="d-flex justify-content-between align-items-center mb-4">
-    <p class="my-auto">Tabel berikut merupakan data kelas pada SMK Crows Zero tahun ajaran 2023/2024.</p>
+    <p class="my-auto">Tabel berikut merupakan data kelas pada SMK N 9 MUKOMUKO.</p>
     <a href="{{ route('class.create') }}" class="btn btn-primary">Tambah</a>
 </div>
 @if (session('success'))
@@ -52,13 +52,6 @@
                                     <a href="{{ route('class.edit', $class->id) }}" class="btn btn-success btn-sm btn-circle">
                                         <i class="fas fa-pen"></i>
                                     </a>
-                                    {{-- <form action="{{ route('class.destroy', $class->id) }}" method="post" class="d-inline">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-danger btn-sm btn-circle">
-                                            <i class="fas fa-trash"></i>
-                                        </button>
-                                    </form> --}}
                                     @component('components.modal')
                                         @slot('id')
                                             {{ $class->id }}

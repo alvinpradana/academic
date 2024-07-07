@@ -1,5 +1,5 @@
 <div class="d-flex justify-content-between align-items-center mb-4">
-    <p class="my-auto">Tabel berikut merupakan data organisasi pelajar pada SMK Crows Zero tahun ajaran 2023/2024.</p>
+    <p class="my-auto">Tabel berikut merupakan data organisasi pelajar pada SMK N 9 MUKOMUKO.</p>
     <button class="btn btn-primary" data-toggle="modal" data-target="#modal">Tambah</button>
 </div>
 @component('components.modal')

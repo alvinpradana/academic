@@ -1,5 +1,5 @@
 <div class="d-flex justify-content-between align-items-center mb-4">
-    <p class="my-auto">Tabel berikut merupakan data jurusan pada SMK Crows Zero tahun ajaran 2023/2024.</p>
+    <p class="my-auto">Tabel berikut merupakan data jurusan pada SMK N 9 MUKOMUKO.</p>
     <a href="{{ route('majors.create') }}" class="btn btn-primary">Tambah</a>
 </div>
 @if (session('success'))
