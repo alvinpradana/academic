@@ -103,6 +103,7 @@
                             </div>
                         </div>
                         <a href="{{ route('students.edit', $student->id) }}" class="btn btn-primary px-5 my-3">Edit</a>
+                        <a href="{{ route('class-group.switch-class', $student->id) }}" class="btn btn-success px-5 my-3">Pindah Kelas</a>
                     </div>
                 </div>
             </div>

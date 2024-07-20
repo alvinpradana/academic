@@ -48,13 +48,6 @@
                                     <a href="{{ route('scholarships.edit', $scholarship->id) }}" class="btn btn-success btn-sm btn-circle">
                                         <i class="fas fa-pen"></i>
                                     </a>
-                                    {{-- <form action="{{ route('scholarships.destroy', $scholarship->id) }}" method="post" class="d-inline">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-danger btn-sm btn-circle">
-                                            <i class="fas fa-trash"></i>
-                                        </button>
-                                    </form> --}}
                                     @component('components.modal')
                                         @slot('id')
                                             {{ $scholarship->id }}

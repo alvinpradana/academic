@@ -57,33 +57,28 @@
                                     </td>
                                     <td>{{ $student->users->user_complements->age ? $student->users->user_complements->age . ' Tahun' : '-' }}</td>
                                     <td>
-                                        <a href="{{ route('students.show', $student->users->id) }}" class="btn btn-primary btn-sm btn-circle">
-                                            <i class="fas fa-eye"></i>
-                                        </a>
-                                        <a href="{{ route('students.edit', $student->users->id) }}" class="btn btn-success btn-sm btn-circle">
-                                            <i class="fas fa-pen"></i>
-                                        </a>
-                                        {{-- <form action="{{ route('class-group.destroy', $student->users->id) }}" method="post" class="d-inline">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-danger btn-sm btn-circle">
+                                        @if (Auth::user()->position_id == 3)
+                                            <a href="{{ route('students.show', $student->users->id) }}" class="btn btn-primary btn-sm btn-circle">
+                                                <i class="fas fa-eye"></i>
+                                            </a>
+                                            <a href="{{ route('students.edit', $student->users->id) }}" class="btn btn-success btn-sm btn-circle">
+                                                <i class="fas fa-pen"></i>
+                                            </a>
+                                            @component('components.modal')
+                                                @slot('id')
+                                                    {{ $student->users->id }}
+                                                @endslot
+                                                @slot('body')
+                                                    Are you sure you want to delete student from this class?
+                                                @endslot
+                                                @slot('route')
+                                                    {{ route('class-group.destroy', $student->users->id) }}
+                                                @endslot
+                                            @endcomponent
+                                            <button type="button" class="btn btn-danger btn-sm btn-circle" data-toggle="modal" data-target="#modal_{{ $student->users->id }}">
                                                 <i class="fas fa-trash"></i>
                                             </button>
-                                        </form> --}}
-                                        @component('components.modal')
-                                            @slot('id')
-                                                {{ $student->users->id }}
-                                            @endslot
-                                            @slot('body')
-                                                Are you sure you want to delete student from this class?
-                                            @endslot
-                                            @slot('route')
-                                                {{ route('class-group.destroy', $student->users->id) }}
-                                            @endslot
-                                        @endcomponent
-                                        <button type="button" class="btn btn-danger btn-sm btn-circle" data-toggle="modal" data-target="#modal_{{ $student->users->id }}">
-                                            <i class="fas fa-trash"></i>
-                                        </button>
+                                        @endif
                                     </td>
                                 </tr>
                             @endforeach

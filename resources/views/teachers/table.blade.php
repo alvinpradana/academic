@@ -49,31 +49,24 @@
                                 <td>{{ $user->user_complements->age }} Tahun</td>
                                 <td>{{ $user->user_complements->phone_number }}</td>
                                 <td>
-                                    <a href="{{ route('teachers.show', $user->id) }}" class="btn btn-primary btn-sm btn-circle">
-                                        <i class="fas fa-eye"></i>
-                                    </a>
-                                    <a href="{{ route('teachers.edit', $user->id) }}" class="btn btn-success btn-sm btn-circle">
-                                        <i class="fas fa-pen"></i>
-                                    </a>
-                                    {{-- <form action="{{ route('teachers.destroy', $user->id) }}" method="post" class="d-inline">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-danger btn-sm btn-circle">
-                                            <i class="fas fa-trash"></i>
-                                        </button>
-                                    </form> --}}
-                                    @component('components.modal')
-                                        @slot('id')
-                                            {{ $user->id }}
-                                        @endslot
-                                        @slot('body')
-                                            Are you sure you want to delete this data?
-                                        @endslot
-                                        @slot('route')
-                                            {{ route('teachers.destroy', $user->id) }}
-                                        @endslot
-                                    @endcomponent
                                     @if (Auth::user()->position_id == 3)
+                                        <a href="{{ route('teachers.show', $user->id) }}" class="btn btn-primary btn-sm btn-circle">
+                                            <i class="fas fa-eye"></i>
+                                        </a>
+                                        <a href="{{ route('teachers.edit', $user->id) }}" class="btn btn-success btn-sm btn-circle">
+                                            <i class="fas fa-pen"></i>
+                                        </a>
+                                        @component('components.modal')
+                                            @slot('id')
+                                                {{ $user->id }}
+                                            @endslot
+                                            @slot('body')
+                                                Are you sure you want to delete this data?
+                                            @endslot
+                                            @slot('route')
+                                                {{ route('teachers.destroy', $user->id) }}
+                                            @endslot
+                                        @endcomponent
                                         <button type="button" class="btn btn-danger btn-sm btn-circle" data-toggle="modal" data-target="#modal_{{ $user->id }}">
                                             <i class="fas fa-trash"></i>
                                         </button>

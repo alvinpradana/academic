@@ -42,33 +42,28 @@
                                 <td>{{ $grade->title }}</td>
                                 <td>{{ $grade->notes }}</td>
                                 <td>
-                                    <a href="{{ route('grades.show', $grade->id) }}" class="btn btn-primary btn-sm btn-circle">
-                                        <i class="fas fa-eye"></i>
-                                    </a>
-                                    <a href="{{ route('grades.edit', $grade->id) }}" class="btn btn-success btn-sm btn-circle">
-                                        <i class="fas fa-pen"></i>
-                                    </a>
-                                    {{-- <form action="{{ route('grades.destroy', $grade->id) }}" method="post" class="d-inline">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-danger btn-sm btn-circle">
+                                    @if (Auth::user()->position_id == 3)
+                                        <a href="{{ route('grades.show', $grade->id) }}" class="btn btn-primary btn-sm btn-circle">
+                                            <i class="fas fa-eye"></i>
+                                        </a>
+                                        <a href="{{ route('grades.edit', $grade->id) }}" class="btn btn-success btn-sm btn-circle">
+                                            <i class="fas fa-pen"></i>
+                                        </a>
+                                        @component('components.modal')
+                                            @slot('id')
+                                                {{ $grade->id }}
+                                            @endslot
+                                            @slot('body')
+                                                Are you sure you want to delete this data?
+                                            @endslot
+                                            @slot('route')
+                                                {{ route('grades.destroy', $grade->id) }}
+                                            @endslot
+                                        @endcomponent
+                                        <button type="button" class="btn btn-danger btn-sm btn-circle" data-toggle="modal" data-target="#modal_{{ $grade->id }}">
                                             <i class="fas fa-trash"></i>
                                         </button>
-                                    </form> --}}
-                                    @component('components.modal')
-                                        @slot('id')
-                                            {{ $grade->id }}
-                                        @endslot
-                                        @slot('body')
-                                            Are you sure you want to delete this data?
-                                        @endslot
-                                        @slot('route')
-                                            {{ route('grades.destroy', $grade->id) }}
-                                        @endslot
-                                    @endcomponent
-                                    <button type="button" class="btn btn-danger btn-sm btn-circle" data-toggle="modal" data-target="#modal_{{ $grade->id }}">
-                                        <i class="fas fa-trash"></i>
-                                    </button>
+                                    @endif
                                 </td>
                             </tr>
                         @endforeach
