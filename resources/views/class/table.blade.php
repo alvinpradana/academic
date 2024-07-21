@@ -1,6 +1,8 @@
 <div class="d-flex justify-content-between align-items-center mb-4">
     <p class="my-auto">Tabel berikut merupakan data kelas pada SMK N 9 MUKOMUKO.</p>
-    <a href="{{ route('class.create') }}" class="btn btn-primary">Tambah</a>
+    @if (Auth::user()->position_id == 3)
+        <a href="{{ route('class.create') }}" class="btn btn-primary">Tambah</a>
+    @endif
 </div>
 @if (session('success'))
     <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -67,6 +69,8 @@
                                         <button type="button" class="btn btn-danger btn-sm btn-circle" data-toggle="modal" data-target="#modal_{{ $class->id }}">
                                             <i class="fas fa-trash"></i>
                                         </button>
+                                    @else
+                                        -
                                     @endif
                                 </td>
                             </tr>

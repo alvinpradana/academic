@@ -1,6 +1,8 @@
 <div class="d-flex justify-content-between align-items-center mb-4">
     <p class="my-auto">Tabel berikut merupakan data beasiswa pelajar pada SMK N 9 MUKOMUKO.</p>
-    <a href="{{ route('scholarships.create') }}" class="btn btn-primary">Tambah</a>
+    @if (Auth::user()->position_id == 3)
+        <a href="{{ route('scholarships.create') }}" class="btn btn-primary">Tambah</a>
+    @endif
 </div>
 @if (session('success'))
     <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -42,26 +44,30 @@
                                 <td>{{ $scholarship->title }}</td>
                                 <td>{{ $scholarship->notes }}</td>
                                 <td>
-                                    <a href="{{ route('scholarships.show', $scholarship->id) }}" class="btn btn-primary btn-sm btn-circle">
-                                        <i class="fas fa-eye"></i>
-                                    </a>
-                                    <a href="{{ route('scholarships.edit', $scholarship->id) }}" class="btn btn-success btn-sm btn-circle">
-                                        <i class="fas fa-pen"></i>
-                                    </a>
-                                    @component('components.modal')
-                                        @slot('id')
-                                            {{ $scholarship->id }}
-                                        @endslot
-                                        @slot('body')
-                                            Are you sure you want to delete this data?
-                                        @endslot
-                                        @slot('route')
-                                            {{ route('scholarships.destroy', $scholarship->id) }}
-                                        @endslot
-                                    @endcomponent
-                                    <button type="button" class="btn btn-danger btn-sm btn-circle" data-toggle="modal" data-target="#modal_{{ $scholarship->id }}">
-                                        <i class="fas fa-trash"></i>
-                                    </button>
+                                    @if (Auth::user()->position_id == 3)
+                                        <a href="{{ route('scholarships.show', $scholarship->id) }}" class="btn btn-primary btn-sm btn-circle">
+                                            <i class="fas fa-eye"></i>
+                                        </a>
+                                        <a href="{{ route('scholarships.edit', $scholarship->id) }}" class="btn btn-success btn-sm btn-circle">
+                                            <i class="fas fa-pen"></i>
+                                        </a>
+                                        @component('components.modal')
+                                            @slot('id')
+                                                {{ $scholarship->id }}
+                                            @endslot
+                                            @slot('body')
+                                                Are you sure you want to delete this data?
+                                            @endslot
+                                            @slot('route')
+                                                {{ route('scholarships.destroy', $scholarship->id) }}
+                                            @endslot
+                                        @endcomponent
+                                        <button type="button" class="btn btn-danger btn-sm btn-circle" data-toggle="modal" data-target="#modal_{{ $scholarship->id }}">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    @else
+                                        -
+                                    @endif
                                 </td>
                             </tr>
                         @endforeach
