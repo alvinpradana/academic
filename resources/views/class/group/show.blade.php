@@ -3,7 +3,9 @@
 @section('content')
     <div class="d-flex justify-content-between align-items-center mb-4">
         <p class="my-auto">Tabel berikut merupakan data kelas siswa pada SMK N 9 MUKOMUKO.</p>
-        <a href="/class-group/create/{{ $class_id }}" class="btn btn-primary">Tambah</a>
+        @if (Auth::user()->position_id == 3)
+            <a href="/class-group/create/{{ $class_id }}" class="btn btn-primary">Tambah</a>
+        @endif
     </div>
     @if (session('success'))
         <div class="alert alert-success alert-dismissible fade show" role="alert">
