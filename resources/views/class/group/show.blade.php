@@ -92,4 +92,5 @@
             </div>
         </div>
     </div>
+    <a href="{{ route('change-class.index', $class_id) }}" class="btn btn-primary px-4">Ubah Kelas</a>
 @endsection

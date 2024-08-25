@@ -54,6 +54,10 @@ class ClassGroupController extends Controller
             'class_id' => $class->id
         ]);
     }
+    
+    public function switchClass($id) {
+        return view('class.switch-class', ['id' => $id]);
+    }
 
     public function create($class_id) {
         $class = Classes::with([
