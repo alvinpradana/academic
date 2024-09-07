@@ -92,5 +92,7 @@
             </div>
         </div>
     </div>
-    <a href="{{ route('change-class.index', $class_id) }}" class="btn btn-primary px-4">Ubah Kelas</a>
+    @if (Auth::user()->position_id == 3)
+        <a href="{{ route('change-class.index', $class_id) }}" class="btn btn-primary px-4">Ubah Kelas</a>
+    @endif
 @endsection

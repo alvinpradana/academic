@@ -8,6 +8,10 @@ use Illuminate\Http\Request;
 
 class ChangeClassController extends Controller
 {
+    public function __construct() {
+        $this->middleware('admin');
+    }
+    
     public function index($id) {
         $class = Classes::with([
             'levels',
