@@ -8,13 +8,12 @@ use App\Models\Lesson;
 use App\Models\Score;
 use App\Models\Semester;
 use App\Models\StudentScore;
-use GuzzleHttp\Middleware;
 use Illuminate\Http\Request;
 
 class ScoreController extends Controller
 {
     public function __construct() {
-        $this->middleware('teacher')->except(['index', 'list', 'view']);
+        $this->middleware('teacher')->except(['index', 'list', 'view', 'semesters']);
     }
     
     public function index() {
@@ -32,13 +31,25 @@ class ScoreController extends Controller
         ]);
     }
 
-    public function list($class) {
-        $count = Score::where('class_id', $class)->count('id');
-        $scores = Score::with('lesson')->where('class_id', $class)->orderBy('id', 'desc')->paginate(5);
+    public function semesters($class) {
+        $semesters = Semester::orderBy('id', 'asc')->get();
+        $count = count($semesters);
+
+        return view('students.scores.semesters', [
+            'semesters' => $semesters,
+            'count' => $count,
+            'class' => $class
+        ]);
+    }
+
+    public function list($class, $semester) {
+        $count = Score::where('class_id', $class)->where('semester_id', $semester)->count('id');
+        $scores = Score::with('lesson')->where('class_id', $class,)->where('semester_id', $semester)->orderBy('id', 'desc')->paginate(5);
 
         return view('students.scores.list', [
             'scores' => $scores,
             'class' => $class,
+            'semester' => $semester,
             'count' => $count
         ]);
     }
@@ -107,7 +118,7 @@ class ScoreController extends Controller
         // ]);
         
         StudentScore::insert($data);
-        return redirect()->route('scores.list', $request->class)->with('success', 'Data nilai berhasil disimpan.');
+        return redirect()->route('scores.list', [$request->class, $request->semester])->with('success', 'Data nilai berhasil disimpan.');
     }
 
     public function edit($class, $id) {
@@ -168,7 +179,7 @@ class ScoreController extends Controller
         StudentScore::where('score_id', $score)->delete();
         StudentScore::insert($data);
 
-        return redirect()->route('scores.list', ['class' => $class])->with('success', 'Data nilai berhasil diubah.');
+        return redirect()->route('scores.list', ['class' => $class, 'semester' => $request->semester])->with('success', 'Data nilai berhasil diubah.');
     }
 
     public function destroy($score) {

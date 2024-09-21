@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ChangeClassController;
 use App\Http\Controllers\ClassGroupController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
@@ -38,17 +39,22 @@ Route::middleware('auth')->group(function() {
     Route::resource('student-scholarship', StudentScholarshipController::class);
     Route::resource('semesters', SemesterController::class);
 
-    Route::get('/scores/list/{class}', [ScoreController::class, 'list'])->name('scores.list');
-    Route::get('/scores/list/{class}/view/{id}', [ScoreController::class, 'view'])->name('scores.view');
-    Route::get('/scores/list/{class}/view/{id}/edit', [ScoreController::class, 'edit'])->name('scores.edit-score');
-    Route::put('/scores/list/{class}/view/{score}', [ScoreController::class, 'update'])->name('scores.update-score');
+    Route::get('/scores/class-{class}', [ScoreController::class, 'semesters'])->name('scores.semesters');
+    Route::get('/scores/list/class-{class}/semester-{semester}', [ScoreController::class, 'list'])->name('scores.list');
+    Route::get('/scores/list/class-{class}/view/score-{id}', [ScoreController::class, 'view'])->name('scores.view');
+    Route::get('/scores/list/class-{class}/view/score-{id}/edit', [ScoreController::class, 'edit'])->name('scores.edit-score');
+    Route::put('/scores/list/class-{class}/view/{score}', [ScoreController::class, 'update'])->name('scores.update-score');
     Route::get('/scores/create/{class}', [ScoreController::class, 'add'])->name('scores.add');
     Route::resource('scores', ScoreController::class);
 
     Route::get('class-group/create/{class_id}', [ClassGroupController::class, 'create'])->name('class-group.create');
+    Route::get('class-group/switch-class/{student_id}', [ClassGroupController::class, 'switchClass'])->name('class-group.switch-class');
     Route::resource('class-group', ClassGroupController::class);
 
     Route::resource('profile', ProfileController::class);
+
+    Route::get('change-class/{id}', [ChangeClassController::class, 'index'])->name('change-class.index');
+    Route::put('change-class', [ChangeClassController::class, 'update'])->name('change-class.update');
 });
 
 Route::middleware('guest')->group(function() {

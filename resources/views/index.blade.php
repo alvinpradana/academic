@@ -36,7 +36,6 @@
         const BASE_URL_API = 'https://www.sman6yogya.sch.id/api/';
         const SEKOLAHKITA_CONFIG = {
             authDomain: 'https://api.sekolahkita.net/v2/',
-            //authDomain: 'http://localhost/api-smartschool/',
             authorization: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjEzNTY5OTk1MjQsImtleSI6InZiU0VyVUM2bk1RbWNWWEZSczk4IiwiZG9tYWluIjoic21hbjZ5b2d5YS5zY2guaWQifQ.0WpqEsVmBPtKv_qA1hgwABtpvEtioJFP0R2MNhym6sI',
             data: {}
         };
