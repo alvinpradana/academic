@@ -8,6 +8,7 @@ use App\Models\Lesson;
 use App\Models\Score;
 use App\Models\Semester;
 use App\Models\StudentScore;
+use Auth;
 use Illuminate\Http\Request;
 
 class ScoreController extends Controller
@@ -98,6 +99,7 @@ class ScoreController extends Controller
             'semester_id' => $request->semester,
             'class_id' => $request->class,
             'lesson_id' => $request->lesson,
+            'teacher_id' => Auth::user()->id,
             'task_name' => $request->task,
             'teacher_name' => $request->teacher,
             'created' => date('Y-m-d')
@@ -158,6 +160,7 @@ class ScoreController extends Controller
             'semester_id' => $request->semester,
             'class_id' => $request->class,
             'lesson_id' => $request->lesson,
+            'teacher_id' => Auth::user()->id,
             'task_name' => $request->task,
             'teacher_name' => $request->teacher
         ]);
