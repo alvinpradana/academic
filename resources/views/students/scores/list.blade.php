@@ -4,7 +4,7 @@
     <div>
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">Data Nilai Siswa</h1>
-            <a href="{{ route('scores.add', $class) }}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm px-3">
+            <a href="{{ route('scores.add', ['class' => $class, 'semester' => $semester]) }}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm px-3">
                 Create
             </a>
         </div>
@@ -52,11 +52,11 @@
                                         <td>{{ $score->task_name }}</td>
                                         <td>{{ $score->teacher_name }}</td>
                                         <td>
-                                            <a href="{{ route('scores.view', ['class' => $class, 'id' => $score->id]) }}" class="btn btn-primary btn-sm btn-circle">
+                                            <a href="{{ route('scores.view', ['class' => $class, 'semester' => $semester, 'id' => $score->id]) }}" class="btn btn-primary btn-sm btn-circle">
                                                 <i class="fas fa-eye"></i>
                                             </a>
                                             @if (Auth::user()->position_id != 2)
-                                                <a href="{{ route('scores.edit-score', ['class' => $class, 'id' => $score->id]) }}" class="btn btn-success btn-sm btn-circle">
+                                                <a href="{{ route('scores.edit-score', ['class' => $class, 'semester' => $semester, 'id' => $score->id]) }}" class="btn btn-success btn-sm btn-circle">
                                                     <i class="fas fa-pen"></i>
                                                 </a>
                                                 @component('components.modal')

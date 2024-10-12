@@ -41,10 +41,10 @@ Route::middleware('auth')->group(function() {
 
     Route::get('/scores/class-{class}', [ScoreController::class, 'semesters'])->name('scores.semesters');
     Route::get('/scores/class-{class}/semester-{semester}', [ScoreController::class, 'list'])->name('scores.list');
-    Route::get('/scores/class-{class}/view/score-{id}', [ScoreController::class, 'view'])->name('scores.view');
-    Route::get('/scores/class-{class}/view/score-{id}/edit', [ScoreController::class, 'edit'])->name('scores.edit-score');
+    Route::get('/scores/class-{class}/semester-{semester}/score-{id}', [ScoreController::class, 'view'])->name('scores.view');
+    Route::get('/scores/class-{class}/semester-{semester}/score-{id}/edit', [ScoreController::class, 'edit'])->name('scores.edit-score');
     Route::put('/scores/class-{class}/view/{score}', [ScoreController::class, 'update'])->name('scores.update-score');
-    Route::get('/scores/create/{class}', [ScoreController::class, 'add'])->name('scores.add');
+    Route::get('/scores/create/class-{class}/semester-{semester}', [ScoreController::class, 'add'])->name('scores.add');
     Route::resource('scores', ScoreController::class);
 
     Route::get('class-group/create/{class_id}', [ClassGroupController::class, 'create'])->name('class-group.create');

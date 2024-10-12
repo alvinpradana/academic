@@ -8,6 +8,8 @@ use App\Models\Lesson;
 use App\Models\Score;
 use App\Models\Semester;
 use App\Models\StudentScore;
+use App\Models\User;
+use App\Models\UserComplement;
 use Auth;
 use Illuminate\Http\Request;
 
@@ -69,18 +71,21 @@ class ScoreController extends Controller
         ]);
     }
 
-    public function add($class) {
+    public function add($class, $semester) {
         $students = ClassGroup::where('class_id', $class)->with('users.user_complements')->get();
         $semesters = Semester::orderBy('id', 'asc')->get();
         $lessons = Lesson::orderBy('id', 'asc')->get();
+        $teacher = UserComplement::where('user_id', Auth::user()->id)->first();
         $count = $students->count();
         
         return view('students.scores.create', [
             'semesters' => $semesters,
+            'semester' => $semester,
             'lessons' => $lessons,
             'students' => $students,
             'count' => $count,
-            'class' => $class
+            'class' => $class,
+            'teacher' =>$teacher
         ]);
     }
 
@@ -123,7 +128,7 @@ class ScoreController extends Controller
         return redirect()->route('scores.list', [$request->class, $request->semester])->with('success', 'Data nilai berhasil disimpan.');
     }
 
-    public function edit($class, $id) {
+    public function edit($class, $semester, $id) {
         $students = ClassGroup::where('class_id', $class)->with('users.user_complements')->get();
         $semesters = Semester::orderBy('id', 'asc')->get();
         $lessons = Lesson::orderBy('id', 'asc')->get();
@@ -138,6 +143,7 @@ class ScoreController extends Controller
             'student_scores' => $student_scores,
             'scores' => $scores,
             'semesters' => $semesters,
+            'semester' => $semester,
             'class' => $class,
             'score' => $id,
             'lessons' => $lessons,

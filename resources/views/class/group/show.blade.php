@@ -92,7 +92,7 @@
             </div>
         </div>
     </div>
-    @if (Auth::user()->position_id == 3)
+    @if (Auth::user()->position_id == 3 && $count > 0)
         <a href="{{ route('change-class.index', $class_id) }}" class="btn btn-primary px-4">Ubah Kelas</a>
     @endif
 @endsection

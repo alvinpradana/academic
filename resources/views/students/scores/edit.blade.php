@@ -20,7 +20,9 @@
                                 <div class="col-md-3">
                                     <div class="mb-3">
                                         <label for="semester" class="form-label">Semester</label>
-                                        <select id="semester" name="semester" class="form-select form-control text-capitalize @error('semester') is-invalid @enderror">
+                                        <input type="text" class="form-control" value="{{ $scores->semester_id }}" disabled>
+                                        <input type="hidden" class="form-control" id="semester" name="semester" value="{{ $scores->semester_id }}">
+                                        {{-- <select id="semester" name="semester" class="form-select form-control text-capitalize @error('semester') is-invalid @enderror">
                                             <option value="0" selected disabled>Pilih Opsi</option>
                                             @foreach ($semesters as $semester)
                                                 <option value="{{ $semester->id }}" @selected($semester->id == $scores->semester_id)>{{ $semester->title }}</option>
@@ -28,7 +30,7 @@
                                         </select>
                                         @error('semester')
                                             <span class="invalid-feedback">{{ $message }}</span>
-                                        @enderror
+                                        @enderror --}}
                                     </div>
                                 </div>
                                 <div class="col-md-3">
@@ -57,7 +59,8 @@
                                 <div class="col-md-3">
                                     <div class="mb-3">
                                         <label for="teacher" class="form-label">Nama Pengajar</label>
-                                        <input type="text" class="form-control @error('teacher') is-invalid @enderror" id="teacher" name="teacher" value="{{ $scores->teacher_name }}">
+                                        <input type="text" class="form-control" value="{{ $scores->teacher_name }}" disabled>
+                                        <input type="hidden" class="form-control @error('teacher') is-invalid @enderror" id="teacher" name="teacher" value="{{ $scores->teacher_name }}">
                                         @error('teacher')
                                             <span class="invalid-feedback">{{ $message }}</span>
                                         @enderror
