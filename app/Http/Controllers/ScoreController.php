@@ -57,13 +57,13 @@ class ScoreController extends Controller
         ]);
     }
 
-    public function view($class, $score) {
+    public function view($class, $semester, $score) {
         $student_scores = StudentScore::with([
             'scores',
             'students.student_complements',
             'students.user_complements'
         ])->where('score_id', $score)->orderBy('student_id', 'asc')->get();
-
+        
         return view('students.scores.view', [
             'student_scores' => $student_scores,
             'class' => $class,
@@ -110,10 +110,11 @@ class ScoreController extends Controller
             'created' => date('Y-m-d')
         ]);
 
+        $score = Score::latest('id')->first();
         foreach ($request->student as $key) {
-            $index--;            
+            $index--;
             array_push($data, [
-                'score_id' => Score::pluck('id')->last(),
+                'score_id' => $score->id,
                 'student_id' => $request->student[$index],
                 'score' => $request->input('score_'. $index),
                 'notes' => $request->notes[$index],
@@ -128,16 +129,16 @@ class ScoreController extends Controller
         return redirect()->route('scores.list', [$request->class, $request->semester])->with('success', 'Data nilai berhasil disimpan.');
     }
 
-    public function edit($class, $semester, $id) {
+    public function edit($class, $semester, $score) {
         $students = ClassGroup::where('class_id', $class)->with('users.user_complements')->get();
         $semesters = Semester::orderBy('id', 'asc')->get();
         $lessons = Lesson::orderBy('id', 'asc')->get();
-        $scores = Score::where('id', $id)->first();
+        $scores = Score::where('id', $score)->first();
         $student_scores = StudentScore::with([
             'scores',
             'students.student_complements',
             'students.user_complements'
-        ])->where('score_id', $id)->orderBy('student_id', 'asc')->get();
+        ])->where('score_id', $score)->orderBy('student_id', 'asc')->get();
 
         return view('students.scores.edit', [
             'student_scores' => $student_scores,
@@ -145,7 +146,7 @@ class ScoreController extends Controller
             'semesters' => $semesters,
             'semester' => $semester,
             'class' => $class,
-            'score' => $id,
+            'score' => $score,
             'lessons' => $lessons,
             'students' => $students
         ]);
@@ -174,7 +175,7 @@ class ScoreController extends Controller
         foreach ($request->student as $key) {
             $index--;
             array_push($data, [
-                'score_id' => Score::pluck('id')->last(),
+                'score_id' => $score,
                 'student_id' => $request->student[$index],
                 'score' => $request->input('score_'. $index),
                 'notes' => $request->notes[$index],

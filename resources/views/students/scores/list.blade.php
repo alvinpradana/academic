@@ -52,11 +52,11 @@
                                         <td>{{ $score->task_name }}</td>
                                         <td>{{ $score->teacher_name }}</td>
                                         <td>
-                                            <a href="{{ route('scores.view', ['class' => $class, 'semester' => $semester, 'id' => $score->id]) }}" class="btn btn-primary btn-sm btn-circle">
+                                            <a href="{{ route('scores.view', ['class' => $class, 'semester' => $semester, 'score' => $score->id]) }}" class="btn btn-primary btn-sm btn-circle">
                                                 <i class="fas fa-eye"></i>
                                             </a>
                                             @if (Auth::user()->position_id != 2)
-                                                <a href="{{ route('scores.edit-score', ['class' => $class, 'semester' => $semester, 'id' => $score->id]) }}" class="btn btn-success btn-sm btn-circle">
+                                                <a href="{{ route('scores.edit-score', ['class' => $class, 'semester' => $semester, 'score' => $score->id]) }}" class="btn btn-success btn-sm btn-circle">
                                                     <i class="fas fa-pen"></i>
                                                 </a>
                                                 @component('components.modal')
