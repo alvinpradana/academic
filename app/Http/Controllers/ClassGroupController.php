@@ -34,8 +34,8 @@ class ClassGroupController extends Controller
             'majors'
         ])->find($id);
 
-        $students = ClassGroup::where('class_id', $id)->with('users.user_complements')->orderBy('created_at', 'desc')->get();
-        $count = $students->sum('id');
+        $students = ClassGroup::where('class_id', $id)->where('is_active', true)->with('users.user_complements')->orderBy('created_at', 'desc')->get();
+        $count = $students->where('is_active', 1)->count();
 
         $current_class = '';
 
@@ -46,6 +46,8 @@ class ClassGroupController extends Controller
 
             $current_class = $class_level . ' ' . $class_major . ' ' . $class_grade;
         }
+
+        // dd($count);
 
         return view('class.group.show', [
             'count' => $count,

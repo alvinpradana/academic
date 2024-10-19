@@ -60,9 +60,10 @@
                                             <input type="hidden" name="student[{{ $key }}]" value="{{ $student->users->id }}" />
                                             <select class="form-select form-control" name="class_{{ $key }}">
                                                 <option value="0" selected disabled>Select class</option>
-                                                    @foreach ($all_class as $key => $item)
-                                                        <option value="{{ $item->id }}" @selected($item->id == $class_id)>{{ $item->levels->level }} {{ $item->majors->title }} {{ $item->grades->title }}</option>
-                                                    @endforeach
+                                                <option value="0" selected>Lulus Sekolah</option>
+                                                @foreach ($all_class as $key => $item)
+                                                    <option value="{{ $item->id }}" @selected($item->id == $class_id)>{{ $item->levels->level }} {{ $item->majors->title }} {{ $item->grades->title }}</option>
+                                                @endforeach
                                             </select>
                                         </td>
                                     </tr>

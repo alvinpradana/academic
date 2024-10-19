@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('nip_number')->nullable();
             $table->string('school_alumnae')->nullable();
             $table->string('last_report_value')->nullable();
+            $table->boolean('is_active')->default(true);
             $table->timestamps();
         });
     }
