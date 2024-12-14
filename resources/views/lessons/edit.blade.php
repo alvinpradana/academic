@@ -23,6 +23,18 @@
                                 @enderror
                             </div>
                             <div class="mb-3">
+                                <label for="class" class="form-label">Tingkat Kelas</label>
+                                <select id="class" name="class" class="form-select form-control @error('class') is-invalid @enderror">
+                                    <option value="0" selected disabled>Pilih Kelas</option>
+                                    @foreach ($class as $item)
+                                        <option value="{{ $item->level }}" @selected($item->level == $lesson->class)>Kelas {{ $item->level }}</option>
+                                    @endforeach
+                                </select>
+                                @error('level')
+                                    <span class="invalid-feedback">{{ $message }}</span>
+                                @enderror
+                            </div>
+                            <div class="mb-3">
                                 <label for="notes" class="form-label">Keterangan</label>
                                 <textarea type="text" class="form-control" id="notes" name="notes" rows="3">{{ $lesson->notes }}</textarea>
                             </div>

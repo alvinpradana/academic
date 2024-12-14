@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Classes;
 use App\Models\ClassGroup;
 use App\Models\StudentComplement;
+use App\Models\StudentScore;
 use Illuminate\Http\Request;
 
 class ChangeClassController extends Controller
@@ -60,6 +61,7 @@ class ChangeClassController extends Controller
             if ($request->input('class_' . $index) == 0) {
                 StudentComplement::where('user_id', $request->student[$index])->update(['is_active' => false]);
                 ClassGroup::where('student_id', $request->student[$index])->update(['is_active' => false]);
+                StudentScore::where('student_id', $request->student[$index])->update(['is_active' => false]);
             } else {
                 array_push($data, [
                     'student' => $request->student[$index],

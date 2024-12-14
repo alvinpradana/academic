@@ -62,7 +62,7 @@ class ScoreController extends Controller
             'scores',
             'students.student_complements',
             'students.user_complements'
-        ])->where('score_id', $score)->orderBy('student_id', 'asc')->get();
+        ])->where('score_id', $score)->where('is_active', true)->orderBy('student_id', 'asc')->get();
         
         return view('students.scores.view', [
             'student_scores' => $student_scores,
@@ -72,7 +72,7 @@ class ScoreController extends Controller
     }
 
     public function add($class, $semester) {
-        $students = ClassGroup::where('class_id', $class)->with('users.user_complements')->get();
+        $students = ClassGroup::where('class_id', $class)->where('is_active', true)->with('users.user_complements')->get();
         $semesters = Semester::orderBy('id', 'asc')->get();
         $lessons = Lesson::orderBy('id', 'asc')->get();
         $teacher = UserComplement::where('user_id', Auth::user()->id)->first();
@@ -130,7 +130,7 @@ class ScoreController extends Controller
     }
 
     public function edit($class, $semester, $score) {
-        $students = ClassGroup::where('class_id', $class)->with('users.user_complements')->get();
+        $students = ClassGroup::where('class_id', $class)->where('is_active', true)->with('users.user_complements')->get();
         $semesters = Semester::orderBy('id', 'asc')->get();
         $lessons = Lesson::orderBy('id', 'asc')->get();
         $scores = Score::where('id', $score)->first();
@@ -138,7 +138,7 @@ class ScoreController extends Controller
             'scores',
             'students.student_complements',
             'students.user_complements'
-        ])->where('score_id', $score)->orderBy('student_id', 'asc')->get();
+        ])->where('score_id', $score)->where('is_active', true)->orderBy('student_id', 'asc')->get();
 
         return view('students.scores.edit', [
             'student_scores' => $student_scores,

@@ -29,6 +29,7 @@
                 @slot('head')
                     <tr>
                         <th>Mata Pelajaran</th>
+                        <th>Tingkat Kelas</th>
                         <th>Keterangan</th>
                         <th>Action</th>
                     </tr>
@@ -43,6 +44,7 @@
                         @foreach ($lessons as $lesson)
                             <tr>
                                 <td>{{ $lesson->title }}</td>
+                                <td>{{ $lesson->class }}</td>
                                 <td>{{ $lesson->notes }}</td>
                                 <td>
                                     @if (Auth::user()->position_id == 3)

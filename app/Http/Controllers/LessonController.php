@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Lesson;
+use App\Models\LevelClass;
 use Illuminate\Http\Request;
 
 class LessonController extends Controller
@@ -27,7 +28,8 @@ class LessonController extends Controller
     }
 
     public function create() {
-        return view('lessons.create');
+        $class = LevelClass::orderBy('level', 'asc')->get();
+        return view('lessons.create', ['class' => $class]);
     }
 
     public function store(Request $request) {
@@ -37,6 +39,7 @@ class LessonController extends Controller
         
         Lesson::insert([
             'title' => $request->title,
+            'class' => $request->class,
             'notes' => $request->notes
         ]);
 
@@ -45,7 +48,12 @@ class LessonController extends Controller
 
     public function edit($id) {
         $lesson = Lesson::findOrFail($id);
-        return view('lessons.edit', compact('lesson'));
+        $class = LevelClass::orderBy('level', 'asc')->get();
+
+        return view('lessons.edit', [
+            'lesson' => $lesson,
+            'class' => $class
+        ]);
     }
 
     public function update(Request $request, $id) {
@@ -55,6 +63,7 @@ class LessonController extends Controller
         
         Lesson::where('id', $id)->update([
             'title' => $request->title,
+            'class' => $request->class,
             'notes' => $request->notes
         ]);
 
