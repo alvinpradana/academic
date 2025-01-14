@@ -1,5 +1,5 @@
 <div class="d-flex justify-content-between align-items-center mb-4">
-    <p class="my-auto">Tabel berikut merupakan data organisasi pelajar pada SMAN 9 MUKOMUKO.</p>
+    <p class="my-auto">Tabel berikut merupakan data organisasi pelajar pada SMA N 9 MUKOMUKO.</p>
     <button class="btn btn-primary" data-toggle="modal" data-target="#modal">Tambah</button>
 </div>
 @component('components.modal')

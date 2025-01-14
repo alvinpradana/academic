@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="d-flex justify-content-between align-items-center mb-4">
-        <p class="my-auto">Tabel berikut merupakan data kelas siswa pada SMAN 9 MUKOMUKO.</p>
+        <p class="my-auto">Tabel berikut merupakan data kelas siswa pada SMA N 9 MUKOMUKO.</p>
         @if (Auth::user()->position_id == 3)
             <a href="/class-group/create/{{ $class_id }}" class="btn btn-primary">Tambah</a>
         @endif

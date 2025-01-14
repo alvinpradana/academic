@@ -1,5 +1,5 @@
 <div class="d-flex justify-content-between align-items-center mb-4">
-    <p class="my-auto">Tabel berikut merupakan data kelas pada SMAN 9 MUKOMUKO.</p>
+    <p class="my-auto">Tabel berikut merupakan data kelas pada SMA N 9 MUKOMUKO.</p>
     @if (Auth::user()->position_id == 3)
         <a href="{{ route('class-level.create') }}" class="btn btn-primary">Tambah</a>
     @endif
