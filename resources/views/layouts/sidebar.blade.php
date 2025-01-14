@@ -4,7 +4,7 @@
             <i class="fas fa-laugh-wink"></i>
         </div> --}}
         <img src="{{ asset('assets/img/logo.png') }}" alt="" class="h-100">
-        <div class="sidebar-brand-text ml-2" style="font-size: 0.8rem;">SMK N 9 MUKOMUKO</div>
+        <div class="sidebar-brand-text ml-2" style="font-size: 0.8rem;">SMAN 9 MUKOMUKO</div>
     </a>
     <hr class="sidebar-divider my-0">
     <li class="nav-item active">

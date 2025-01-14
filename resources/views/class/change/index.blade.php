@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="d-flex justify-content-between align-items-center mb-4">
-        <p class="my-auto">Tabel berikut merupakan data kelas siswa pada SMK N 9 MUKOMUKO.</p>
+        <p class="my-auto">Tabel berikut merupakan data kelas siswa pada SMAN 9 MUKOMUKO.</p>
     </div>
     @if (session('success'))
         <div class="alert alert-success alert-dismissible fade show" role="alert">

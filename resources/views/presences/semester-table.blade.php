@@ -1,5 +1,5 @@
 <div class="d-flex justify-content-between align-items-center mb-4">
-    <p class="my-auto">Tabel berikut merupakan data presensi semester pada SMK N 9 MUKOMUKO.</p>
+    <p class="my-auto">Tabel berikut merupakan data presensi semester pada SMAN 9 MUKOMUKO.</p>
     <a href="{{ route('semesters.create') }}" class="btn btn-primary">Tambah</a>
 </div>
 @component('components.modal')

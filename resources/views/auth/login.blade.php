@@ -27,7 +27,7 @@
                     <a href="#">
                     <div class="flex gap-3 items-center">
                         <img src="{{ asset('assets/img/logo.png') }}" alt="logo" class="lg:mx-0 lg:w-22 mx-auto w-12">
-                        <p class="text-xl font-bold mb-1 text-transparent bg-clip-text bg-gradient-to-r to-green-500 from-green-600">SMK N 9 MUKOMUKO</p>
+                        <p class="text-xl font-bold mb-1 text-transparent bg-clip-text bg-gradient-to-r to-green-500 from-green-600">SMAN 9 MUKOMUKO</p>
                     </div>
                     <div class="capitalize flex font-semibold hidden lg:block my-2 space-x-3 text-center text-sm">
                         <a href="{{ route('homepage') }}" class="shadow-lg py-3 px-3 rounded-lg text-white bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800 hover:from-blue-800 hover:to-blue-900 text-center w-full hover:text-white">Ke website</a>
