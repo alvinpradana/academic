@@ -25,12 +25,13 @@
         <div id="academicTab" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Data Akademik</h6>
+                <a class="collapse-item" href="{{ route('academic-year.index') }}">Data Tahun Ajaran</a>
                 <a class="collapse-item" href="{{ route('semesters.index') }}">Data Semester</a>
                 <a class="collapse-item" href="{{ route('lessons.index') }}">Data Mata Pelajaran</a>
                 <a class="collapse-item" href="{{ route('majors.index') }}">Data Jurusan</a>
                 <a class="collapse-item" href="{{ route('class-level.index') }}">Data Level Kelas</a>
                 <a class="collapse-item" href="{{ route('grades.index') }}">Data Grade Kelas</a>
-                <a class="collapse-item" href="{{ route('scores.index') }}">Data Nilai</a>
+                <a class="collapse-item" href="{{ route('academic-year.index') }}">Data Nilai</a>
                 {{-- <a class="collapse-item" href="{{ route('presences.index') }}">Data Presensi</a> --}}
             </div>
         </div>

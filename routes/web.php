@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AcademicYearController;
 use App\Http\Controllers\ChangeClassController;
 use App\Http\Controllers\ClassGroupController;
 use App\Http\Controllers\HomeController;
@@ -38,6 +39,7 @@ Route::middleware('auth')->group(function() {
     Route::resource('majors', MajorController::class);
     Route::resource('student-scholarship', StudentScholarshipController::class);
     Route::resource('semesters', SemesterController::class);
+    Route::resource('academic-year', AcademicYearController::class);
 
     Route::get('/scores/class-{class}', [ScoreController::class, 'semesters'])->name('scores.semesters');
     Route::get('/scores/class-{class}/semester-{semester}', [ScoreController::class, 'list'])->name('scores.list');
