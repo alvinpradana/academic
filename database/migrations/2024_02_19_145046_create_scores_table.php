@@ -19,6 +19,7 @@ return new class extends Migration
             $table->foreignId('teacher_id')->constrained('users')->onDelete('restrict');
             $table->string('task_name')->nullable();
             $table->string('teacher_name')->nullable();
+            $table->string('academic_year')->nullable();
             $table->date('created');
             $table->timestamps();
         });

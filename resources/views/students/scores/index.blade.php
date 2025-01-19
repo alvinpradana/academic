@@ -14,8 +14,7 @@
             @if ($count > 0)
                 @foreach ($class as $item)
                     <div class="col-xl-3 col-md-6 mb-4">
-                        {{-- <a href="{{ route('scores.list', $item->id) }}" style="text-decoration: none; cursor: pointer;" class="cursor-pointer"> --}}
-                        <a href="{{ route('scores.semesters', $item->id) }}" style="text-decoration: none; cursor: pointer;" class="cursor-pointer">
+                        <a href="{{ route('scores.semesters', ['academic' => $academic, 'class' => $item->id]) }}" style="text-decoration: none; cursor: pointer;" class="cursor-pointer">
                             <div class="card border-left-primary shadow h-100 py-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
