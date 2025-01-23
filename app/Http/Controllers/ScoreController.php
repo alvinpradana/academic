@@ -12,6 +12,7 @@ use App\Models\StudentScore;
 use App\Models\User;
 use App\Models\UserComplement;
 use Auth;
+use Barryvdh\DomPDF\PDF;
 use Illuminate\Http\Request;
 
 class ScoreController extends Controller
@@ -88,7 +89,9 @@ class ScoreController extends Controller
         return view('students.scores.view', [
             'student_scores' => $student_scores,
             'class' => $class,
-            'score_id' => $score
+            'score_id' => $score,
+            'academic' => $academic_year,
+            'semester' => $semester
         ]);
     }
 
@@ -224,5 +227,24 @@ class ScoreController extends Controller
     public function destroy($score) {
         Score::findOrFail($score)->delete();
         return redirect()->back()->with('success', 'Data nilai berhasil dihapus.');
+    }
+
+    public function downloadPDF($academic, $semester, $class, $score) {
+        $score_data = Score::where('id', $score)->first();
+        $index = 1;
+        $student_scores = StudentScore::with([
+            'students.student_complements',
+            'students.user_complements'
+        ])->where('score_id', $score)
+        ->where('is_active', true)
+        ->orderBy('student_id', 'asc')
+        ->get();
+        
+        // $pdf = PDF::loadView()
+        return view('students.scores.print', [
+            'score' => $score_data,
+            'scores' => $student_scores,
+            'index' => $index
+        ]);
     }
 }
