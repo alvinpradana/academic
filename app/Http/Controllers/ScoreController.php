@@ -17,7 +17,7 @@ use Illuminate\Http\Request;
 class ScoreController extends Controller
 {
     public function __construct() {
-        $this->middleware(['teacher', 'admin'])->except(['index', 'list_of_class', 'list', 'view', 'semesters']);
+        // $this->middleware('teacher|admin')->except(['index', 'list_of_class', 'list', 'view', 'semesters', 'create']);
     }
     
     public function index() {
