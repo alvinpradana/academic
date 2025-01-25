@@ -66,12 +66,14 @@ class ScoreController extends Controller
                         ->orderBy('id', 'desc')
                         ->paginate(5);
         $count = $scores->count();
+        $scores_clas = Classes::where('id', $class)->first();
 
         return view('students.scores.list', [
             'scores' => $scores,
             'class' => $class,
             'semester' => $semester,
             'academic_year' => $academic_year,
+            'scores_class' => $scores_clas,
             'count' => $count
         ]);
     }
@@ -85,12 +87,14 @@ class ScoreController extends Controller
         ->where('is_active', true)
         ->orderBy('student_id', 'asc')
         ->get();
+        $scores_clas = Classes::where('id', $class)->first();
         
         return view('students.scores.view', [
             'student_scores' => $student_scores,
             'class' => $class,
             'score_id' => $score,
             'academic' => $academic_year,
+            'scores_class' => $scores_clas,
             'semester' => $semester
         ]);
     }

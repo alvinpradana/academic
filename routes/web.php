@@ -44,6 +44,7 @@ Route::middleware('auth')->group(function() {
     Route::get('/scores/academic-year-{academic}', [ScoreController::class, 'list_of_class'])->name('scores.list-of-class');
     Route::get('/scores/academic-year-{academic}/class-{class}', [ScoreController::class, 'semesters'])->name('scores.semesters');
     Route::get('/scores/academic-year-{academic}/class-{class}/semester-{semester}', [ScoreController::class, 'list'])->name('scores.list');
+    // Route::get('/scores/academic-year-{academic}/class-{class}/semester-{semester}', [ScoreController::class, 'lessons'])->name('scores.lessons');
     Route::get('/scores/academic-year-{academic}/class-{class}/semester-{semester}/score-{score}', [ScoreController::class, 'view'])->name('scores.view');
     Route::get('/scores/academic-year-{academic}/class-{class}/semester-{semester}/score-{score}/edit', [ScoreController::class, 'edit'])->name('scores.edit-score');
     Route::put('/scores/class-{class}/score-{score}', [ScoreController::class, 'update'])->name('scores.update-score');
