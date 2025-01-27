@@ -27,19 +27,19 @@
         </div>
         <hr class="border border-dark">
         <div class="row">
-            <div class="col-3">
+            <div class="col-md-4">
                 <label for="teacher" class="form-label">Nama Pengajar</label>
                 <input type="text" class="form-control" id="teacher" value="{{ $score->teacher_name }}" disabled>
             </div>
-            <div class="col-3">
+            <div class="col-md-2">
                 <label for="teacher" class="form-label">Kelas</label>
                 <input type="text" class="form-control" id="teacher" value="1 IPA A" disabled>
             </div>
-            <div class="col-3">
+            <div class="col-md-3">
                 <label for="teacher" class="form-label">Semester</label>
                 <input type="text" class="form-control" id="teacher" value="Semester 1" disabled>
             </div>
-            <div class="col-3">
+            <div class="col-md-3">
                 <label for="teacher" class="form-label">Mata Pelajaran</label>
                 <input type="text" class="form-control" id="teacher" value="IPA 1" disabled>
             </div>
