@@ -57,7 +57,7 @@
                                             <a href="{{ route('scores.view', ['academic' => $academic_year, 'class' => $class, 'semester' => $semester, 'score' => $score->id]) }}" class="btn btn-primary btn-sm btn-circle">
                                                 <i class="fas fa-eye"></i>
                                             </a>
-                                            @if (Auth::user()->position_id == 3 or (Auth::user()->id == $scores_class->teacher_id))
+                                            @if (Auth::user()->position_id == 3 or (Auth::user()->id == $scores_class->teacher_id) or (Auth::user()->id == $score->teacher_id))
                                                 <a href="{{ route('scores.edit-score', ['academic' => $academic_year, 'class' => $class, 'semester' => $semester, 'score' => $score->id]) }}" class="btn btn-success btn-sm btn-circle">
                                                     <i class="fas fa-pen"></i>
                                                 </a>
