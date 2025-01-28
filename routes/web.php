@@ -41,11 +41,11 @@ Route::middleware('auth')->group(function() {
     Route::resource('semesters', SemesterController::class);
     Route::resource('academic-year', AcademicYearController::class);
 
-    Route::get('/scores/academic-year-{academic}', [ScoreController::class, 'list_of_class'])->name('scores.list-of-class');
+    Route::get('/scores/academic-year-{academic}', [ScoreController::class, 'listOfClass'])->name('scores.list-of-class');
     Route::get('/scores/academic-year-{academic}/class-{class}', [ScoreController::class, 'semesters'])->name('scores.semesters');
-    Route::get('/scores/academic-year-{academic}/class-{class}/semester-{semester}/list-of-task', [ScoreController::class, 'task_or_final_task'])->name('scores.list-of-task');
-    Route::get('/scores/academic-year-{academic}/class-{class}/semester-{semester}/final-task', [ScoreController::class, 'list_of_final_task'])->name('scores.list-of-final-task');
-    Route::get('/scores/academic-year-{academic}/class-{class}/semester-{semester}/final-task/lesson-{lesson}', [ScoreController::class, 'final_task_table'])->name('scores.final-task-table');
+    Route::get('/scores/academic-year-{academic}/class-{class}/semester-{semester}/list-of-task', [ScoreController::class, 'taskOrFinalTask'])->name('scores.list-of-task');
+    Route::get('/scores/academic-year-{academic}/class-{class}/semester-{semester}/final-task', [ScoreController::class, 'listFinalTask'])->name('scores.list-of-final-task');
+    Route::get('/scores/academic-year-{academic}/class-{class}/semester-{semester}/final-task/lesson-{lesson}', [ScoreController::class, 'finalTaskTable'])->name('scores.final-task-table');
     Route::get('/scores/academic-year-{academic}/class-{class}/rapor-scores', [ScoreController::class, 'raporScores'])->name('scores.rapor-scores');
     Route::get('/scores/academic-year-{academic}/class-{class}/semester-{semester}/task-scores', [ScoreController::class, 'list'])->name('scores.list');
     Route::get('/scores/academic-year-{academic}/class-{class}/semester-{semester}/task-scores/score-{score}', [ScoreController::class, 'view'])->name('scores.view');

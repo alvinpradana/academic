@@ -30,7 +30,7 @@ class ScoreController extends Controller
         ]);
     }
 
-    public function list_of_class($academic_year) {
+    public function listOfClass($academic_year) {
         $class = Classes::with([
             'majors',
             'levels',
@@ -58,7 +58,7 @@ class ScoreController extends Controller
         ]);
     }
 
-    public function task_or_final_task($academic_year, $class, $semester) {
+    public function taskOrFinalTask($academic_year, $class, $semester) {
         return view('students.scores.task', [
             'semester' => $semester,
             'academic' => $academic_year,
@@ -107,7 +107,7 @@ class ScoreController extends Controller
         ]);
     }
 
-    public function list_of_final_task($academic_year, $class, $semester) {
+    public function listFinalTask($academic_year, $class, $semester) {
         $class_level = Classes::where('id', $class)->pluck('class_level_id')->first();
         $lessons = Lesson::where('class', $class_level)->orderBy('id', 'desc')->paginate(5);
         $count = $lessons->count();
@@ -123,7 +123,7 @@ class ScoreController extends Controller
         ]);
     }
 
-    public function final_task_table($academic_year, $class, $semester, $lesson_id) {
+    public function finalTaskTable($academic_year, $class, $semester, $lesson_id) {
         $lesson = Lesson::where('id', $lesson_id)->pluck('title')->first();
         $scores = Score::with('student_scores')->where('lesson_id', $lesson_id)->where('semester_id', $semester)->get();
         $students = User::with([
