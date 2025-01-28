@@ -171,6 +171,9 @@ class ScoreController extends Controller
         }
 
         $final_scores = createFinalScores($scores_item);
+        usort($final_scores, function($a, $b) {
+            return strcmp($a['nip'], $b['nip']);
+        });
         
         return view('students.scores.final-task-table', [
             'academic' => $academic_year,
