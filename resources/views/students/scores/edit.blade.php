@@ -59,7 +59,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <input type="hidden" class="form-control" id="count" name="count" value="{{ $students->count() }}">
+                            <input type="hidden" class="form-control" id="count" name="count" value="{{ $student_scores->count() }}">
                             <table class="table table-bordered table-hovered" id="dataTable" width="100%" cellspacing="0">
                                 <thead>
                                     <tr>

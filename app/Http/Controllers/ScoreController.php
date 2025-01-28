@@ -58,6 +58,14 @@ class ScoreController extends Controller
         ]);
     }
 
+    public function task_or_final_task($academic_year, $class, $semester) {
+        return view('students.scores.task', [
+            'semester' => $semester,
+            'academic' => $academic_year,
+            'class' => $class
+        ]);
+    }
+
     public function list($academic_year, $class, $semester) {
         $scores = Score::with('lesson')
                         ->where('class_id', $class,)
@@ -96,6 +104,82 @@ class ScoreController extends Controller
             'academic' => $academic_year,
             'scores_class' => $scores_clas,
             'semester' => $semester
+        ]);
+    }
+
+    public function list_of_final_task($academic_year, $class, $semester) {
+        $class_level = Classes::where('id', $class)->pluck('class_level_id')->first();
+        $lessons = Lesson::where('class', $class_level)->orderBy('id', 'desc')->paginate(5);
+        $count = $lessons->count();
+        $index = 1;
+
+        return view('students.scores.final-task', [
+            'lessons' => $lessons,
+            'count' => $count,
+            'semester' => $semester,
+            'academic' => $academic_year,
+            'index' => $index
+        ]);
+    }
+
+    public function final_task_table($academic_year, $class, $semester, $lesson_id) {
+        $lesson = Lesson::where('id', $lesson_id)->pluck('title')->first();
+        $scores = Score::with('student_scores')->where('lesson_id', $lesson_id)->where('semester_id', $semester)->get();
+        $students = User::with([
+            'user_complements', 
+            'student_complements'
+            ])->where('users.position_id', 2)->get();
+        $count = 1;
+        $scores_item = array();
+
+        foreach ($scores as $score) {
+            foreach ($score->student_scores as $item) {
+                foreach ($students as $student) {
+                    if ($student->id == $item->student_id) {
+                        array_push($scores_item,  array(
+                            'id' => $student->id,
+                            'nip' => $student->student_complements->nip_number,
+                            'name' => $student->user_complements->name,
+                            'score' => $item->score
+                        ));
+                    }
+                }
+            }
+        }
+
+        function createFinalScores ($array_scores) {
+            $result = [];
+            foreach ($array_scores as $item) {
+                $id = $item['id'];
+                if (!isset($result[$id])) {
+                    $result[$id] = [
+                        'id' => $id,
+                        'nip' => $item['nip'],
+                        'name' => $item['name'],
+                        'total_score' => 0,
+                        'count' => 0
+                    ];
+                }
+                $result[$id] ['total_score'] += $item['score'];
+                $result[$id] ['count'] += 1;
+            }
+            foreach ($result as $id => $data) {
+                $result[$id] ['average_score'] = number_format($data['total_score'] / $data['count'], 2);
+                unset($result[$id] ['total_score'], $result[$id] ['count']);
+            }
+            return array_values($result);
+        }
+
+        $final_scores = createFinalScores($scores_item);
+        
+        return view('students.scores.final-task-table', [
+            'academic' => $academic_year,
+            'class' => $class,
+            'semester' => $semester,
+            'lesson' => $lesson,
+            'final_scores' => $final_scores,
+            'count' => $count,
+            'index' => 1
         ]);
     }
 
@@ -198,7 +282,7 @@ class ScoreController extends Controller
             'task' => ['required'],
             'teacher' => ['required']
         ]);
-        
+
         Score::where('id', $score)->update([
             'semester_id' => $request->semester,
             'class_id' => $request->class,
