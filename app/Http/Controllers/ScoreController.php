@@ -118,6 +118,7 @@ class ScoreController extends Controller
             'count' => $count,
             'semester' => $semester,
             'academic' => $academic_year,
+            'class' => $class,
             'index' => $index
         ]);
     }
@@ -129,7 +130,6 @@ class ScoreController extends Controller
             'user_complements', 
             'student_complements'
             ])->where('users.position_id', 2)->get();
-        $count = 1;
         $scores_item = array();
 
         foreach ($scores as $score) {
@@ -178,7 +178,6 @@ class ScoreController extends Controller
             'semester' => $semester,
             'lesson' => $lesson,
             'final_scores' => $final_scores,
-            'count' => $count,
             'index' => 1
         ]);
     }
