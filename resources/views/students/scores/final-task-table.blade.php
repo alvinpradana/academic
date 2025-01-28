@@ -36,7 +36,7 @@
                             </tr>
                         @endslot
                         @slot('body')
-                            @if ($count == 0)
+                            @if ($final_scores == [])
                                 <tr>
                                     <td colspan="5" class="text-center">No data available.</td>
                                 </tr>

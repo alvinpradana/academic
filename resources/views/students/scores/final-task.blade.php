@@ -45,7 +45,7 @@
                                         <td>{{ $index++ }}</td>
                                         <td>{{ $lesson->title }}</td>
                                         <td>
-                                            <a href="{{ route('scores.final-task-table', ['academic' => 1, 'class' => 1, 'semester' => 1, 'lesson' => $lesson->id]) }}" class="btn btn-primary btn-sm btn-circle">
+                                            <a href="{{ route('scores.final-task-table', ['academic' => $academic, 'class' => $class, 'semester' => $semester, 'lesson' => $lesson->id]) }}" class="btn btn-primary btn-sm btn-circle">
                                                 <i class="fas fa-eye"></i>
                                             </a>
                                         </td>
