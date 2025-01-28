@@ -185,6 +185,66 @@ class ScoreController extends Controller
         ]);
     }
 
+    public function raporScores($academic, $class) {
+        $scores = Score::with('student_scores')->where('academic_year', $academic)->where('class_id', $class)->get();
+        $students = User::with([
+            'user_complements', 
+            'student_complements'
+            ])->where('users.position_id', 2)->get();
+        $array_scores = [];
+
+        foreach ($scores as $score) {
+            foreach ($score->student_scores as $item_score) {
+                foreach ($students as $student) {
+                    if ($student->id == $item_score->student_id) {
+                        array_push($array_scores,  array(
+                            'id' => $student->id,
+                            'nip' => $student->student_complements->nip_number,
+                            'name' => $student->user_complements->name,
+                            'score' => $item_score->score
+                        ));
+                    }
+                }
+            }
+        }
+
+        function createRaporScores($array_rapor_scores) {
+            $result = [];
+            foreach ($array_rapor_scores as $item) {
+                $id = $item['id'];
+                if (!isset($result[$id])) {
+                    $result[$id] = [
+                        'id' => $id,
+                        'nip' => $item['nip'],
+                        'name' => $item['name'],
+                        'total_score' => 0,
+                        'count' => 0
+                    ];
+                }
+                $result[$id] ['total_score'] += $item['score'];
+                $result[$id] ['count'] += 1;
+            }
+            foreach ($result as $id => $data) {
+                $result[$id] ['average_score'] = number_format($data['total_score'] / $data['count'], 2);
+                unset($result[$id] ['total_score'], $result[$id] ['count']);
+            }
+            return array_values($result);
+        }
+        $final_rapor_scores = createRaporScores($array_scores);
+        usort($final_rapor_scores, function($a, $b) {
+            return strcmp($a['nip'], $b['nip']);
+        });
+        $count = $scores->count();
+
+        // dd($final_rapor_scores);
+        
+        return view('students.scores.rapor', [
+            'final_rapor_scores' => $final_rapor_scores,
+            'count' => $count,
+            'index' => 1
+        ]);
+    }
+
     public function add($academic_year, $class, $semester) {
         $students = ClassGroup::where('class_id', $class)
                             ->where('is_active', true)
