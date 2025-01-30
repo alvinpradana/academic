@@ -7,8 +7,7 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
         <title>Print Nilai Rapor</title>
     </head>
-    {{-- <body onload="window.print()"> --}}
-    <body>
+    <body onload="window.print()">
         <div class="container text-black fs-6 py-4 px-4">
             <div class="row mt-4">
                 <div class="col-md-12">
@@ -50,17 +49,17 @@
                     <tr class="text-center">
                         <th width="5%">No</th>
                         <th width="45%">Mata Pelajaran</th>
-                        <th width="20%">Nilai</th>
+                        <th width="20%">Nilai Akhir</th>
                         <th width="30%">Catatan</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($rapor_scores as $item)
-                        <tr>
-                            <td class="text-center">{{ $index++ }}</td>
-                            <td class="text-center">{{ $item['nip'] }}</td>
-                            <td class="text-center">{{ $item['average_score'] }}</td>
-                            <td class="text-left">-</td>
+                        <tr class="text-center">
+                            <td>{{ $index++ }}</td>
+                            <td>{{ $item['lesson_title'] }}</td>
+                            <td>{{ $item['average_score'] }}</td>
+                            <td>-</td>
                         </tr>
                     @endforeach
                 </tbody>

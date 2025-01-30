@@ -75,6 +75,7 @@ class ScoreController extends Controller
                         ->paginate(5);
         $count = $scores->count();
         $scores_clas = Classes::where('id', $class)->first();
+        $class_group_count = ClassGroup::where('class_id', $class)->count();
 
         return view('students.scores.list', [
             'scores' => $scores,
@@ -82,6 +83,7 @@ class ScoreController extends Controller
             'semester' => $semester,
             'academic_year' => $academic_year,
             'scores_class' => $scores_clas,
+            'class_group_count' => $class_group_count,
             'count' => $count
         ]);
     }
@@ -412,67 +414,62 @@ class ScoreController extends Controller
             'student_complements'
         ])->where('id', $student)->first();
         $academic_year = AcademicYear::where('id', $academic)->first();
-        $class = Classes::with([
+        $student_class = Classes::with([
             'majors',
             'levels',
             'grades'
             ])->where('id', $class)->first();
-        $teacher = User::with('user_complements')->where('id', $class->teacher_id)->first();
-        $scores = Score::with('student_scores')->get();
+        $teacher = User::with('user_complements')->where('id', $student_class->teacher_id)->first();
+        $scores = Score::with(['student_scores', 'lesson'])->where('academic_year', $academic)->where('class_id', $class)->get();
         $array_scores = [];
 
-        dd($scores);
-        
         foreach ($scores as $score) {
             foreach ($score->student_scores as $item) {
                 if ($item->student_id == $student->id) {
                     array_push($array_scores,  array(
                         'student_id' => $student->id,
                         'lesson_id' => $score->lesson_id,
-                        'student_score_lesson_id' => $item->score_id,
+                        'lesson_title' => $score->lesson->title,
                         'score' => $item->score
                     ));
                 }
             }
         }
 
-        // dd($scores);
-        
-        function createRaporScores($array_rapor_scores) {
+        function calculateAverageScore($array) {
             $result = [];
-            foreach ($array_rapor_scores as $item) {
-                $id = $item['id'];
-                if (!isset($result[$id])) {
-                    $result[$id] = [
-                        'id' => $id,
-                        'nip' => $item['nip'],
-                        'name' => $item['name'],
+
+            foreach ($array as $item) {
+                $lesson_id = $item['lesson_id'];
+                $lesson_title = $item['lesson_title'];
+
+                if (!isset($result[$lesson_id])) {
+                    $result[$lesson_id] = [
+                        'lesson_id' => $lesson_id,
+                        'lesson_title' => $lesson_title,
                         'total_score' => 0,
                         'count' => 0
                     ];
                 }
-                $result[$id] ['total_score'] += $item['score'];
-                $result[$id] ['count'] += 1;
+
+                $result[$lesson_id] ['total_score'] += $item['score'];
+                $result[$lesson_id] ['count'] += 1;
             }
-            foreach ($result as $id => $data) {
-                $result[$id] ['average_score'] = number_format($data['total_score'] / $data['count'], 2);
-                unset($result[$id] ['total_score'], $result[$id] ['count']);
+
+            foreach ($result as $lesson_id => $data) {
+                $result[$lesson_id] ['average_score'] = number_format($data['total_score'] / $data['count'], 2);
+                unset($result[$lesson_id] ['total_score'], $result[$lesson_id] ['count']);
             }
             return array_values($result);
         }
-        $final_rapor_scores = createRaporScores($array_scores);
-        usort($final_rapor_scores, function($a, $b) {
-            return strcmp($a['nip'], $b['nip']);
-        });
-
-        // dd($final_rapor_scores);
+        $average_scores = calculateAverageScore($array_scores);
 
         return view('students.scores.print-rapor', [
             'student' => $student,
             'academic' => $academic_year,
-            'class' => $class,
+            'class' => $student_class,
             'teacher' => $teacher,
-            'rapor_scores' => $final_rapor_scores,
+            'rapor_scores' => $average_scores,
             'index' => 1
         ]);
     }
