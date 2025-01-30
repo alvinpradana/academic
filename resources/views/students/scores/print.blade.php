@@ -32,16 +32,16 @@
                 <input type="text" class="form-control" id="teacher" value="{{ $score->teacher_name }}" disabled>
             </div>
             <div class="col-md-2">
-                <label for="teacher" class="form-label">Kelas</label>
-                <input type="text" class="form-control" id="teacher" value="1 IPA A" disabled>
+                <label for="class" class="form-label">Kelas</label>
+                <input type="text" class="form-control" id="class" value="{{ $class->levels->level }} {{ $class->majors->title }} {{ $class->grades->title }}" disabled>
             </div>
             <div class="col-md-3">
-                <label for="teacher" class="form-label">Semester</label>
-                <input type="text" class="form-control" id="teacher" value="Semester 1" disabled>
+                <label for="semester" class="form-label">Semester</label>
+                <input type="text" class="form-control" id="semester" value="Semester {{ $semester }}" disabled>
             </div>
             <div class="col-md-3">
-                <label for="teacher" class="form-label">Mata Pelajaran</label>
-                <input type="text" class="form-control" id="teacher" value="IPA 1" disabled>
+                <label for="lessons" class="form-label">Mata Pelajaran</label>
+                <input type="text" class="form-control" id="lessons" value="{{ $lesson->title }}" disabled>
             </div>
         </div>
         <table class="table table-bordered border-dark my-3">

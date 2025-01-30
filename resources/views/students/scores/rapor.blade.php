@@ -4,9 +4,9 @@
     <div>
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">Data Nilai Rapor Siswa</h1>
-            <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+            {{-- <a href="{{ route('scores.print-rapor-pdf', ['academic' => $academic, 'class' => $class]) }}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
                 <i class="fas fa-download fa-sm text-white-50"></i> Download PDF
-            </a>
+            </a> --}}
         </div>
         @if (session('success'))
             <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -33,9 +33,10 @@
                         @slot('head')
                             <tr>
                                 <th width="10%">No</th>
-                                <th width="25%">NIP</th>
-                                <th width="50%">Nama Siswa</th>
+                                <th width="20%">NIP</th>
+                                <th width="45%">Nama Siswa</th>
                                 <th width="15%">Nilai Rapor</th>
+                                <th width="10%">Action</th>
                             </tr>
                         @endslot
                         @slot('body')
@@ -50,6 +51,11 @@
                                         <td>{{ $item['nip'] }}</td>
                                         <td>{{ $item['name'] }}</td>
                                         <td>{{ $item['average_score'] }}</td>
+                                        <td>
+                                            <a href="{{ route('scores.print-rapor-pdf', ['academic' => $academic, 'class' => $class, 'student' =>  $item['id']]) }}" class="btn btn-primary btn-sm btn-circle">
+                                                <i class="fas fa-print"></i>
+                                            </a>
+                                        </td>
                                     </tr>
                                 @endforeach
                             @endif

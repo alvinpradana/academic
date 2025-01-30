@@ -53,6 +53,7 @@ Route::middleware('auth')->group(function() {
     Route::put('/scores/class-{class}/score-{score}', [ScoreController::class, 'update'])->name('scores.update-score');
     Route::get('/scores/academic-year-{academic}/class-{class}/semester-{semester}/task-scores/create', [ScoreController::class, 'add'])->name('scores.add');
     Route::get('/scores/academic-year-{academic}/class-{class}/semester-{semester}/task-scores/score-{score}/print', [ScoreController::class, 'downloadPDF'])->name('scores.print');
+    Route::get('/scores/academic-year-{academic}/class-{class}/rapor-scores/print-{student}', [ScoreController::class, 'printRaporPDF'])->name('scores.print-rapor-pdf');
     Route::resource('scores', ScoreController::class);
 
     Route::get('class-group/create/{class_id}', [ClassGroupController::class, 'create'])->name('class-group.create');

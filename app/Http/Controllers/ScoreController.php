@@ -236,11 +236,11 @@ class ScoreController extends Controller
         });
         $count = $scores->count();
 
-        // dd($final_rapor_scores);
-        
         return view('students.scores.rapor', [
             'final_rapor_scores' => $final_rapor_scores,
             'count' => $count,
+            'academic' => $academic,
+            'class' => $class,
             'index' => 1
         ]);
     }
@@ -381,6 +381,12 @@ class ScoreController extends Controller
 
     public function downloadPDF($academic, $semester, $class, $score) {
         $score_data = Score::where('id', $score)->first();
+        $lesson = Lesson::where('id', $score_data->lesson_id)->first();
+        $class = Classes::with([
+            'majors',
+            'levels',
+            'grades'
+        ])->where('id', $class)->first();
         $index = 1;
         $student_scores = StudentScore::with([
             'students.student_complements',
@@ -390,11 +396,84 @@ class ScoreController extends Controller
         ->orderBy('student_id', 'asc')
         ->get();
         
-        // $pdf = PDF::loadView()
         return view('students.scores.print', [
             'score' => $score_data,
             'scores' => $student_scores,
+            'semester' => $semester,
+            'lesson' => $lesson,
+            'class' => $class,
             'index' => $index
+        ]);
+    }
+
+    public function printRaporPDF($academic, $class, $student) {
+        $student = User::with([
+            'user_complements',
+            'student_complements'
+        ])->where('id', $student)->first();
+        $academic_year = AcademicYear::where('id', $academic)->first();
+        $class = Classes::with([
+            'majors',
+            'levels',
+            'grades'
+            ])->where('id', $class)->first();
+        $teacher = User::with('user_complements')->where('id', $class->teacher_id)->first();
+        $scores = Score::with('student_scores')->get();
+        $array_scores = [];
+
+        dd($scores);
+        
+        foreach ($scores as $score) {
+            foreach ($score->student_scores as $item) {
+                if ($item->student_id == $student->id) {
+                    array_push($array_scores,  array(
+                        'student_id' => $student->id,
+                        'lesson_id' => $score->lesson_id,
+                        'student_score_lesson_id' => $item->score_id,
+                        'score' => $item->score
+                    ));
+                }
+            }
+        }
+
+        // dd($scores);
+        
+        function createRaporScores($array_rapor_scores) {
+            $result = [];
+            foreach ($array_rapor_scores as $item) {
+                $id = $item['id'];
+                if (!isset($result[$id])) {
+                    $result[$id] = [
+                        'id' => $id,
+                        'nip' => $item['nip'],
+                        'name' => $item['name'],
+                        'total_score' => 0,
+                        'count' => 0
+                    ];
+                }
+                $result[$id] ['total_score'] += $item['score'];
+                $result[$id] ['count'] += 1;
+            }
+            foreach ($result as $id => $data) {
+                $result[$id] ['average_score'] = number_format($data['total_score'] / $data['count'], 2);
+                unset($result[$id] ['total_score'], $result[$id] ['count']);
+            }
+            return array_values($result);
+        }
+        $final_rapor_scores = createRaporScores($array_scores);
+        usort($final_rapor_scores, function($a, $b) {
+            return strcmp($a['nip'], $b['nip']);
+        });
+
+        // dd($final_rapor_scores);
+
+        return view('students.scores.print-rapor', [
+            'student' => $student,
+            'academic' => $academic_year,
+            'class' => $class,
+            'teacher' => $teacher,
+            'rapor_scores' => $final_rapor_scores,
+            'index' => 1
         ]);
     }
 }

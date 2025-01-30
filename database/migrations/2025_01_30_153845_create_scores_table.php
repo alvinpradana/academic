@@ -17,9 +17,9 @@ return new class extends Migration
             $table->foreignId('class_id')->constrained('class_group')->onDelete('cascade');
             $table->foreignId('lesson_id')->constrained('lessons')->onDelete('cascade');
             $table->foreignId('teacher_id')->constrained('users')->onDelete('restrict');
+            $table->foreignId('academic_year')->constrained('academics_year')->onDelete('cascade');
             $table->string('task_name')->nullable();
             $table->string('teacher_name')->nullable();
-            $table->string('academic_year')->nullable();
             $table->date('created');
             $table->timestamps();
         });
