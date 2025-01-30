@@ -63,6 +63,11 @@
                         </tr>
                     @endforeach
                 </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="4">Total Nilai Akhir: <b>{{ $final_score }}</b></td>
+                    </tr>
+                </tfoot>
             </table>
             <div class="row justify-content-between mt-4">
                 <div class="col-md-5 text-center"><strong>Wali Kelas</strong></div>

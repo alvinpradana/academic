@@ -464,12 +464,22 @@ class ScoreController extends Controller
         }
         $average_scores = calculateAverageScore($array_scores);
 
+        $total_average_score = 0;
+        $count_of_lesson = count($average_scores);
+
+        foreach ($average_scores as $item) {
+            $total_average_score += $item['average_score'];
+        }
+
+        $final_score = $count_of_lesson > 0 ? number_format($total_average_score / $count_of_lesson, 2) : 0;
+
         return view('students.scores.print-rapor', [
             'student' => $student,
             'academic' => $academic_year,
             'class' => $student_class,
             'teacher' => $teacher,
             'rapor_scores' => $average_scores,
+            'final_score' => $final_score,
             'index' => 1
         ]);
     }
