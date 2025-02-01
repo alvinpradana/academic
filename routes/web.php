@@ -66,6 +66,8 @@ Route::middleware('auth')->group(function() {
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
     Route::get('/profile/change-password', [ProfileController::class, 'changePassword'])->name('profile.change-password');
     Route::put('/profile/change-password', [ProfileController::class, 'updatePassword'])->name('profile.update-password');
+    Route::get('/profile/change-image', [ProfileController::class, 'changeImage'])->name('profile.change-image');
+    Route::put('/profile/change-image', [ProfileController::class, 'storeImage'])->name('profile.store-image');
 
     Route::get('change-class/{id}', [ChangeClassController::class, 'index'])->name('change-class.index');
     Route::put('change-class', [ChangeClassController::class, 'update'])->name('change-class.update');

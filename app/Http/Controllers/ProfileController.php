@@ -2,15 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ImageRequest;
 use App\Models\User;
 use Auth;
 use Hash;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ProfileController extends Controller
 {
     public function index() {
-        return view('profile.index');
+        $image = Storage::url(Auth::user()->user_complements->image);
+        return view('profile.index', compact('image'));
     }
 
     public function changePassword() {
@@ -42,5 +45,18 @@ class ProfileController extends Controller
         } else {
             return redirect()->back()->with('error', 'Cuurent password does not match with our record.');
         }
+    }
+
+    public function changeImage() {
+        return view('profile.change-image');
+    }
+
+    public function storeImage(ImageRequest $request) {
+        if ($request->has('image-file')) {
+            $image_path = $request->file('image-file')->store('image', 'public');
+            $request->user()->user_complements()->update(['image' => $image_path]);
+        }
+
+        return redirect()->route('profile.index')->with('success', 'Profile image updated successfully.');
     }
 }

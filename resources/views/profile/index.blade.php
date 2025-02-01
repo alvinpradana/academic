@@ -30,7 +30,10 @@
                         <div class="row">
                             <div class="col-sm-12 col-md-3">
                                 <div class="card" style="width: 16rem; height: 16rem;">
-                                    <img class="card-img-top" src="..." alt="Profile photo">
+                                    <img class="card-img" src="{{ $image }}" alt="Profile photo">
+                                </div>
+                                <div class="row justify-content-center align-items-center">
+                                    <a href="{{ route('profile.change-image') }}" class="mt-2">Change Image</a>
                                 </div>
                             </div>
                             <div class="col-sm-12 col-md-9">
