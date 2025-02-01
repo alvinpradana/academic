@@ -9,6 +9,7 @@ use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\PresenceController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ScoreController;
+use App\Http\Controllers\SearchController;
 use App\Http\Controllers\SemesterController;
 use App\Http\Controllers\StudentScholarshipController;
 use App\Http\Controllers\TeacherController;
@@ -56,6 +57,8 @@ Route::middleware('auth')->group(function() {
     Route::get('/scores/academic-year-{academic}/class-{class}/rapor-scores/print-{student}', [ScoreController::class, 'printRaporPDF'])->name('scores.print-rapor-pdf');
     Route::resource('scores', ScoreController::class);
 
+    Route::post('/students-search', [SearchController::class, 'searchStudentsByName'])->name('student.search');
+    
     Route::get('class-group/create/{class_id}', [ClassGroupController::class, 'create'])->name('class-group.create');
     Route::get('class-group/switch-class/{student_id}', [ClassGroupController::class, 'switchClass'])->name('class-group.switch-class');
     Route::resource('class-group', ClassGroupController::class);

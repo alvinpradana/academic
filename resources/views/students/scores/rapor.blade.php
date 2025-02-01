@@ -35,7 +35,7 @@
                                 <th width="10%">No</th>
                                 <th width="20%">NIP</th>
                                 <th width="45%">Nama Siswa</th>
-                                <th width="15%">Nilai Rapor</th>
+                                {{-- <th width="15%">Nilai Rapor</th> --}}
                                 <th width="10%">Action</th>
                             </tr>
                         @endslot
@@ -50,7 +50,7 @@
                                         <td>{{ $index++ }}</td>
                                         <td>{{ $item['nip'] }}</td>
                                         <td>{{ $item['name'] }}</td>
-                                        <td>{{ $item['average_score'] }}</td>
+                                        {{-- <td>{{ $item['average_score'] }}</td> --}}
                                         <td>
                                             <a href="{{ route('scores.print-rapor-pdf', ['academic' => $academic, 'class' => $class, 'student' =>  $item['id']]) }}" class="btn btn-primary btn-sm btn-circle">
                                                 <i class="fas fa-print"></i>
