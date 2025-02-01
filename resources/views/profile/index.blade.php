@@ -1,10 +1,25 @@
-@extends('layouts.app', ['title' => 'View Data Student'])
+@extends('layouts.app', ['title' => 'Data Profile'])
 
 @section('content')
     <div>
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">Data Profile</h1>
         </div>
+        @if (session('success'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{ session('success') }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        @elseif (session('error'))
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                {{ session('error') }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        @endif
         <div class="row">
             <div class="col-md-12 col-sm-12">
                 <div class="card shadow mb-4">
@@ -114,6 +129,11 @@
                                     </div>
                                     <div class="col-sm-12 col-md-8 col-lg-8 mb-2 text-capitalize">
                                         <strong class="mr-2">:</strong> {{ Auth::user()->user_complements->street ?? '-' }}, {{ Auth::user()->user_complements->subdistrict ?? '-' }}, {{ Auth::user()->user_complements->district ?? '-' }}, {{ Auth::user()->user_complements->zip_code ?? '-' }}
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <a href="{{ route('profile.change-password')}}" class="btn btn-primary">Ubah Password</a>
                                     </div>
                                 </div>
                             </div>

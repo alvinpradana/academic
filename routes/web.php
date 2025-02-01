@@ -63,7 +63,9 @@ Route::middleware('auth')->group(function() {
     Route::get('class-group/switch-class/{student_id}', [ClassGroupController::class, 'switchClass'])->name('class-group.switch-class');
     Route::resource('class-group', ClassGroupController::class);
 
-    Route::resource('profile', ProfileController::class);
+    Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
+    Route::get('/profile/change-password', [ProfileController::class, 'changePassword'])->name('profile.change-password');
+    Route::put('/profile/change-password', [ProfileController::class, 'updatePassword'])->name('profile.update-password');
 
     Route::get('change-class/{id}', [ChangeClassController::class, 'index'])->name('change-class.index');
     Route::put('change-class', [ChangeClassController::class, 'update'])->name('change-class.update');
