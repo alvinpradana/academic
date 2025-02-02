@@ -4,6 +4,7 @@ use App\Http\Controllers\AcademicYearController;
 use App\Http\Controllers\ChangeClassController;
 use App\Http\Controllers\ClassGroupController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\HomepageController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\PresenceController;
@@ -80,9 +81,7 @@ Route::middleware('guest')->group(function() {
 
 Route::post('logout', LogoutController::class)->name('logout');
 
-Route::get('/', function () {
-    return view('index');
-})->name('homepage');
+Route::get('/', [HomepageController::class, 'index'])->name('homepage');
 
 Route::get('/presences/{semester}/{class}/{lesson}', [PresenceController::class, 'show'])->scopeBindings();
 Route::get('/presences/create/{class}', [PresenceController::class, 'create'])->name('presences-create.create')->scopeBindings();
