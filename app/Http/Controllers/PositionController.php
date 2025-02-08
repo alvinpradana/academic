@@ -35,7 +35,7 @@ class PositionController extends Controller
 
     public function store(Request $request) {
         $request->validate([
-            'title' => ['required', 'alpha']
+            'title' => ['required']
         ]);
         
         Position::insert([
@@ -52,7 +52,7 @@ class PositionController extends Controller
 
     public function update(Request $request, $id) {
         $request->validate([
-            'title' => ['required', 'alpha']
+            'title' => ['required']
         ]);
         
         Position::where('id', $id)->update([

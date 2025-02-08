@@ -9,6 +9,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\PresenceController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ResetPasswordController;
 use App\Http\Controllers\ScoreController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\SemesterController;
@@ -72,6 +73,8 @@ Route::middleware('auth')->group(function() {
 
     Route::get('change-class/{id}', [ChangeClassController::class, 'index'])->name('change-class.index');
     Route::put('change-class', [ChangeClassController::class, 'update'])->name('change-class.update');
+
+    Route::get('user-password-reset/user-{user}', [ResetPasswordController::class, 'store'])->name('reset-password');
 });
 
 Route::middleware('guest')->group(function() {

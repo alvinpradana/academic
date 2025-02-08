@@ -47,7 +47,7 @@
                                 </div>
                                 <div class="row mb-3">
                                     <div class="col-sm-12 col-md-4 col-lg-4 mb-2">
-                                        <strong>Nomor Induk Pelajar (NIP)</strong>
+                                        <strong>Nomor Induk Pengajar (NIP)</strong>
                                     </div>
                                     <div class="col-sm-12 col-md-8 col-lg-8 mb-2">
                                         <strong class="mr-2">:</strong> 

@@ -5,6 +5,21 @@
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">Detail Data Pengajar</h1>
         </div>
+        @if (session('success'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{ session('success') }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        @elseif (session('error'))
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                {{ session('error') }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        @endif
         <div class="row">
             <div class="col-md-12 col-sm-12">
                 <div class="card shadow mb-4">
@@ -110,7 +125,23 @@
                                 <strong>:</strong> {{ $teacher->user_complements->street }}, {{ $teacher->user_complements->subdistrict }}, {{ $teacher->user_complements->district }}, {{ $teacher->user_complements->zip_code }}
                             </div>
                         </div>
-                        <a href="{{ route('teachers.edit', $teacher->id) }}" class="btn btn-primary px-5 my-3">Edit</a>
+                        @component('components.modal-reset-password')
+                            @slot('id')
+                                {{ $teacher->id }}
+                            @endslot
+                            @slot('body')
+                                Are you sure you want to reset password this user?
+                            @endslot
+                            @slot('route')
+                                {{ route('reset-password', $teacher->id) }}
+                            @endslot
+                        @endcomponent
+                        <div class="mt-3">
+                            <a href="{{ route('teachers.edit', $teacher->id) }}" class="btn btn-primary px-5">Edit</a>
+                            @if (Auth::user()->position_id == 3)
+                                <button type="button" class="btn btn-success px-3" data-toggle="modal" data-target="#modal_{{ $teacher->id }}">Reset Password</button>
+                            @endif
+                        </div>
                     </div>
                 </div>
             </div>

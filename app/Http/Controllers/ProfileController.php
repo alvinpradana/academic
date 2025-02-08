@@ -8,7 +8,7 @@ use Auth;
 use Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-
+ 
 class ProfileController extends Controller
 {
     public function index() {
@@ -21,7 +21,7 @@ class ProfileController extends Controller
     }
 
     public function updatePassword(Request $request) {
-        $user = User::where('id', $request->input('user-id'))->first();
+        $user = User::where('id', Auth::user()->id)->first();
 
         request()->validate([
             'current-password' => ['required'],

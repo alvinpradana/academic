@@ -18,7 +18,7 @@ class StudentController extends Controller
         $students = User::with([
             'user_complements',
             'student_complements'
-        ])->where('position_id', 2)->paginate(2);
+        ])->where('position_id', 2)->paginate(10);
 
         $count = User::where('position_id', 2)->sum('id');
 
